@@ -85,6 +85,10 @@ export function importD1Votes({ inputPath, databasePath } = {}) {
   let temporaryDirectory
   try {
     assertMissing(output)
+    if (typeof DatabaseSync.prototype.setAuthorizer !== 'function')
+      fail(
+        'This offline importer requires node:sqlite setAuthorizer. Use Node.js 24.21 or a newer supported release. No database was published.',
+      )
     const info = statSync(input)
     if (!info.isFile() || info.size === 0 || info.size > MAX_EXPORT_BYTES)
       fail('Input must be a nonempty SQL file no larger than 128 MiB.')
@@ -99,8 +103,6 @@ export function importD1Votes({ inputPath, databasePath } = {}) {
     }
 
     source = new DatabaseSync(':memory:', { allowExtension: false })
-    if (typeof source.setAuthorizer !== 'function')
-      fail('Use Node.js 24.21 or a newer supported Node.js release for this importer.')
     source.exec('PRAGMA temp_store = MEMORY; PRAGMA journal_mode = MEMORY;')
     source.setAuthorizer((action, argument) => {
       if (action === C.SQLITE_PRAGMA)

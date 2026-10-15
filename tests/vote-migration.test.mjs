@@ -12,6 +12,12 @@ import { createVoteStore as createD1Store } from '../worker/store.mjs'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
 const cli = join(root, 'scripts/import-d1-votes.mjs')
+const hasAuthorizer = typeof DatabaseSync.prototype.setAuthorizer === 'function'
+const authorizerRequired = {
+  skip: hasAuthorizer
+    ? false
+    : 'Offline D1 import requires node:sqlite setAuthorizer (Node.js 24.21+); core voting tests still run.',
+}
 const visitorA = Buffer.alloc(32, 1).toString('base64url')
 const visitorB = Buffer.alloc(32, 2).toString('base64url')
 const secret = 'synthetic-migration-test-signing-key-'.repeat(2)
@@ -34,39 +40,43 @@ function workspace(t) {
   return { directory, inputPath, databasePath }
 }
 
-test('only vote rows and the persisted key migrate; timestamps and historical IDs survive', (t) => {
-  const paths = workspace(t)
-  writeFileSync(
-    paths.inputPath,
-    `${dump}
+test(
+  'only vote rows and the persisted key migrate; timestamps and historical IDs survive',
+  authorizerRequired,
+  (t) => {
+    const paths = workspace(t)
+    writeFileSync(
+      paths.inputPath,
+      `${dump}
      CREATE TABLE unrelated (value TEXT);
      INSERT INTO unrelated VALUES ('ignore me');
      UPDATE track_counts SET votes = 999;
      UPDATE site_totals SET total_votes = 999, total_voters = 999;`,
-  )
-  assert.deepEqual(importD1Votes(paths), { totalVotes: 3, totalVoters: 2, votedTracks: 2 })
-  const database = new DatabaseSync(paths.databasePath)
-  try {
-    assert.deepEqual(
-      database
-        .prepare("SELECT name FROM sqlite_schema WHERE type='table' ORDER BY name")
-        .all()
-        .map((row) => row.name),
-      ['meta', 'votes'],
     )
-    assert.equal(database.prepare('SELECT value FROM meta').get().value, secret)
-    assert.deepEqual(
-      database
-        .prepare('SELECT created_at FROM votes ORDER BY created_at')
-        .all()
-        .map((row) => row.created_at),
-      [1700000000000, 1700000000123, 1700000000999],
-    )
-  } finally {
-    database.close()
-  }
-  assert.ok(!readdirSync(paths.directory).some((name) => name.startsWith('.vote-import-')))
-})
+    assert.deepEqual(importD1Votes(paths), { totalVotes: 3, totalVoters: 2, votedTracks: 2 })
+    const database = new DatabaseSync(paths.databasePath)
+    try {
+      assert.deepEqual(
+        database
+          .prepare("SELECT name FROM sqlite_schema WHERE type='table' ORDER BY name")
+          .all()
+          .map((row) => row.name),
+        ['meta', 'votes'],
+      )
+      assert.equal(database.prepare('SELECT value FROM meta').get().value, secret)
+      assert.deepEqual(
+        database
+          .prepare('SELECT created_at FROM votes ORDER BY created_at')
+          .all()
+          .map((row) => row.created_at),
+        [1700000000000, 1700000000123, 1700000000999],
+      )
+    } finally {
+      database.close()
+    }
+    assert.ok(!readdirSync(paths.directory).some((name) => name.startsWith('.vote-import-')))
+  },
+)
 
 test('existing target contents are never replaced, including an existing empty file', (t) => {
   const paths = workspace(t)
@@ -77,76 +87,124 @@ test('existing target contents are never replaced, including an existing empty f
   }
 })
 
-test('invalid schemas or row values fail before publishing and leave no temporary database', (t) => {
+test('runtimes without SQLite authorizer clearly refuse import and publish nothing', (t) => {
   const paths = workspace(t)
-  const invalidDumps = [
-    dump.replace('key TEXT PRIMARY KEY', 'key BLOB PRIMARY KEY'),
-    dump.replace(quote(secret), "'too short'"),
-    dump.replace('1700000000999', "'invalid time'"),
-    dump.replace('1700000000999', '9007199254740992'),
-    dump.replace('1700000000999', '-1'),
-    dump.replace(quote(visitorB), "'invalid visitor'"),
-    dump.replace(quote(visitorB), quote(visitorA)),
-    dump.replace("'legacy-track'", "'bad/track'"),
-    dump.replace("'legacy-track'", "''"),
-    dump.replace('COMMIT;', ''),
-  ]
-  for (const invalid of invalidDumps) {
-    writeFileSync(paths.inputPath, invalid)
-    assert.throws(() => importD1Votes(paths))
-    assert.equal(existsSync(paths.databasePath), false)
-    assert.ok(!readdirSync(paths.directory).some((name) => name.startsWith('.vote-import-')))
-  }
-  writeFileSync(paths.inputPath, Buffer.from([0xff, 0xfe, 0xfd]))
-  assert.throws(() => importD1Votes(paths), /valid UTF-8/)
-  assert.equal(existsSync(paths.databasePath), false)
-})
-
-test('SQL dump file access, dangerous pragmas and extension functions cannot run', (t) => {
-  const paths = workspace(t)
-  const external = join(paths.directory, 'external.sqlite')
-  for (const statement of [
-    `ATTACH DATABASE ${quote(external)} AS external;`,
-    `VACUUM INTO ${quote(external)};`,
-    'PRAGMA writable_schema = ON;',
-    `PRAGMA temp_store_directory = ${quote(paths.directory)};`,
-    `SELECT load_extension(${quote(secret)});`,
-    'CREATE VIRTUAL TABLE unwanted USING fts5(content);',
-  ]) {
-    writeFileSync(paths.inputPath, `${dump}\n${statement}`)
-    assert.throws(() => importD1Votes(paths), /could not be safely loaded/)
-    assert.equal(existsSync(external), false)
-    assert.equal(existsSync(paths.databasePath), false)
-  }
-})
-
-test('CLI reports aggregate totals and errors without visitor IDs or signing material', (t) => {
-  const paths = workspace(t)
-  const success = spawnSync(
+  const databasePath = join(paths.directory, 'new-target-directory', 'votes.sqlite')
+  // In newer runtimes simulate the missing capability in an isolated process.
+  // Node 22 exercises its real missing-capability path without modification.
+  const result = spawnSync(
     process.execPath,
-    [cli, '--input', paths.inputPath, '--output', paths.databasePath],
+    [
+      '--input-type=module',
+      '-e',
+      `import { DatabaseSync } from 'node:sqlite';
+       import { pathToFileURL } from 'node:url';
+       if (typeof DatabaseSync.prototype.setAuthorizer === 'function')
+         Object.defineProperty(DatabaseSync.prototype, 'setAuthorizer', { value: undefined });
+       await import(pathToFileURL(process.argv[1]).href);`,
+      cli,
+      '--input',
+      paths.inputPath,
+      '--output',
+      databasePath,
+    ],
     { encoding: 'utf8' },
   )
-  assert.equal(success.status, 0)
-  assert.match(success.stdout, /3 votes, 2 voters, 2 voted tracks/)
-  assert.ok(!`${success.stdout}${success.stderr}`.includes(secret))
-  assert.ok(!`${success.stdout}${success.stderr}`.includes(visitorA))
-  const rejectedPath = join(paths.directory, 'rejected.sqlite')
-  writeFileSync(paths.inputPath, `${dump}\nINVALID ${quote(secret)} ${quote(visitorA)};`)
-  const failure = spawnSync(
-    process.execPath,
-    [cli, '--input', paths.inputPath, '--output', rejectedPath],
-    { encoding: 'utf8' },
-  )
-  assert.equal(failure.status, 1)
-  assert.ok(!`${failure.stdout}${failure.stderr}`.includes(secret))
-  assert.ok(!`${failure.stdout}${failure.stderr}`.includes(visitorA))
-  assert.equal(existsSync(rejectedPath), false)
+  assert.equal(result.status, 1)
+  assert.match(result.stderr, /requires node:sqlite setAuthorizer/)
+  assert.match(result.stderr, /Node\.js 24\.21/)
+  assert.match(result.stderr, /No database was published/)
+  assert.equal(result.stdout, '')
+  assert.equal(existsSync(databasePath), false)
+  assert.equal(existsSync(dirname(databasePath)), false)
+  assert.ok(!readdirSync(paths.directory).some((name) => name.startsWith('.vote-import-')))
+  assert.ok(!result.stderr.includes(secret))
+  assert.ok(!result.stderr.includes(visitorA))
 })
+
+test(
+  'invalid schemas or row values fail before publishing and leave no temporary database',
+  authorizerRequired,
+  (t) => {
+    const paths = workspace(t)
+    const invalidDumps = [
+      dump.replace('key TEXT PRIMARY KEY', 'key BLOB PRIMARY KEY'),
+      dump.replace(quote(secret), "'too short'"),
+      dump.replace('1700000000999', "'invalid time'"),
+      dump.replace('1700000000999', '9007199254740992'),
+      dump.replace('1700000000999', '-1'),
+      dump.replace(quote(visitorB), "'invalid visitor'"),
+      dump.replace(quote(visitorB), quote(visitorA)),
+      dump.replace("'legacy-track'", "'bad/track'"),
+      dump.replace("'legacy-track'", "''"),
+      dump.replace('COMMIT;', ''),
+    ]
+    for (const invalid of invalidDumps) {
+      writeFileSync(paths.inputPath, invalid)
+      assert.throws(() => importD1Votes(paths))
+      assert.equal(existsSync(paths.databasePath), false)
+      assert.ok(!readdirSync(paths.directory).some((name) => name.startsWith('.vote-import-')))
+    }
+    writeFileSync(paths.inputPath, Buffer.from([0xff, 0xfe, 0xfd]))
+    assert.throws(() => importD1Votes(paths), /valid UTF-8/)
+    assert.equal(existsSync(paths.databasePath), false)
+  },
+)
+
+test(
+  'SQL dump file access, dangerous pragmas and extension functions cannot run',
+  authorizerRequired,
+  (t) => {
+    const paths = workspace(t)
+    const external = join(paths.directory, 'external.sqlite')
+    for (const statement of [
+      `ATTACH DATABASE ${quote(external)} AS external;`,
+      `VACUUM INTO ${quote(external)};`,
+      'PRAGMA writable_schema = ON;',
+      `PRAGMA temp_store_directory = ${quote(paths.directory)};`,
+      `SELECT load_extension(${quote(secret)});`,
+      'CREATE VIRTUAL TABLE unwanted USING fts5(content);',
+    ]) {
+      writeFileSync(paths.inputPath, `${dump}\n${statement}`)
+      assert.throws(() => importD1Votes(paths), /could not be safely loaded/)
+      assert.equal(existsSync(external), false)
+      assert.equal(existsSync(paths.databasePath), false)
+    }
+  },
+)
+
+test(
+  'CLI reports aggregate totals and errors without visitor IDs or signing material',
+  authorizerRequired,
+  (t) => {
+    const paths = workspace(t)
+    const success = spawnSync(
+      process.execPath,
+      [cli, '--input', paths.inputPath, '--output', paths.databasePath],
+      { encoding: 'utf8' },
+    )
+    assert.equal(success.status, 0)
+    assert.match(success.stdout, /3 votes, 2 voters, 2 voted tracks/)
+    assert.ok(!`${success.stdout}${success.stderr}`.includes(secret))
+    assert.ok(!`${success.stdout}${success.stderr}`.includes(visitorA))
+    const rejectedPath = join(paths.directory, 'rejected.sqlite')
+    writeFileSync(paths.inputPath, `${dump}\nINVALID ${quote(secret)} ${quote(visitorA)};`)
+    const failure = spawnSync(
+      process.execPath,
+      [cli, '--input', paths.inputPath, '--output', rejectedPath],
+      { encoding: 'utf8' },
+    )
+    assert.equal(failure.status, 1)
+    assert.ok(!`${failure.stdout}${failure.stderr}`.includes(secret))
+    assert.ok(!`${failure.stdout}${failure.stderr}`.includes(visitorA))
+    assert.equal(existsSync(rejectedPath), false)
+  },
+)
 
 test(
   'real local Wrangler D1 export imports with compatible HMAC identity and shared totals',
   {
+    ...authorizerRequired,
     timeout: 90_000,
   },
   async (t) => {
