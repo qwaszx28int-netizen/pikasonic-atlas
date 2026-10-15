@@ -14,6 +14,7 @@ import type { Track } from '../lib/catalog'
 import { formatDate, safeExternalUrl } from '../lib/catalog'
 import { neteaseLink, neteaseRanks } from '../lib/netease'
 import type { NeteaseCatalog } from '../lib/netease'
+import ArtworkBackdrop from './ArtworkBackdrop'
 import '../journey.css'
 
 interface Props {
@@ -121,7 +122,8 @@ export default function MusicJourney({ tracks, netease, onSelect, showCovers = t
 
   return (
     <div className="mj-page">
-      <header className="mj-hero">
+      <header className="mj-hero artwork-banner">
+        <ArtworkBackdrop page="journey" tracks={tracks} showCovers={showCovers} onOpen={onSelect} />
         <div className="mj-hero-orbit mj-hero-orbit-one" aria-hidden="true" />
         <div className="mj-hero-orbit mj-hero-orbit-two" aria-hidden="true" />
         <span className="mj-kicker">

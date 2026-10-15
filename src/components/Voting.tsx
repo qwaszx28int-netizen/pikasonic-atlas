@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowUpRight, ChevronUp, Heart, RefreshCw, ThumbsUp, Trophy, Users } from 'lucide-react'
 import type { Track } from '../lib/catalog'
 import { genreLabel } from '../lib/genres'
+import ArtworkBackdrop from './ArtworkBackdrop'
 
 interface Leaderboard {
   entries: { trackId: string; votes: number }[]
@@ -146,7 +147,8 @@ export function Ranking({
   })
   return (
     <div className="ranking-page">
-      <div className="ranking-hero">
+      <div className="ranking-hero artwork-banner">
+        <ArtworkBackdrop page="ranking" tracks={tracks} showCovers={showCovers} onOpen={onOpen} />
         <span className="eyebrow">CHOSEN BY LISTENERS, SHARED BY EVERYONE</span>
         <div className="ranking-title">
           <h1>让喜欢，被更多人听见。</h1>

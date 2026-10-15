@@ -54,6 +54,7 @@ import type { VotingState } from './components/Voting'
 import CoverWall from './components/CoverWall'
 import MusicJourney from './components/MusicJourney'
 import { pickTrack, trackShareUrl } from './lib/discovery'
+import ArtworkBackdrop from './components/ArtworkBackdrop'
 
 type Page = 'explore' | 'tracks' | 'journey' | 'albums' | 'favorites' | 'ranking' | 'about'
 type Dialog = { type: 'track'; track: Track } | { type: 'about' } | null
@@ -486,6 +487,7 @@ export default function App() {
       </aside>
 
       <div className="main-shell">
+        <ArtworkBackdrop page={page} tracks={tracks} showCovers={showCovers} ambient />
         <header className="topbar">
           <div className="topbar-left">
             <button
@@ -518,6 +520,7 @@ export default function App() {
               catalog={catalog}
               showCovers={showCovers}
               onCoversChange={() => setShowCovers((value) => !value)}
+              onArtworkOpen={openTrack}
             />
           ) : page === 'ranking' ? (
             <Ranking
@@ -551,7 +554,16 @@ export default function App() {
             <>
               {page === 'explore' ? (
                 <>
-                  <section className="hero" aria-label="欢迎来到 PIKASONIC 音乐档案馆">
+                  <section
+                    className="hero artwork-banner"
+                    aria-label="欢迎来到 PIKASONIC 音乐档案馆"
+                  >
+                    <ArtworkBackdrop
+                      page="explore"
+                      tracks={tracks}
+                      showCovers={showCovers}
+                      onOpen={openTrack}
+                    />
                     <div className="hero-lines" aria-hidden="true">
                       <i />
                       <i />
@@ -624,7 +636,13 @@ export default function App() {
                   </div>
                 </>
               ) : (
-                <div className="page-heading">
+                <div className="page-heading artwork-banner">
+                  <ArtworkBackdrop
+                    page={page}
+                    tracks={tracks}
+                    showCovers={showCovers}
+                    onOpen={openTrack}
+                  />
                   <span className="eyebrow">
                     {page === 'favorites'
                       ? 'YOUR PERSONAL COLLECTION'
@@ -1387,23 +1405,35 @@ function AboutContent({
   showCovers,
   onCoversChange,
   compact = false,
+  onArtworkOpen,
 }: {
   catalog: Catalog | null
   showCovers: boolean
   onCoversChange: () => void
   compact?: boolean
+  onArtworkOpen?: (track: Track) => void
 }) {
   return (
     <div className={`about-content ${compact ? 'about-compact' : ''}`}>
-      <span className="eyebrow">AN ARCHIVE MADE WITH LOVE</span>
-      <h1>
-        关于这份音乐档案<span>。</span>
-      </h1>
-      <p className="about-lead">
-        因为喜欢，所以想把每一份旋律，
-        <br />
-        好好地整理在一起。
-      </p>
+      <header className={`about-heading ${compact ? '' : 'artwork-banner'}`}>
+        {!compact && (
+          <ArtworkBackdrop
+            page="about"
+            tracks={catalog?.tracks || []}
+            showCovers={showCovers}
+            onOpen={onArtworkOpen}
+          />
+        )}
+        <span className="eyebrow">AN ARCHIVE MADE WITH LOVE</span>
+        <h1>
+          关于这份音乐档案<span>。</span>
+        </h1>
+        <p className="about-lead">
+          因为喜欢，所以想把每一份旋律，
+          <br />
+          好好地整理在一起。
+        </p>
+      </header>
       <div className="about-intro">
         <AudioLines size={25} />
         <p>

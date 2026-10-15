@@ -1,0 +1,251 @@
+/* Real release artwork, with a clear reading surface over every scene. */
+.main-shell {
+  position: relative;
+  isolation: isolate;
+}
+.artwork-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  border: 1px solid #78658c55;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #29223e, #4c3c63 70%, #615d87);
+  box-shadow: 0 12px 35px #57406e12;
+  color: #fff8ff;
+}
+.page-artwork {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.page-artwork-image {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+}
+.page-artwork-image img {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 74%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.94;
+  mask-image: linear-gradient(90deg, transparent, #000 25%);
+}
+.page-artwork-image:after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #211a37f2 0%, #2b2047cf 30%, #30224870 58%, #281c3514 100%),
+    linear-gradient(0deg, #1d15366b, transparent 40%);
+}
+.page-artwork--tracks .page-artwork-image:after {
+  background: linear-gradient(90deg, #302138fa, #392738b8 40%, #462d3a16 100%);
+}
+.page-artwork--favorites .page-artwork-image:after {
+  background: linear-gradient(90deg, #382340fa, #573447b8 42%, #52374622 100%);
+}
+.page-artwork--about .page-artwork-image:after,
+.page-artwork--journey .page-artwork-image:after {
+  background: linear-gradient(90deg, #182344fa, #23335bbb 40%, #2a335826 100%);
+}
+.page-artwork-credit {
+  position: absolute;
+  right: 20px;
+  bottom: 17px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  max-width: calc(100% - 40px);
+  padding: 8px 11px;
+  pointer-events: auto;
+  border: 1px solid #ffffff35;
+  border-radius: 7px;
+  background: #251932ad;
+  backdrop-filter: blur(10px);
+  color: #fff1ff;
+  font-size: 11px;
+  line-height: 1.5;
+  z-index: 5;
+}
+.page-artwork-credit span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.page-artwork-credit:hover {
+  background: #513765;
+  border-color: #ffffff80;
+}
+.page-artwork-credit:focus-visible {
+  outline: 2px solid #ffe1fc;
+  outline-offset: 3px;
+}
+.page-artwork-ambient {
+  inset: 68px 0 auto;
+  height: 850px;
+  z-index: -1;
+  opacity: 0.065;
+  mask-image: linear-gradient(#000, #000 30%, transparent 90%);
+}
+.page-artwork-ambient .page-artwork-image img {
+  width: 100%;
+  mask-image: none;
+}
+.page-artwork-ambient .page-artwork-image:after {
+  background: linear-gradient(90deg, #f8f6fc, transparent 70%);
+}
+.artwork-banner :is(h1, .ranking-title h1, .mj-hero-main h1) {
+  color: #fff7ff;
+  text-shadow: 0 2px 20px #100e3655;
+}
+.artwork-banner :is(h1 em, h1 span, .heading-spark) {
+  color: #f2d9fb;
+}
+.artwork-banner :is(.eyebrow, .mj-kicker, .hero-eyebrow) {
+  color: #e6cef8;
+}
+.artwork-banner > p,
+.artwork-banner .mj-hero-main p,
+.artwork-banner .hero-copy > p {
+  color: #f0e7f6;
+}
+.page-heading.artwork-banner {
+  min-height: 265px;
+  padding: 39px 40px 65px;
+  margin-bottom: 35px;
+}
+.page-heading.artwork-banner h1 {
+  margin-top: 16px;
+}
+.page-heading.artwork-banner p {
+  max-width: 60%;
+  line-height: 2;
+  font-size: 12px;
+}
+.about-heading.artwork-banner {
+  padding: 38px 36px 66px;
+  margin-bottom: 30px;
+  min-height: 290px;
+}
+.about-heading.artwork-banner h1 {
+  font-size: 30px;
+  margin-top: 18px;
+}
+.about-heading.artwork-banner .about-lead {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+.ranking-hero.artwork-banner,
+.mj-hero.artwork-banner {
+  min-height: 310px;
+  padding-bottom: 66px;
+}
+.ranking-hero.artwork-banner:after,
+.mj-hero.artwork-banner .mj-hero-orbit {
+  display: none;
+}
+.ranking-hero.artwork-banner .ranking-title h1 {
+  max-width: 72%;
+}
+.ranking-hero.artwork-banner .ranking-title > svg {
+  color: #f6d4fe;
+}
+.ranking-hero.artwork-banner .ranking-stats {
+  gap: 18px;
+}
+.ranking-hero.artwork-banner .ranking-stats > span,
+.ranking-hero.artwork-banner .ranking-stats strong {
+  color: #f5e5fa;
+  text-shadow: 0 1px 8px #15142e;
+}
+.ranking-hero.artwork-banner .ranking-stats > span:last-child {
+  margin-left: 0;
+  font-size: 10px;
+}
+.mj-hero.artwork-banner .mj-summary {
+  border-top-color: #ffffff35;
+  color: #f1e5ff;
+}
+.mj-hero.artwork-banner .mj-summary strong {
+  color: #fff2fd;
+}
+.mj-hero.artwork-banner .mj-hero-disc {
+  color: #f2dafa;
+  opacity: 0.25;
+}
+.mj-hero.artwork-banner .mj-hero-stamp {
+  left: 42px;
+  right: auto;
+  bottom: 25px;
+  color: #ecdbf8;
+}
+.hero.artwork-banner .page-artwork-image img {
+  width: 100%;
+  opacity: 0.65;
+  mask-image: none;
+}
+.hero.artwork-banner .page-artwork-image:after {
+  background: linear-gradient(90deg, #241934e6, #342249a3 55%, #1c17353b);
+}
+.hero.artwork-banner .page-artwork-credit {
+  right: auto;
+  left: 40px;
+  bottom: 17px;
+  font-size: 10px;
+}
+.hero.artwork-banner .hero-bottom-label {
+  display: none;
+}
+.hero.artwork-banner .hero-lines {
+  opacity: 0.35;
+}
+@media (max-width: 700px) {
+  .page-artwork-image img {
+    width: 100%;
+    mask-image: none;
+  }
+  .page-artwork-image:after,
+  .page-artwork--tracks .page-artwork-image:after,
+  .page-artwork--favorites .page-artwork-image:after,
+  .page-artwork--about .page-artwork-image:after,
+  .page-artwork--journey .page-artwork-image:after {
+    background: linear-gradient(90deg, #251c3dec, #2b2141b8 60%, #24193455);
+  }
+  .page-heading.artwork-banner,
+  .about-heading.artwork-banner {
+    min-height: 255px;
+    padding: 29px 25px 65px;
+    margin-bottom: 27px;
+  }
+  .page-heading.artwork-banner p {
+    max-width: 90%;
+  }
+  .page-heading.artwork-banner h1,
+  .about-heading.artwork-banner h1 {
+    font-size: 26px;
+  }
+  .page-artwork-credit {
+    right: 15px;
+    bottom: 16px;
+    max-width: calc(100% - 30px);
+    font-size: 10px;
+  }
+  .mj-hero.artwork-banner .mj-hero-stamp {
+    display: none;
+  }
+  .ranking-hero.artwork-banner .ranking-title h1 {
+    max-width: 90%;
+  }
+  .ranking-hero.artwork-banner .ranking-title > svg {
+    display: none;
+  }
+  .hero.artwork-banner .page-artwork-credit {
+    left: 25px;
+    bottom: 15px;
+  }
+}
