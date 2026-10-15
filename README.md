@@ -2,7 +2,7 @@
 
 一个非官方、非营利的 PIKASONIC 中文歌曲资料与导听网站。目前目录整理了 **139 首作品**，合并 Apple Music 公开发行资料，并补充官方 SoundCloud、YouTube 可核对的独立作品与不同版本。这个数字是当前快照，不是“全球全部歌曲”的证明。
 
-[源码仓库](https://github.com/qwaszx28int-netizen/pikasonic-atlas) · [问题与建议](https://github.com/qwaszx28int-netizen/pikasonic-atlas/issues)
+[在线预览](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) · [版本下载](https://github.com/qwaszx28int-netizen/pikasonic-atlas/releases/latest) · [源码仓库](https://github.com/qwaszx28int-netizen/pikasonic-atlas) · [问题与建议](https://github.com/qwaszx28int-netizen/pikasonic-atlas/issues)
 
 > 本项目与 PIKASONIC、唱片公司及音乐平台不存在官方关联。“非营利”声明不构成版权许可，也不能保证免除版权责任。代码采用 MIT 许可；歌曲、封面、艺术家名称及相关商标等权利仍归各自权利人所有。
 
@@ -79,7 +79,7 @@ npm run sync:netease
 
 欢迎 Fork 仓库、补充有来源的曲目资料或提交功能修复。贡献代码时在自己的分叉仓库创建分支，执行测试和构建后提交 Pull Request；具体要求见 [贡献指南](CONTRIBUTING.md)。提交前确认没有包含数据库、令牌或 `.env`。
 
-GitHub Pages 需单独启用；以下是静态部署方法，不表示站点已经上线。在自己的仓库 **Settings → Pages → Build and deployment** 中将 **Source** 设为 **GitHub Actions**，再运行提供的 Pages 工作流。成功后可在该设置页查看静态站点地址。Vite 基础路径为 `./`，适配项目仓库路径。
+本仓库的 [GitHub Pages 静态预览](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) 已上线，提供目录与导听浏览。分叉仓库仍需自行启用部署：在自己的仓库 **Settings → Pages → Build and deployment** 中将 **Source** 设为 **GitHub Actions**，再运行提供的 Pages 工作流。成功后可在该设置页查看静态站点地址。Vite 基础路径为 `./`，适配项目仓库路径。
 
 若默认分支不同，请调整工作流监听分支。所附 Actions 工作流会自动将当前 GitHub 仓库地址传入 `VITE_REPOSITORY_URL`；其他构建方式需自行配置并验证。上述步骤完成后，以实际仓库与部署状态为准。需要共享投票时，改用前述完整部署。
 
@@ -97,4 +97,4 @@ GitHub Pages 需单独启用；以下是静态部署方法，不表示站点已�
 
 使用 React、Vite、TypeScript、Node.js 与 SQLite。参考 [SPlayer](https://github.com/SPlayer-Dev/SPlayer)、[Navidrome](https://github.com/navidrome/navidrome)、[MetingJS](https://github.com/metowolf/MetingJS) 的公开文档，借鉴信息组织与配置思路，未复制其代码、截图或资产。调研依据与许可差异见 [GitHub 同类项目调研](notes/github-references.md)。
 
-项目代码采用 [MIT License](LICENSE)。该许可不授予歌曲、封面、歌词、音乐录音、名称或商标的使用权，也不覆盖第三方平台的数据条款。重新部署或分发本项目时，请自行核查所使用内容的许可与来源要求。
+项目代码采用 [MIT License](LICENSE)，许可范围见 [NOTICE.md](NOTICE.md)。该许可不授予歌曲、封面、歌词、音乐录音、名称或商标的使用权，也不覆盖第三方平台的数据条款。重新部署或分发本项目时，请自行核查所使用内容的许可与来源要求。
