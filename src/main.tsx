@@ -5,6 +5,7 @@ import './styles.css'
 import './readability.css'
 import './features.css'
 import './anime-theme.css'
+import './discovery.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

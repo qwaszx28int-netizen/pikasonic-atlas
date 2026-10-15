@@ -8,6 +8,7 @@ import {
   AudioLines,
   BookOpen,
   Check,
+  CalendarDays,
   ChevronDown,
   CircleHelp,
   Disc3,
@@ -21,9 +22,11 @@ import {
   Menu,
   Music2,
   Search,
+  Share2,
   ShieldCheck,
   SlidersHorizontal,
   Sparkles,
+  Shuffle,
   Trophy,
   Waves,
   X,
@@ -42,20 +45,23 @@ import type { Catalog, Category, SortOrder, Track } from './lib/catalog'
 import { getGuide } from './lib/guides'
 import { REPOSITORY_URL } from './lib/site'
 import { genreLabel, genreDescription, genreInfo } from './lib/genres'
-import { neteaseLink } from './lib/netease'
+import { neteaseLink, neteaseRanks } from './lib/netease'
 import type { NeteaseCatalog } from './lib/netease'
 import { youtubeLink } from './lib/youtube'
 import type { YoutubeCatalog } from './lib/youtube'
 import { Ranking, VoteButton, useVoting } from './components/Voting'
 import type { VotingState } from './components/Voting'
 import CoverWall from './components/CoverWall'
+import MusicJourney from './components/MusicJourney'
+import { pickTrack, trackShareUrl } from './lib/discovery'
 
-type Page = 'explore' | 'tracks' | 'albums' | 'favorites' | 'ranking' | 'about'
+type Page = 'explore' | 'tracks' | 'journey' | 'albums' | 'favorites' | 'ranking' | 'about'
 type Dialog = { type: 'track'; track: Track } | { type: 'about' } | null
 const PAGE_SIZE = 24
 const NAV = [
   { id: 'explore', label: '发现音乐', icon: Grid2X2 },
   { id: 'tracks', label: '全部歌曲', icon: AudioLines },
+  { id: 'journey', label: '音乐历程', icon: CalendarDays },
   { id: 'albums', label: '发行专辑', icon: Disc3 },
   { id: 'favorites', label: '我的收藏', icon: Heart },
   { id: 'ranking', label: '心动排行榜', icon: Trophy },
@@ -214,7 +220,7 @@ export default function App() {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState<Category>('all')
   const [year, setYear] = useState('')
-  const [sort, setSort] = useState<SortOrder>('featured')
+  const [sort, setSort] = useState<SortOrder>('netease')
   const [view, setView] = useState<'grid' | 'list'>('grid')
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
   const [favorites, setFavorites] = useState<string[]>(() => {
@@ -232,6 +238,7 @@ export default function App() {
   const [toast, setToast] = useState('')
   const searchRef = useRef<HTMLInputElement>(null)
   const collectionRef = useRef<HTMLElement>(null)
+  const lastRandomId = useRef<string | undefined>(undefined)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -267,6 +274,23 @@ export default function App() {
   }, [retry])
 
   useEffect(() => {
+    if (!catalog) return
+    const readSharedTrack = () => {
+      const id = new URL(window.location.href).searchParams.get('track')
+      if (!id) {
+        setDialog((previous) => (previous?.type === 'track' ? null : previous))
+        return
+      }
+      const track = catalog.tracks.find((item) => item.id === id)
+      if (track) setDialog({ type: 'track', track })
+      else setToast('分享链接中的作品暂未收录，可以试试搜索歌名。')
+    }
+    readSharedTrack()
+    window.addEventListener('popstate', readSharedTrack)
+    return () => window.removeEventListener('popstate', readSharedTrack)
+  }, [catalog])
+
+  useEffect(() => {
     try {
       localStorage.setItem('pikasonic:favorites', JSON.stringify(favorites))
       localStorage.setItem('pikasonic:covers', JSON.stringify(showCovers))
@@ -283,7 +307,7 @@ export default function App() {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault()
         if (dialog) return
-        if (page === 'about' || page === 'ranking') setPage('tracks')
+        if (page === 'about' || page === 'ranking' || page === 'journey') setPage('tracks')
         window.setTimeout(() => searchRef.current?.focus(), 0)
       }
     }
@@ -298,6 +322,7 @@ export default function App() {
 
   const tracks = catalog?.tracks || []
   const favoriteSet = useMemo(() => new Set(favorites), [favorites])
+  const hotRanks = useMemo(() => neteaseRanks(netease), [netease])
   const results = useMemo(
     () =>
       filterTracks(tracks, {
@@ -305,9 +330,10 @@ export default function App() {
         category,
         year,
         sort,
+        hotRanks,
         favorites: page === 'favorites' ? favoriteSet : undefined,
       }).filter((track) => !genre || genreLabel(track) === genre),
-    [tracks, query, category, year, genre, sort, page, favoriteSet],
+    [tracks, query, category, year, genre, sort, page, favoriteSet, hotRanks],
   )
   const genres = useMemo(() => [...new Set(tracks.map(genreLabel))].sort(), [tracks])
   const years = useMemo(
@@ -335,15 +361,33 @@ export default function App() {
     )
     setToast(exists ? '已从收藏移除' : '已加入我的收藏')
   }
+  function openTrack(track: Track) {
+    window.history.replaceState(
+      window.history.state,
+      '',
+      trackShareUrl(window.location.href, track.id),
+    )
+    setDialog({ type: 'track', track })
+  }
+  function closeDialog() {
+    window.history.replaceState(window.history.state, '', trackShareUrl(window.location.href))
+    setDialog(null)
+  }
+  function discoverRandom() {
+    const track = pickTrack(results, lastRandomId.current)
+    if (!track) return
+    lastRandomId.current = track.id
+    openTrack(track)
+  }
   function navigate(next: Page) {
     setPage(next)
-    setSort(next === 'explore' ? 'featured' : 'newest')
+    setSort(next === 'explore' || next === 'tracks' ? 'netease' : 'newest')
     setQuery('')
     setCategory('all')
     setYear('')
     setGenre('')
     setMobileMenu(false)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }
   function browse() {
     collectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -358,6 +402,7 @@ export default function App() {
   const labels: Record<Page, string> = {
     explore: '发现音乐',
     tracks: '全部歌曲',
+    journey: '音乐历程',
     albums: '发行专辑',
     favorites: '我的收藏',
     ranking: '心动排行榜',
@@ -479,9 +524,29 @@ export default function App() {
               tracks={tracks}
               voting={voting}
               showCovers={showCovers}
-              onOpen={(track) => setDialog({ type: 'track', track })}
+              onOpen={openTrack}
               onBrowse={() => navigate('tracks')}
             />
+          ) : page === 'journey' ? (
+            error || !catalog ? (
+              <div className="empty-state" role="status">
+                <CalendarDays size={36} />
+                <h1>{error ? '暂时没能打开音乐历程' : '正在整理音乐历程…'}</h1>
+                {error && <p>{error}</p>}
+                {error && (
+                  <button className="button-primary" onClick={() => setRetry((value) => value + 1)}>
+                    重新加载
+                  </button>
+                )}
+              </div>
+            ) : (
+              <MusicJourney
+                tracks={tracks}
+                netease={netease}
+                showCovers={showCovers}
+                onSelect={openTrack}
+              />
+            )
           ) : (
             <>
               {page === 'explore' ? (
@@ -519,13 +584,13 @@ export default function App() {
                           <Trophy size={14} />
                           心动 TOP 10
                         </button>
+                        <button className="hero-secondary" onClick={() => navigate('journey')}>
+                          <CalendarDays size={14} />
+                          音乐历程
+                        </button>
                       </div>
                     </div>
-                    <CoverWall
-                      tracks={tracks}
-                      showCovers={showCovers}
-                      onOpen={(track) => setDialog({ type: 'track', track })}
-                    />
+                    <CoverWall tracks={tracks} showCovers={showCovers} onOpen={openTrack} />
                     <span className="hero-japanese" aria-hidden="true">
                       音楽が、きらめく。
                     </span>
@@ -652,6 +717,17 @@ export default function App() {
                       <kbd>Ctrl K</kbd>
                     )}
                   </div>
+                  {page !== 'albums' && (
+                    <button
+                      className="random-discovery"
+                      onClick={discoverRandom}
+                      disabled={!results.length}
+                      title="从当前筛选结果中随机发现一首"
+                    >
+                      <Shuffle size={16} />
+                      随机发现
+                    </button>
+                  )}
                   <label className="sort-select">
                     <ArrowDownUp size={15} />
                     <select
@@ -659,6 +735,7 @@ export default function App() {
                       onChange={(event) => setSort(event.target.value as SortOrder)}
                       aria-label="排序方式"
                     >
+                      <option value="netease">网易云热门</option>
                       <option value="featured">编辑选曲</option>
                       <option value="newest">最新发行</option>
                       <option value="oldest">最早发行</option>
@@ -667,6 +744,19 @@ export default function App() {
                     <ChevronDown size={13} />
                   </label>
                 </div>
+                {sort === 'netease' && (
+                  <p className="hot-sort-note">
+                    <Music2 size={12} />
+                    {Object.keys(hotRanks).length ? (
+                      <>
+                        优先展示网易云艺人热门作品 ·{' '}
+                        {formatDate(netease?.hotUpdatedAt || netease?.updatedAt || '')} 更新
+                      </>
+                    ) : (
+                      '网易云热门资料暂未加载，先按发行日期展示。'
+                    )}
+                  </p>
+                )}
                 <div className="filter-row">
                   <div className="category-tabs" aria-label="作品类型">
                     {(
@@ -832,7 +922,7 @@ export default function App() {
                         <div className="card-art">
                           <button
                             className="card-cover-button"
-                            onClick={() => setDialog({ type: 'track', track })}
+                            onClick={() => openTrack(track)}
                             aria-label={`查看《${track.title}》的歌曲解读`}
                           >
                             <Cover track={track} enabled={showCovers} />
@@ -860,10 +950,7 @@ export default function App() {
                             />
                           </button>
                         </div>
-                        <button
-                          className="track-title-button"
-                          onClick={() => setDialog({ type: 'track', track })}
-                        >
+                        <button className="track-title-button" onClick={() => openTrack(track)}>
                           <h3 title={track.title}>{track.title}</h3>
                         </button>
                         <p className="track-artist" title={track.artist}>
@@ -878,7 +965,7 @@ export default function App() {
                             <i />
                             {formatDuration(track.durationMs)}
                           </span>
-                          <button onClick={() => setDialog({ type: 'track', track })}>
+                          <button onClick={() => openTrack(track)}>
                             歌曲笔记
                             <ArrowUpRight size={12} />
                           </button>
@@ -907,10 +994,7 @@ export default function App() {
                     {results.slice(0, visibleCount).map((track, index) => (
                       <div className="track-list-row" key={track.id}>
                         <span className="list-index">{String(index + 1).padStart(2, '0')}</span>
-                        <button
-                          className="list-track"
-                          onClick={() => setDialog({ type: 'track', track })}
-                        >
+                        <button className="list-track" onClick={() => openTrack(track)}>
                           <Cover track={track} enabled={showCovers} />
                           <span>
                             <strong>{track.title}</strong>
@@ -1023,8 +1107,9 @@ export default function App() {
         </div>
       )}
       {dialog?.type === 'track' && (
-        <Modal label={`歌曲笔记：${dialog.track.title}`} onClose={() => setDialog(null)} wide>
+        <Modal label={`歌曲笔记：${dialog.track.title}`} onClose={closeDialog} wide>
           <TrackDetail
+            key={dialog.track.id}
             track={dialog.track}
             showCovers={showCovers}
             favorite={favoriteSet.has(dialog.track.id)}
@@ -1036,7 +1121,7 @@ export default function App() {
         </Modal>
       )}
       {dialog?.type === 'about' && (
-        <Modal label="关于与版权说明" onClose={() => setDialog(null)} wide>
+        <Modal label="关于与版权说明" onClose={closeDialog} wide>
           <AboutContent
             catalog={catalog}
             showCovers={showCovers}
@@ -1044,6 +1129,45 @@ export default function App() {
             compact
           />
         </Modal>
+      )}
+    </div>
+  )
+}
+
+function ShareTrack({ track }: { track: Track }) {
+  const [copied, setCopied] = useState(false)
+  const [fallback, setFallback] = useState('')
+  async function share() {
+    const url = trackShareUrl(window.location.href, track.id)
+    try {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+      setFallback('')
+    } catch {
+      setFallback(url)
+    }
+  }
+  return (
+    <div className="share-track">
+      <button className="save-button share-button" onClick={share}>
+        {copied ? <Check size={15} /> : <Share2 size={15} />}
+        {copied ? '链接已复制' : '分享歌曲'}
+      </button>
+      {copied && (
+        <span className="sr-only" role="status">
+          歌曲分享链接已复制
+        </span>
+      )}
+      {fallback && (
+        <label className="share-fallback">
+          复制链接，分享这份心动
+          <input
+            aria-label="歌曲分享链接"
+            readOnly
+            value={fallback}
+            onFocus={(event) => event.target.select()}
+          />
+        </label>
       )}
     </div>
   )
@@ -1081,10 +1205,13 @@ function TrackDetail({
               {isRemix(track) ? 'Remix' : isCollaboration(track) ? '合作作品' : '个人作品'}
             </span>
           </div>
-          <button className={`save-button ${favorite ? 'saved' : ''}`} onClick={onFavorite}>
-            <Heart size={15} fill={favorite ? 'currentColor' : 'none'} />
-            {favorite ? '已收藏这首歌' : '收藏这首歌'}
-          </button>
+          <div className="detail-actions">
+            <button className={`save-button ${favorite ? 'saved' : ''}`} onClick={onFavorite}>
+              <Heart size={15} fill={favorite ? 'currentColor' : 'none'} />
+              {favorite ? '已收藏这首歌' : '收藏这首歌'}
+            </button>
+            <ShareTrack track={track} />
+          </div>
         </div>
       </div>
       <div className="detail-body">

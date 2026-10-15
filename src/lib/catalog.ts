@@ -30,7 +30,7 @@ export interface Catalog {
 }
 
 export type Category = 'all' | 'solo' | 'collab' | 'remix'
-export type SortOrder = 'featured' | 'newest' | 'oldest' | 'title'
+export type SortOrder = 'netease' | 'featured' | 'newest' | 'oldest' | 'title'
 
 export function normalize(value: string): string {
   return value
@@ -85,6 +85,7 @@ export function filterTracks(
     category?: Category
     year?: string
     sort?: SortOrder
+    hotRanks?: Record<string, number>
     favorites?: Set<string>
   } = {},
 ): Track[] {
@@ -114,6 +115,11 @@ export function filterTracks(
       )
     })
     .sort((a, b) => {
+      if (options.sort === 'netease') {
+        const aRank = options.hotRanks?.[a.id] ?? Number.MAX_SAFE_INTEGER
+        const bRank = options.hotRanks?.[b.id] ?? Number.MAX_SAFE_INTEGER
+        if (aRank !== bRank) return aRank - bRank
+      }
       if (options.sort === 'title')
         return a.title.localeCompare(b.title, 'zh-CN', { numeric: true })
       if (options.sort === 'featured') {

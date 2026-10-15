@@ -9,6 +9,40 @@ export interface NeteaseMatch {
 export interface NeteaseCatalog {
   updatedAt: string
   matches: Record<string, NeteaseMatch>
+  hotUpdatedAt?: string
+  hotSource?: { name: string; url: string; description: string }
+  hotSongs?: {
+    rank: number
+    id: number
+    title: string
+    artist: string
+    durationMs: number
+    popularity?: number
+    score?: number
+    url: string
+  }[]
+  hotRanks?: Record<string, number>
+  hotOrder?: string[]
+}
+
+/** One-based positions in the artist's captured hotSongs order, never play counts. */
+export function neteaseRanks(catalog?: NeteaseCatalog | null): Record<string, number> {
+  if (!catalog) return {}
+  const ranks: Record<string, number> = {}
+  if (catalog.hotRanks) {
+    for (const [trackId, rank] of Object.entries(catalog.hotRanks))
+      if (Number.isSafeInteger(rank) && rank > 0) ranks[trackId] = rank
+    return ranks
+  }
+  const songRanks = new Map<number, number>()
+  for (const song of catalog.hotSongs || [])
+    if (Number.isSafeInteger(song.rank) && song.rank > 0)
+      songRanks.set(song.id, Math.min(songRanks.get(song.id) ?? Infinity, song.rank))
+  for (const [trackId, match] of Object.entries(catalog.matches)) {
+    const rank = songRanks.get(match.id)
+    if (rank !== undefined) ranks[trackId] = rank
+  }
+  return ranks
 }
 
 export function neteaseLink(

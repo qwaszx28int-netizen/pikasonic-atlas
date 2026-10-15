@@ -137,6 +137,29 @@ test('records with unknown release dates remain browsable but do not match a kno
   assert.equal(formatDate(unknown.releaseDate), '日期待核实')
 })
 
+test('NetEase ordering respects platform ranks and preserves filters and other sorts', () => {
+  const songs = Object.freeze([
+    track({ id: 'new-unranked', title: 'A', releaseDate: '2026-01-01' }),
+    track({ id: 'second', title: 'B', releaseDate: '2024-01-01' }),
+    track({ id: 'first', title: 'C', releaseDate: '2023-01-01' }),
+    track({ id: 'old-unranked', title: 'D', releaseDate: '2020-01-01' }),
+  ])
+  const hotRanks = { first: 1, second: 2 }
+  assert.deepEqual(ids(filterTracks(songs, { sort: 'netease', hotRanks })), [
+    'first',
+    'second',
+    'new-unranked',
+    'old-unranked',
+  ])
+  assert.deepEqual(ids(filterTracks(songs, { sort: 'netease', hotRanks, year: '2024' })), [
+    'second',
+  ])
+  assert.deepEqual(ids(filterTracks(songs, { sort: 'newest', hotRanks })), ids(songs))
+  assert.deepEqual(ids(filterTracks(songs, { sort: 'title', hotRanks })), ids(songs))
+  assert.deepEqual(ids(filterTracks(songs, { sort: 'netease' })), ids(songs))
+  assert.deepEqual(ids(songs), ['new-unranked', 'second', 'first', 'old-unranked'])
+})
+
 test('duration formatting keeps minute boundaries and handles missing durations', () => {
   assert.equal(formatDuration(59999), '0:59')
   assert.equal(formatDuration(60000), '1:00')
