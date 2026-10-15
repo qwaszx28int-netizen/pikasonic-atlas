@@ -2,12 +2,14 @@
 
 一个非官方、非营利的 PIKASONIC 中文歌曲资料与导听网站。目前目录整理了 **139 首作品**，合并 Apple Music 公开发行资料，并补充官方 SoundCloud、YouTube 可核对的独立作品与不同版本。这个数字是当前快照，不是“全球全部歌曲”的证明。
 
+[源码仓库](https://github.com/qwaszx28int-netizen/pikasonic-atlas) · [问题与建议](https://github.com/qwaszx28int-netizen/pikasonic-atlas/issues)
+
 > 本项目与 PIKASONIC、唱片公司及音乐平台不存在官方关联。“非营利”声明不构成版权许可，也不能保证免除版权责任。代码采用 MIT 许可；歌曲、封面、艺术家名称及相关商标等权利仍归各自权利人所有。
 
 ## 功能
 
 - 浅紫、樱粉与天空蓝的二次元主题；主页使用真实封面构成三列交错流动曲绘墙，支持暂停、点击导听与减少动态偏好。
-- 七个功能页面使用公开来源的真实发行曲绘作为不同主题的横幅背景，遮罩保障文字辨识，点击曲绘署名可进入对应歌曲详情。封面展示开关同时控制背景，图片加载失败时使用渐变兜底；曲绘版权归原权利人所有。
+- 七个功能页面使用公开来源的真实发行曲绘作为不同主题的横幅背景，遮罩保障文字辨识，点击曲绘署名可查看对应歌曲详情或发行来源。封面展示开关同时控制背景，图片加载失败时使用渐变兜底；曲绘版权归原权利人所有。
 - 搜索曲名、艺人、发行名称及多语言别名，按年份、合作 / 混音类型、曲风筛选。
 - 默认按网易云艺人热歌列表的已匹配快照顺序浏览，也可切换日期或标题排序；快照顺序不代表播放量。
 - 按年份浏览「音乐历程」，整理已收录作品的公开年份，不将它表述为未经验证的完整创作历史。
@@ -26,6 +28,8 @@
 推荐 **Node.js 24**，最低 **Node.js 22.18**，使用 npm 安装依赖。
 
 ```bash
+git clone https://github.com/qwaszx28int-netizen/pikasonic-atlas.git
+cd pikasonic-atlas
 npm install
 npm run dev
 ```
@@ -38,9 +42,9 @@ npm run build
 npm start
 ```
 
-`npm test` 包含目录、检索、平台入口和共享投票等 24 项以上自动测试。生产构建输出到 `dist/`；`npm start` 默认在 [端口 3001](http://127.0.0.1:3001) 同时提供静态网站与 API。`npm run preview` 只预览静态构建，不提供投票后端。
+`npm test` 包含目录、检索、平台入口和共享投票等自动测试。生产构建输出到 `dist/`；`npm start` 默认在 [端口 3001](http://127.0.0.1:3001) 同时提供静态网站与 API。`npm run preview` 只预览静态构建，不提供投票后端。
 
-复制 `.env.example` 为 `.env`，把 `VITE_REPOSITORY_URL` 改为你实际创建的 GitHub 仓库地址，网站的项目与 Issues 入口将使用这个地址。`VITE_` 变量会进入前端构建，不能存放密钥。生产服务环境变量请按部署文档配置。
+需要自定义仓库入口时，复制 `.env.example` 为 `.env`，将 `VITE_REPOSITORY_URL` 设为实际维护的 GitHub 仓库地址；分叉部署时请使用自己的仓库，网站的项目与 Issues 入口将使用这个地址。`VITE_` 变量会进入前端构建，不能存放密钥。生产服务环境变量请按部署文档配置。
 
 ## 投票与完整部署
 
@@ -67,25 +71,17 @@ npm run sync:netease
 
 运行后请检查变更，确认艺人身份、曲目与专辑归属、重复版本、曲风依据、封面和平台入口，再执行 `npm test` 与 `npm run build`。目录同步需要网络，第三方服务可能限流、下架或改变结果。上传日期不一定等于首次发行日期，未知日期与曲风应保留待核实状态。
 
-发现缺失或错误时，请在自己的 GitHub 仓库中新建 Issue，附上歌曲名称和艺术家、厂牌或音乐平台的公开链接；也可提交 Pull Request。请保留数据来源，不以搜索结果数量作为“全部收录”的证明。
+发现缺失或错误时，请在网站对应维护者的 GitHub 仓库中新建 Issue，附上歌曲名称和艺术家、厂牌或音乐平台的公开链接；也可提交 Pull Request。请保留数据来源，不以搜索结果数量作为“全部收录”的证明。
 
 导听介绍是便于理解和发现作品的编辑内容。涉及创作背景、发行经过、合作关系等事实时必须引用可核查的来源；未经核实的内容不应当作事实发布。
 
-## 开源与 GitHub Pages
+## 开源、贡献与 GitHub Pages
 
-在 GitHub 创建自己的空仓库；首次初始化本地仓库时可使用以下命令。先把 URL 中的 `REAL_USERNAME`、`REAL_REPOSITORY` 替换为真实值，并确认没有提交数据库、令牌或 `.env`。
+欢迎 Fork 仓库、补充有来源的曲目资料或提交功能修复。贡献代码时在自己的分叉仓库创建分支，执行测试和构建后提交 Pull Request；具体要求见 [贡献指南](CONTRIBUTING.md)。提交前确认没有包含数据库、令牌或 `.env`。
 
-```bash
-git init -b main
-git add .
-git commit -m "Initial PIKASONIC Atlas project"
-git remote add origin https://github.com/REAL_USERNAME/REAL_REPOSITORY.git
-git push -u origin main
-```
+GitHub Pages 需单独启用；以下是静态部署方法，不表示站点已经上线。在自己的仓库 **Settings → Pages → Build and deployment** 中将 **Source** 设为 **GitHub Actions**，再运行提供的 Pages 工作流。成功后可在该设置页查看静态站点地址。Vite 基础路径为 `./`，适配项目仓库路径。
 
-在仓库 **Settings → Pages → Build and deployment** 中将 **Source** 设为 **GitHub Actions**，再运行提供的 Pages 工作流。成功后可在该设置页查看静态站点地址。Vite 基础路径为 `./`，适配项目仓库路径。
-
-若默认分支不同，请调整工作流监听分支。发布前配置并验证 `VITE_REPOSITORY_URL`；Actions 构建时也需要把该值传入构建环境。仓库创建、推送和上线由你实际执行后生效，本地项目文件本身不代表已经发布到 GitHub。需要共享投票时，改用前述完整部署。
+若默认分支不同，请调整工作流监听分支。所附 Actions 工作流会自动将当前 GitHub 仓库地址传入 `VITE_REPOSITORY_URL`；其他构建方式需自行配置并验证。上述步骤完成后，以实际仓库与部署状态为准。需要共享投票时，改用前述完整部署。
 
 ## 内容与版权
 
