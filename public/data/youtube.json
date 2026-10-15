@@ -1,0 +1,393 @@
+{
+  "updatedAt": "2026-10-15T03:20:02.887Z",
+  "channelUrl": "https://www.youtube.com/channel/UC2ne9XqtBWKJKLfIAKtmjAg",
+  "coverage": {
+    "checkedVideos": 100,
+    "matchedTracks": 76,
+    "totalTracks": 139,
+    "durationToleranceSeconds": 8,
+    "note": "仅匹配已核对的官方视频；保留混音、VIP、Mixed和游戏短版标记。未匹配曲目使用前端明确标注的搜索入口。"
+  },
+  "matches": {
+    "apple-6764274676": {
+      "url": "https://www.youtube.com/watch?v=MK3bCjYmQxo",
+      "title": "Hoang - Are You Still There (PIKASONIC Remix)",
+      "id": "MK3bCjYmQxo"
+    },
+    "apple-1885348150": {
+      "url": "https://www.youtube.com/watch?v=TMNJe4s9hRY",
+      "title": "PIKASONIC & RoaNn - Reflect",
+      "id": "TMNJe4s9hRY"
+    },
+    "apple-1815653333": {
+      "url": "https://www.youtube.com/watch?v=IoJNWWWguwI",
+      "title": "PIKASONIC & ariiol - 8BLUE",
+      "id": "IoJNWWWguwI"
+    },
+    "apple-1813974742": {
+      "url": "https://www.youtube.com/watch?v=1AZJNxRuQoM",
+      "title": "PIKASONIC - Mind Enhancement",
+      "id": "1AZJNxRuQoM"
+    },
+    "apple-1782803179": {
+      "url": "https://www.youtube.com/watch?v=PWmy9-qKyfo",
+      "title": "PIKASONIC - Unbreakable 【GROOVE COASTER】",
+      "id": "PWmy9-qKyfo"
+    },
+    "apple-1840353428": {
+      "url": "https://www.youtube.com/watch?v=PWmy9-qKyfo",
+      "title": "PIKASONIC - Unbreakable 【GROOVE COASTER】",
+      "id": "PWmy9-qKyfo"
+    },
+    "apple-1778970113": {
+      "url": "https://www.youtube.com/watch?v=_nwP3wqXpMk",
+      "title": "PIKASONIC - Blossom",
+      "id": "_nwP3wqXpMk"
+    },
+    "apple-1757492944": {
+      "url": "https://www.youtube.com/watch?v=OIxyVF0CxVg",
+      "title": "PIKASONIC - Factory",
+      "id": "OIxyVF0CxVg"
+    },
+    "apple-1743393396": {
+      "url": "https://www.youtube.com/watch?v=pAitF9DLsEo",
+      "title": "PIKASONIC - Panorama (feat. NatsumeAlly)",
+      "id": "pAitF9DLsEo"
+    },
+    "apple-1837254394": {
+      "url": "https://www.youtube.com/watch?v=2HIB93hZjE8",
+      "title": "PIKASONIC - Haruka [CHOMPO Release]",
+      "id": "2HIB93hZjE8"
+    },
+    "apple-1713393675": {
+      "url": "https://www.youtube.com/watch?v=ZM1T-hSyT1Y",
+      "title": "PIKASONIC - Skydive",
+      "id": "ZM1T-hSyT1Y"
+    },
+    "apple-1708896538": {
+      "url": "https://www.youtube.com/watch?v=oGGx0EpzHn4",
+      "title": "PIKASONIC ＆ Kirara Magic - Flora",
+      "id": "oGGx0EpzHn4"
+    },
+    "apple-1704556311": {
+      "url": "https://www.youtube.com/watch?v=ZrsrUey-2N4",
+      "title": "PIKASONIC - Kyoto",
+      "id": "ZrsrUey-2N4"
+    },
+    "apple-1700626531": {
+      "url": "https://www.youtube.com/watch?v=vWvTi5AVEeY",
+      "title": "PIKASONIC - Forward",
+      "id": "vWvTi5AVEeY"
+    },
+    "youtube-0F-3yIq0sfM": {
+      "url": "https://www.youtube.com/watch?v=0F-3yIq0sfM",
+      "title": "Honkai: Star Rail - Space Walk (PIKASONIC Remix)",
+      "id": "0F-3yIq0sfM"
+    },
+    "apple-1676986024": {
+      "url": "https://www.youtube.com/watch?v=gYeR71UgDQc",
+      "title": "PIKASONIC - Timeleap",
+      "id": "gYeR71UgDQc"
+    },
+    "apple-1674312092": {
+      "url": "https://www.youtube.com/watch?v=CkT6KbqiUGA",
+      "title": "PIKASONIC - Trick",
+      "id": "CkT6KbqiUGA"
+    },
+    "apple-1665085817": {
+      "url": "https://www.youtube.com/watch?v=vk4l_gkzrgU",
+      "title": "PIKASONIC - Remember",
+      "id": "vk4l_gkzrgU"
+    },
+    "apple-1655304501": {
+      "url": "https://www.youtube.com/watch?v=S6pB_2hIUmM",
+      "title": "PIKASONIC & Tatsunoshin - Euphoria (ft.Tsugumi Nagahara) [USAO Remix]",
+      "id": "S6pB_2hIUmM"
+    },
+    "apple-1653742330": {
+      "url": "https://www.youtube.com/watch?v=2SNrUpn_drY",
+      "title": "PIKASONIC - Observation",
+      "id": "2SNrUpn_drY"
+    },
+    "apple-1650812837": {
+      "url": "https://www.youtube.com/watch?v=BgyVEroiQ_E",
+      "title": "PIKASONIC & nakotanmaru - ドリームイーター ft.可不",
+      "id": "BgyVEroiQ_E"
+    },
+    "apple-1642913606": {
+      "url": "https://www.youtube.com/watch?v=l1c7L3d78m0",
+      "title": "PIKASONIC - Meteor",
+      "id": "l1c7L3d78m0"
+    },
+    "apple-1639574241": {
+      "url": "https://www.youtube.com/watch?v=uSoFIjqtVnc",
+      "title": "nakotanmaru & PIKASONIC - Undersea Train",
+      "id": "uSoFIjqtVnc"
+    },
+    "apple-1639338499": {
+      "url": "https://www.youtube.com/watch?v=pWqCsn_HDWQ",
+      "title": "PIKASONIC - Lemonade",
+      "id": "pWqCsn_HDWQ"
+    },
+    "apple-1633832493": {
+      "url": "https://www.youtube.com/watch?v=LiEMSK4iV2M",
+      "title": "Soda Sphere & PIKASONIC - Neverland",
+      "id": "LiEMSK4iV2M"
+    },
+    "apple-1629020618": {
+      "url": "https://www.youtube.com/watch?v=1QlyISFRA4Y",
+      "title": "PIKASONIC & nakotanmaru - Heroine. ft.KaFu",
+      "id": "1QlyISFRA4Y"
+    },
+    "apple-1618798380": {
+      "url": "https://www.youtube.com/watch?v=sv6Eus9MxF4",
+      "title": "Lockdown [PIKASONIC VIP]",
+      "id": "sv6Eus9MxF4"
+    },
+    "apple-1617791787": {
+      "url": "https://www.youtube.com/watch?v=2oHVNosBQYk",
+      "title": "PIKASONIC - Princess",
+      "id": "2oHVNosBQYk"
+    },
+    "apple-1613107303": {
+      "url": "https://www.youtube.com/watch?v=iprl3wJnWoo",
+      "title": "PIKASONIC - Lost My Mind (feat.nakotanmaru) [Music Video]",
+      "id": "iprl3wJnWoo"
+    },
+    "youtube-evVIHM_0uqQ": {
+      "url": "https://www.youtube.com/watch?v=evVIHM_0uqQ",
+      "title": "PIKASONIC & Tatsunoshin - Skyfall [CHRONO CIRCLE]",
+      "id": "evVIHM_0uqQ"
+    },
+    "apple-1612209081": {
+      "url": "https://www.youtube.com/watch?v=Aqluagh2q9A",
+      "title": "PIKASONIC - Nothing",
+      "id": "Aqluagh2q9A"
+    },
+    "apple-1607497475": {
+      "url": "https://www.youtube.com/watch?v=e4jp9xOg-fI",
+      "title": "PIKASONIC - Resting !",
+      "id": "e4jp9xOg-fI"
+    },
+    "apple-1605561389": {
+      "url": "https://www.youtube.com/watch?v=rcWgk66Ei-Y",
+      "title": "PIKASONIC - Infinity",
+      "id": "rcWgk66Ei-Y"
+    },
+    "apple-1597879226": {
+      "url": "https://www.youtube.com/watch?v=XVFW7hh2wnU",
+      "title": "PIKASONIC & Tatsunoshin - Euphoria (feat.Tsugumi Nagahara) [Music Video]",
+      "id": "XVFW7hh2wnU"
+    },
+    "apple-1598502180": {
+      "url": "https://www.youtube.com/watch?v=j_dj8uHvePE",
+      "title": "PIKASONIC - Interstellar",
+      "id": "j_dj8uHvePE"
+    },
+    "apple-1595527959": {
+      "url": "https://www.youtube.com/watch?v=UU6y-fGTPsM",
+      "title": "PIKASONIC - 一透星 (feat.nakotanmaru) [MEGAREX Release]",
+      "id": "UU6y-fGTPsM"
+    },
+    "apple-1592500667": {
+      "url": "https://www.youtube.com/watch?v=LXQB5eauohM",
+      "title": "PIKASONIC - Relive",
+      "id": "LXQB5eauohM"
+    },
+    "apple-1587316998": {
+      "url": "https://www.youtube.com/watch?v=fx2OEfhvvYw",
+      "title": "PIKASONIC - ColorCode-F (feat. Felt)",
+      "id": "fx2OEfhvvYw"
+    },
+    "apple-1581082845": {
+      "url": "https://www.youtube.com/watch?v=8TpMs2oS5u0",
+      "title": "PIKASONIC - 追憶 (feat.nakotanmaru)",
+      "id": "8TpMs2oS5u0"
+    },
+    "apple-1581965271": {
+      "url": "https://www.youtube.com/watch?v=BMkzFcPZCf0",
+      "title": "PIKASONIC - Nostalgia",
+      "id": "BMkzFcPZCf0"
+    },
+    "apple-1576809198": {
+      "url": "https://www.youtube.com/watch?v=bANQYXGe6nU",
+      "title": "PIKASONIC & Tatsunoshin - Lockdown (ft.NEONA) [KOTONOHOUSE Remix]",
+      "id": "bANQYXGe6nU"
+    },
+    "apple-1577881305": {
+      "url": "https://www.youtube.com/watch?v=xpgNa-CuYCs",
+      "title": "PIKASONIC - Creed",
+      "id": "xpgNa-CuYCs"
+    },
+    "apple-1573475621": {
+      "url": "https://www.youtube.com/watch?v=E1Nufzk43D4",
+      "title": "PIKASONIC - Endless Hanabi",
+      "id": "E1Nufzk43D4"
+    },
+    "apple-1572756804": {
+      "url": "https://www.youtube.com/watch?v=oCbmkluZeFc",
+      "title": "PIKASONIC - ACE",
+      "id": "oCbmkluZeFc"
+    },
+    "apple-1567383515": {
+      "url": "https://www.youtube.com/watch?v=VyOVykOzvoE",
+      "title": "PIKASONIC & Tatsunoshin - Lockdown (ft.NEONA) [Official Video]",
+      "id": "VyOVykOzvoE"
+    },
+    "apple-1562628183": {
+      "url": "https://www.youtube.com/watch?v=CaVFPJvJG9M",
+      "title": "PIKASONIC - Nation",
+      "id": "CaVFPJvJG9M"
+    },
+    "apple-1555841654": {
+      "url": "https://www.youtube.com/watch?v=Ym0VhyO0ajM",
+      "title": "PIKASONIC & 4* - Meltdown",
+      "id": "Ym0VhyO0ajM"
+    },
+    "apple-1556991250": {
+      "url": "https://www.youtube.com/watch?v=FUNMxgOrdnM",
+      "title": "PIKASONIC - Otona!",
+      "id": "FUNMxgOrdnM"
+    },
+    "apple-1551264762": {
+      "url": "https://www.youtube.com/watch?v=sxXNYeDJb8k",
+      "title": "PIKASONIC - Dreaming",
+      "id": "sxXNYeDJb8k"
+    },
+    "apple-1548420428": {
+      "url": "https://www.youtube.com/watch?v=j-FQKTh_jkU",
+      "title": "PIKASONIC - Friendship!",
+      "id": "j-FQKTh_jkU"
+    },
+    "apple-1544953477": {
+      "url": "https://www.youtube.com/watch?v=wAxtSHnx0H4",
+      "title": "PIKASONIC - Where Are You Gone",
+      "id": "wAxtSHnx0H4"
+    },
+    "apple-1545842002": {
+      "url": "https://www.youtube.com/watch?v=KUHdlLGed3Q",
+      "title": "PIKASONIC - Pets!",
+      "id": "KUHdlLGed3Q"
+    },
+    "apple-1540539423": {
+      "url": "https://www.youtube.com/watch?v=6Ao8GxYFqw0",
+      "title": "PIKASONIC & 4* - Orbits",
+      "id": "6Ao8GxYFqw0"
+    },
+    "apple-1535374491": {
+      "url": "https://www.youtube.com/watch?v=0bFyXDny6sM",
+      "title": "PIKASONIC - Emptiness",
+      "id": "0bFyXDny6sM"
+    },
+    "youtube-nH93I4UryqQ": {
+      "url": "https://www.youtube.com/watch?v=nH93I4UryqQ",
+      "title": "Genshin Impact - Liyue Battle BGM (PIKASONIC Remix)",
+      "id": "nH93I4UryqQ"
+    },
+    "apple-1531547101": {
+      "url": "https://www.youtube.com/watch?v=19a0MqudJgU",
+      "title": "PIKASONIC - Inside (UXN Release)",
+      "id": "19a0MqudJgU"
+    },
+    "youtube-lr5ItbokMfQ": {
+      "url": "https://www.youtube.com/watch?v=lr5ItbokMfQ",
+      "title": "SO-SO - Sakura (ft.Kimura Rin) [PIKASONIC Remix]",
+      "id": "lr5ItbokMfQ"
+    },
+    "apple-1523122257": {
+      "url": "https://www.youtube.com/watch?v=H-0ndUsJXJE",
+      "title": "PIKASONIC - Field",
+      "id": "H-0ndUsJXJE"
+    },
+    "apple-1520289110": {
+      "url": "https://www.youtube.com/watch?v=s9R3dUHQ5A4",
+      "title": "PIKASONIC - Wildflowers (UXN Release)",
+      "id": "s9R3dUHQ5A4"
+    },
+    "apple-1520143971": {
+      "url": "https://www.youtube.com/watch?v=oac44_NWV4o",
+      "title": "PIKASONIC - Forever (Epic Edition)",
+      "id": "oac44_NWV4o"
+    },
+    "apple-1517296877": {
+      "url": "https://www.youtube.com/watch?v=fpO129tx0q8",
+      "title": "PIKASONIC - Imagine",
+      "id": "fpO129tx0q8"
+    },
+    "apple-1513285342": {
+      "url": "https://www.youtube.com/watch?v=Gg5_Oeks4L4",
+      "title": "4* - Summer Rain (PIKASONIC Remix)",
+      "id": "Gg5_Oeks4L4"
+    },
+    "apple-1512319118": {
+      "url": "https://www.youtube.com/watch?v=nXKyLtgBKug",
+      "title": "PIKASONIC & Couple N - Shine",
+      "id": "nXKyLtgBKug"
+    },
+    "apple-1792219217": {
+      "url": "https://www.youtube.com/watch?v=DCRcKcDI1x8",
+      "title": "PIKASONIC & Dankidz - World",
+      "id": "DCRcKcDI1x8"
+    },
+    "apple-1793109717": {
+      "url": "https://www.youtube.com/watch?v=enorFmY1_-Q",
+      "title": "PIKASONIC - Sapphire",
+      "id": "enorFmY1_-Q"
+    },
+    "apple-1524077694": {
+      "url": "https://www.youtube.com/watch?v=Dr6EJBYMjvs",
+      "title": "PIKASONIC - Horizon (Blossoms Asia Release)",
+      "id": "Dr6EJBYMjvs"
+    },
+    "apple-1793737019": {
+      "url": "https://www.youtube.com/watch?v=WOYZ1uvXxhw",
+      "title": "PIKASONIC - Sky (UXN Release)",
+      "id": "WOYZ1uvXxhw"
+    },
+    "apple-1792830272": {
+      "url": "https://www.youtube.com/watch?v=B8nMNMb_qpo",
+      "title": "PIKASONIC - Kitten (Performance Video)",
+      "id": "B8nMNMb_qpo"
+    },
+    "apple-1790648548": {
+      "url": "https://www.youtube.com/watch?v=3md36zmKrzI",
+      "title": "PIKASONIC - Dreamland",
+      "id": "3md36zmKrzI"
+    },
+    "apple-1790652894": {
+      "url": "https://www.youtube.com/watch?v=v3o1g22PrsI",
+      "title": "PIKASONIC - Osaka Express",
+      "id": "v3o1g22PrsI"
+    },
+    "apple-1792604402": {
+      "url": "https://www.youtube.com/watch?v=W6Yd6eDKMJE",
+      "title": "PIKASONIC - Forest",
+      "id": "W6Yd6eDKMJE"
+    },
+    "apple-1476218123": {
+      "url": "https://www.youtube.com/watch?v=ONressWQC_c",
+      "title": "PIKASONIC - Hanataba (Official Video) ft. 萩山 百花",
+      "id": "ONressWQC_c"
+    },
+    "apple-1792213249": {
+      "url": "https://www.youtube.com/watch?v=Y1pYpEFCIxY",
+      "title": "PIKASONIC - Myself",
+      "id": "Y1pYpEFCIxY"
+    },
+    "apple-1792213151": {
+      "url": "https://www.youtube.com/watch?v=iG2gbyuPJSM",
+      "title": "PIKASONIC - Rolling cup",
+      "id": "iG2gbyuPJSM"
+    },
+    "apple-1792213087": {
+      "url": "https://www.youtube.com/watch?v=_P_2hh8CE_s",
+      "title": "PIKASONIC - New start",
+      "id": "_P_2hh8CE_s"
+    },
+    "apple-1792213152": {
+      "url": "https://www.youtube.com/watch?v=cT-ZrYuErTA",
+      "title": "PIKASONIC - Over Hit !",
+      "id": "cT-ZrYuErTA"
+    }
+  }
+}

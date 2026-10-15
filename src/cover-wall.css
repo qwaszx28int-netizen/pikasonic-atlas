@@ -1,0 +1,319 @@
+.cw-wall {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-width: 0;
+  height: 470px;
+  color: #eee9ff;
+  --cw-gap: 14px;
+}
+.cw-viewport {
+  position: absolute;
+  inset: 0 0 34px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 13%, #000 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 13%,
+    #000 85%,
+    transparent 100%
+  );
+}
+.cw-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--cw-gap);
+  position: absolute;
+  inset: -60px -14px -70px 8px;
+  transform: rotate(-8deg) scale(1.04);
+  transform-origin: center;
+}
+.cw-column {
+  min-width: 0;
+  position: relative;
+}
+.cw-column-1 {
+  margin-top: -52px;
+}
+.cw-column-2 {
+  margin-top: -138px;
+}
+.cw-column-3 {
+  margin-top: -24px;
+}
+.cw-column-loop {
+  animation: cw-drift 62s linear infinite;
+  will-change: transform;
+}
+.cw-column-2 .cw-column-loop {
+  animation-name: cw-drift-reverse;
+  animation-duration: 76s;
+}
+.cw-column-3 .cw-column-loop {
+  animation-duration: 68s;
+}
+.cw-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--cw-gap);
+  padding-bottom: var(--cw-gap);
+}
+button.cw-card {
+  appearance: none;
+  position: relative;
+  display: block;
+  flex: none;
+  aspect-ratio: 1;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid #f1eaff38;
+  border-radius: 13px;
+  background: #3b2f65;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 7px 22px #09061c44;
+  text-align: left;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+  line-height: 1.3;
+}
+button.cw-card:hover {
+  border-color: #ead8ffcc;
+  box-shadow:
+    0 10px 27px #0c062b70,
+    0 0 17px #cfb1ff3b;
+  filter: brightness(1.09);
+}
+button.cw-card:focus-visible {
+  outline: 3px solid #bceaff;
+  outline-offset: 3px;
+  border-color: #fff;
+}
+.cw-artwork {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cw-card-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #20193400 46%, #140c378c 80%, #100a2dd9 100%);
+  pointer-events: none;
+}
+.cw-card-caption {
+  position: absolute;
+  left: 11px;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 5px #110920;
+}
+.cw-card-caption > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cw-card-caption svg {
+  flex: none;
+  opacity: 0.8;
+}
+.cw-placeholder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 19px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 20% 10%, #abc8ff66, transparent 65%),
+    linear-gradient(145deg, #8e70bb, #4c3979 58%, #b779a6);
+  box-sizing: border-box;
+}
+.cw-placeholder > span {
+  font-size: 16px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.cw-placeholder > small {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  opacity: 0.65;
+}
+.cw-column-2 .cw-placeholder {
+  background:
+    radial-gradient(ellipse at 20% 10%, #b3e9ff66, transparent 60%),
+    linear-gradient(145deg, #629cb5, #4d598c 58%, #b68eb5);
+}
+.cw-column-3 .cw-placeholder {
+  background:
+    radial-gradient(ellipse at 20% 10%, #ffe2f866, transparent 60%),
+    linear-gradient(145deg, #b681ad, #6c548b 58%, #797fbc);
+}
+.cw-glow {
+  position: absolute;
+  z-index: -1;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  filter: blur(58px);
+  opacity: 0.24;
+  pointer-events: none;
+}
+.cw-glow-blue {
+  left: -10%;
+  top: 0;
+  background: #8ca9ff;
+}
+.cw-glow-pink {
+  right: -10%;
+  bottom: 10%;
+  background: #e68ccf;
+}
+.cw-footer {
+  position: absolute;
+  left: 5px;
+  right: 3px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.cw-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #d8caee;
+}
+.cw-footer-en {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: #b0a4cf;
+}
+.cw-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c6b1ff;
+  box-shadow: 0 0 9px #bda1ff88;
+}
+button.cw-control {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: none;
+  border: 1px solid #d6c5ff42;
+  border-radius: 20px;
+  background: #d7c7ff0c;
+  color: #e8ddfc;
+  padding: 6px 11px;
+  font: inherit;
+  font-size: 10px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+button.cw-control:hover {
+  background: #d7c7ff22;
+  border-color: #d6c5ff88;
+}
+button.cw-control:focus-visible {
+  outline: 2px solid #bceaff;
+  outline-offset: 3px;
+}
+.cw-wall[data-paused='true'] .cw-column-loop,
+.cw-viewport:hover .cw-column-loop,
+.cw-viewport:focus-within .cw-column-loop {
+  animation-play-state: paused;
+}
+@keyframes cw-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+@keyframes cw-drift-reverse {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@media (max-width: 700px) {
+  .cw-wall {
+    height: 286px;
+    --cw-gap: 10px;
+  }
+  .cw-viewport {
+    inset: 0 0 31px;
+  }
+  .cw-grid {
+    inset: -34px 0 -50px 6px;
+    transform: rotate(-8deg) scale(1.03);
+  }
+  button.cw-card {
+    border-radius: 10px;
+  }
+  .cw-card-caption {
+    left: 8px;
+    right: 7px;
+    bottom: 8px;
+    font-size: 9px;
+  }
+  .cw-card-caption svg {
+    width: 11px;
+    height: 11px;
+  }
+  .cw-placeholder {
+    padding: 13px;
+    gap: 8px;
+  }
+  .cw-placeholder > span {
+    font-size: 13px;
+  }
+  .cw-placeholder > small {
+    font-size: 7px;
+  }
+  .cw-footer-en {
+    font-size: 7px;
+    letter-spacing: 0.08em;
+  }
+  .cw-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  button.cw-card,
+  button.cw-control {
+    transition: none;
+  }
+  .cw-glow {
+    filter: none;
+    opacity: 0.06;
+  }
+}

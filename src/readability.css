@@ -1,0 +1,162 @@
+/* Keep reading notes and interactive controls comfortable on smaller displays. */
+.track-title-button h3 {
+  font-size: 14px;
+}
+.track-artist {
+  font-size: 11px;
+}
+.card-bottom > span {
+  font-size: 10px;
+}
+.card-bottom > button {
+  font-size: 10px;
+}
+.nav-item {
+  font-size: 13px;
+}
+.search-field input {
+  font-size: 12px;
+}
+.category-tabs > button,
+.sort-select select,
+.year-select select {
+  font-size: 11px;
+}
+.collection-hint {
+  font-size: 10px;
+}
+.hero-copy > p {
+  font-size: 12px;
+}
+.endnote p {
+  font-size: 11px;
+}
+.guide-section p,
+.listening-questions li {
+  font-size: 13px;
+}
+.guide-section h3 {
+  font-size: 15px;
+}
+.detail-facts strong {
+  font-size: 12px;
+}
+.detail-summary > p {
+  font-size: 12px;
+}
+.editorial-notice p {
+  font-size: 11px;
+}
+.cover-attribution {
+  font-size: 10px;
+}
+.about-intro p,
+.about-section p,
+.rights-callout {
+  font-size: 13px;
+}
+.source-list > small {
+  font-size: 10px;
+}
+.rights-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 17px;
+  font-size: 11px;
+  color: #748b61;
+}
+.list-track strong {
+  font-size: 12px;
+}
+.list-track small,
+.list-album {
+  font-size: 10px;
+}
+@media (max-width: 1000px) {
+  .track-title-button h3 {
+    font-size: 13px;
+  }
+  .track-artist,
+  .card-bottom > span,
+  .card-bottom > button {
+    font-size: 10px;
+  }
+  .category-tabs > button,
+  .year-select select {
+    font-size: 10px;
+  }
+  .hero-copy > p {
+    font-size: 11px;
+  }
+}
+@media (max-width: 640px) {
+  .hero-copy > p {
+    font-size: 10px;
+  }
+  .search-field input {
+    font-size: 11px;
+  }
+  .category-tabs > button {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+  .year-select select {
+    font-size: 10px;
+  }
+  .sort-select select {
+    font-size: 10px;
+  }
+  .track-artist {
+    font-size: 10px;
+  }
+  .card-bottom > span,
+  .card-bottom > button {
+    font-size: 9px;
+  }
+  .endnote p {
+    font-size: 10px;
+  }
+  .guide-section p,
+  .listening-questions li {
+    font-size: 12px;
+  }
+  .guide-section h3 {
+    font-size: 14px;
+  }
+  .detail-facts strong,
+  .detail-summary > p {
+    font-size: 10px;
+  }
+  .about-intro p,
+  .about-section p,
+  .rights-callout {
+    font-size: 12px;
+  }
+  .editorial-notice p {
+    font-size: 10px;
+  }
+  .cover-attribution {
+    font-size: 9px;
+  }
+  .rights-link {
+    display: flex;
+    margin: 0 0 16px;
+  }
+}
+@media (max-width: 410px) {
+  .category-tabs > button {
+    font-size: 9px;
+    padding: 6px 7px;
+  }
+  .year-select select {
+    font-size: 9px;
+  }
+  .card-bottom > span,
+  .card-bottom > button {
+    font-size: 8px;
+  }
+  .track-title-button h3 {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,886 @@
+{
+  "updatedAt": "2026-10-15T03:27:07.090Z",
+  "artistId": 13499634,
+  "artistUrl": "https://music.163.com/#/artist?id=13499634",
+  "source": "NetEase public song search metadata",
+  "matching": "Exact title or catalog aliases + duration within 3.5 seconds; featured-vocal title suffix may be ignored. No fuzzy guesses.",
+  "matchedCount": 125,
+  "unmatchedCount": 14,
+  "matches": {
+    "apple-6801878754": {
+      "id": 3421979478,
+      "title": "Alone",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421979478",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878750": {
+      "id": 3421979475,
+      "title": "Ancient",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421979475",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878753": {
+      "id": 3421979477,
+      "title": "Beside sky",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421979477",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878756": {
+      "id": 3421979479,
+      "title": "dream",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421979479",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878758": {
+      "id": 3421980146,
+      "title": "LIFE",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421980146",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878760": {
+      "id": 3421979482,
+      "title": "test",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421979482",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878751": {
+      "id": 3421980144,
+      "title": "Trip",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421980144",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878761": {
+      "id": 3421980147,
+      "title": "untitled",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421980147",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878755": {
+      "id": 3421980145,
+      "title": "VOTAL",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421980145",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878757": {
+      "id": 3421979480,
+      "title": "Water",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421979480",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878759": {
+      "id": 3421979481,
+      "title": "Wind",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421979481",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878762": {
+      "id": 3421980148,
+      "title": "エレクト1",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421980148",
+      "matchType": "title-and-duration"
+    },
+    "apple-6801878752": {
+      "id": 3421979476,
+      "title": "吉他清新",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421979476",
+      "matchType": "title-and-duration"
+    },
+    "apple-6764274676": {
+      "id": 3375737638,
+      "title": "Are You Still There (PIKASONIC Remix)",
+      "artist": "Hoang",
+      "url": "https://music.163.com/#/song?id=3375737638",
+      "matchType": "title-and-duration"
+    },
+    "apple-1885348150": {
+      "id": 3359491990,
+      "title": "Reflect",
+      "artist": "PIKASONIC / RoaNn",
+      "url": "https://music.163.com/#/song?id=3359491990",
+      "matchType": "title-and-duration"
+    },
+    "apple-1815653333": {
+      "id": 2707142912,
+      "title": "8BLUE",
+      "artist": "ariiol / PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2707142912",
+      "matchType": "title-and-duration"
+    },
+    "apple-1813974742": {
+      "id": 2703979502,
+      "title": "Mind Enhancement",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2703979502",
+      "matchType": "title-and-duration"
+    },
+    "apple-1799885372": {
+      "id": 2681311115,
+      "title": "My Place",
+      "artist": "電音部 / PIKASONIC / なこたんまる / 鳳凰火凛 (CV: 健屋花那)",
+      "url": "https://music.163.com/#/song?id=2681311115",
+      "matchType": "title-and-duration"
+    },
+    "apple-1791261842": {
+      "id": 2667221984,
+      "title": "サンダーソニア",
+      "artist": "PIKASONIC / iMeiden / 小花依ある",
+      "url": "https://music.163.com/#/song?id=2667221984",
+      "matchType": "title-and-duration"
+    },
+    "apple-1782803179": {
+      "id": 2651711771,
+      "title": "Unbreakable",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2651711771",
+      "matchType": "title-and-duration"
+    },
+    "apple-1840353428": {
+      "id": 3343236441,
+      "title": "Unbreakable",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3343236441",
+      "matchType": "title-and-duration"
+    },
+    "apple-1778970113": {
+      "id": 2644999127,
+      "title": "Blossom",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2644999127",
+      "matchType": "title-and-duration"
+    },
+    "apple-1757492944": {
+      "id": 2607970502,
+      "title": "Factory",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2607970502",
+      "matchType": "title-and-duration"
+    },
+    "apple-1746004147": {
+      "id": 2155399298,
+      "title": "夢重力",
+      "artist": "ナナツカゼ / PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=2155399298",
+      "matchType": "title-and-duration"
+    },
+    "apple-1743393396": {
+      "id": 2149909510,
+      "title": "パノラマ",
+      "artist": "PIKASONIC / ナツメ・アリー",
+      "url": "https://music.163.com/#/song?id=2149909510",
+      "matchType": "title-and-duration"
+    },
+    "apple-1734972655": {
+      "id": 2133659925,
+      "title": "再生",
+      "artist": "ナナツカゼ / PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=2133659925",
+      "matchType": "title-and-duration"
+    },
+    "apple-1837254394": {
+      "id": 2742678616,
+      "title": "Haruka",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2742678616",
+      "matchType": "title-and-duration"
+    },
+    "apple-1726739248": {
+      "id": 2119285155,
+      "title": "感傷生命",
+      "artist": "ナナツカゼ / PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=2119285155",
+      "matchType": "title-and-duration"
+    },
+    "apple-1727505552": {
+      "id": 2120740361,
+      "title": "Sakura (feat. Kimura Rin) [Pikasonic Remix] [Mixed]",
+      "artist": "SO-SO / Kimura Rin",
+      "url": "https://music.163.com/#/song?id=2120740361",
+      "matchType": "title-and-duration"
+    },
+    "apple-1738116093": {
+      "id": 2122607112,
+      "title": "今天不是明天 (feat. 兰音Reine)",
+      "artist": "电音联盟 / 音波狂潮 / V-Festival / 兰音Reine / PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2122607112",
+      "matchType": "title-and-duration"
+    },
+    "apple-1718004168": {
+      "id": 2102257032,
+      "title": "もしも",
+      "artist": "ナナツカゼ / PIKASONIC / Dankidz",
+      "url": "https://music.163.com/#/song?id=2102257032",
+      "matchType": "title-and-duration"
+    },
+    "apple-1713393675": {
+      "id": 2093620413,
+      "title": "Skydive",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2093620413",
+      "matchType": "title-and-duration"
+    },
+    "apple-1708896538": {
+      "id": 2089192844,
+      "title": "Flora",
+      "artist": "Kirara Magic / PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2089192844",
+      "matchType": "title-and-duration"
+    },
+    "apple-1704556311": {
+      "id": 2077271098,
+      "title": "Kyoto",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2077271098",
+      "matchType": "title-and-duration"
+    },
+    "apple-1700626531": {
+      "id": 2069651523,
+      "title": "Forward",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2069651523",
+      "matchType": "title-and-duration"
+    },
+    "apple-1694886463": {
+      "id": 2059807644,
+      "title": "朧月夜",
+      "artist": "ナナツカゼ / PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=2059807644",
+      "matchType": "title-and-duration"
+    },
+    "apple-1691532222": {
+      "id": 2053736409,
+      "title": "さよならワンダーランド",
+      "artist": "ナナツカゼ / PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=2053736409",
+      "matchType": "title-and-duration"
+    },
+    "apple-1685653199": {
+      "id": 2043976339,
+      "title": "春めく",
+      "artist": "ナナツカゼ / PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=2043976339",
+      "matchType": "title-and-duration"
+    },
+    "apple-1676986024": {
+      "id": 2030060118,
+      "title": "Timeleap",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2030060118",
+      "matchType": "title-and-duration"
+    },
+    "apple-1679217507": {
+      "id": 2033683937,
+      "title": "Login",
+      "artist": "しるこ / PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2033683937",
+      "matchType": "title-and-duration"
+    },
+    "apple-1674312092": {
+      "id": 2025482254,
+      "title": "Trick",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2025482254",
+      "matchType": "title-and-duration"
+    },
+    "apple-1665085817": {
+      "id": 2014338219,
+      "title": "Remember",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2014338219",
+      "matchType": "title-and-duration"
+    },
+    "apple-1658452166": {
+      "id": 2004906465,
+      "title": "Shizuku (feat. NEONA)",
+      "artist": "PIKASONIC / Tatsunoshin / KOTONOHOUSE / NEONA",
+      "url": "https://music.163.com/#/song?id=2004906465",
+      "matchType": "title-and-duration"
+    },
+    "apple-1657832642": {
+      "id": 2003904108,
+      "title": "ドリームイーター (nakotanmaru ver.)",
+      "artist": "なこたんまる / PIKASONIC",
+      "url": "https://music.163.com/#/song?id=2003904108",
+      "matchType": "title-and-duration"
+    },
+    "apple-1655304501": {
+      "id": 1999615662,
+      "title": "Euphoria (feat. Tsugumi Nagahara) [USAO Remix]",
+      "artist": "Tatsunoshin / Tsugumi Nagahara / PIKASONIC / USAO",
+      "url": "https://music.163.com/#/song?id=1999615662",
+      "matchType": "title-and-duration"
+    },
+    "apple-1653742330": {
+      "id": 1996898236,
+      "title": "Observation",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1996898236",
+      "matchType": "title-and-duration"
+    },
+    "apple-1821600520": {
+      "id": 1993392409,
+      "title": "Maboroshi (feat. HaRu) [PIKASONIC Remix]",
+      "artist": "Kohey / PIKASONIC / Haru",
+      "url": "https://music.163.com/#/song?id=1993392409",
+      "matchType": "title-and-duration"
+    },
+    "apple-1647332570": {
+      "id": 1985052881,
+      "title": "ドリームイーター",
+      "artist": "PIKASONIC / なこたんまる / 可不",
+      "url": "https://music.163.com/#/song?id=1985052881",
+      "matchType": "title-and-duration"
+    },
+    "apple-1650812837": {
+      "id": 1985052881,
+      "title": "ドリームイーター",
+      "artist": "PIKASONIC / なこたんまる / 可不",
+      "url": "https://music.163.com/#/song?id=1985052881",
+      "matchType": "featured-title-and-duration"
+    },
+    "apple-1642913606": {
+      "id": 1977485433,
+      "title": "メテオ",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1977485433",
+      "matchType": "title-and-duration"
+    },
+    "apple-1639574241": {
+      "id": 1971812333,
+      "title": "海底列車",
+      "artist": "PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=1971812333",
+      "matchType": "title-and-duration"
+    },
+    "apple-1639338499": {
+      "id": 1971575033,
+      "title": "Lemonade",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1971575033",
+      "matchType": "title-and-duration"
+    },
+    "apple-1633832493": {
+      "id": 1962748815,
+      "title": "Neverland",
+      "artist": "PIKASONIC / Soda Sphere",
+      "url": "https://music.163.com/#/song?id=1962748815",
+      "matchType": "title-and-duration"
+    },
+    "apple-1629020618": {
+      "id": 1954997702,
+      "title": "ヒロイン",
+      "artist": "PIKASONIC / なこたんまる / 可不",
+      "url": "https://music.163.com/#/song?id=1954997702",
+      "matchType": "title-and-duration"
+    },
+    "apple-1643679008": {
+      "id": 1979210461,
+      "title": "ヒロイン (nakotanmaru ver.)",
+      "artist": "なこたんまる / PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1979210461",
+      "matchType": "title-and-duration"
+    },
+    "apple-1618798380": {
+      "id": 1937255691,
+      "title": "Lockdown (PIKASONIC VIP)",
+      "artist": "PIKASONIC / Tatsunoshin / NEONA",
+      "url": "https://music.163.com/#/song?id=1937255691",
+      "matchType": "title-and-duration"
+    },
+    "apple-1618805416": {
+      "id": 1937255781,
+      "title": "Lockdown (Tatsunoshin VIP)",
+      "artist": "Tatsunoshin / PIKASONIC / Tsugumi Nagahara",
+      "url": "https://music.163.com/#/song?id=1937255781",
+      "matchType": "title-and-duration"
+    },
+    "apple-1617791787": {
+      "id": 1935362667,
+      "title": "Princess",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1935362667",
+      "matchType": "title-and-duration"
+    },
+    "apple-1613107303": {
+      "id": 1926242746,
+      "title": "Lost My Mind (feat. nakotanmaru)",
+      "artist": "PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=1926242746",
+      "matchType": "title-and-duration"
+    },
+    "apple-1613281269": {
+      "id": 1926537837,
+      "title": "Skyfall",
+      "artist": "PIKASONIC / Tatsunoshin",
+      "url": "https://music.163.com/#/song?id=1926537837",
+      "matchType": "title-and-duration"
+    },
+    "apple-1612209081": {
+      "id": 1924980931,
+      "title": "Nothing",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1924980931",
+      "matchType": "title-and-duration"
+    },
+    "apple-1607497475": {
+      "id": 1915879459,
+      "title": "Resting !",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1915879459",
+      "matchType": "title-and-duration"
+    },
+    "apple-1605561389": {
+      "id": 1912666128,
+      "title": "Infinity",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1912666128",
+      "matchType": "title-and-duration"
+    },
+    "apple-1597879226": {
+      "id": 1899317143,
+      "title": "Euphoria (feat. Tsugumi Nagahara)",
+      "artist": "PIKASONIC / Tsugumi Nagahara / Tatsunoshin",
+      "url": "https://music.163.com/#/song?id=1899317143",
+      "matchType": "title-and-duration"
+    },
+    "apple-1598502180": {
+      "id": 1900207101,
+      "title": "Interstellar",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1900207101",
+      "matchType": "title-and-duration"
+    },
+    "apple-1595527959": {
+      "id": 1895059547,
+      "title": "一透星 (feat. nakotanmaru)",
+      "artist": "PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=1895059547",
+      "matchType": "title-and-duration"
+    },
+    "apple-1592500667": {
+      "id": 1890494314,
+      "title": "Relive",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1890494314",
+      "matchType": "title-and-duration"
+    },
+    "apple-1587316998": {
+      "id": 1880859646,
+      "title": "ColorCode-F (feat. フェルト)",
+      "artist": "PIKASONIC / フェルト",
+      "url": "https://music.163.com/#/song?id=1880859646",
+      "matchType": "title-and-duration"
+    },
+    "apple-1581082845": {
+      "id": 1869161372,
+      "title": "追憶 (feat. nakotanmaru)",
+      "artist": "PIKASONIC / なこたんまる",
+      "url": "https://music.163.com/#/song?id=1869161372",
+      "matchType": "title-and-duration"
+    },
+    "apple-1581965271": {
+      "id": 1870834564,
+      "title": "Nostalgia",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1870834564",
+      "matchType": "title-and-duration"
+    },
+    "apple-1576809198": {
+      "id": 1861594800,
+      "title": "Lockdown (feat. NEONA) [KOTONOHOUSE Remix]",
+      "artist": "KOTONOHOUSE / Tatsunoshin / NEONA / PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1861594800",
+      "matchType": "title-and-duration"
+    },
+    "apple-1577881305": {
+      "id": 1863810578,
+      "title": "Creed",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1863810578",
+      "matchType": "title-and-duration"
+    },
+    "apple-1573475621": {
+      "id": 1855639956,
+      "title": "Endless Hanabi",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1855639956",
+      "matchType": "title-and-duration"
+    },
+    "apple-1572756804": {
+      "id": 1854097670,
+      "title": "ACE",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1854097670",
+      "matchType": "title-and-duration"
+    },
+    "apple-1567383515": {
+      "id": 1844464120,
+      "title": "Lockdown (feat. NEONA)",
+      "artist": "PIKASONIC / Tatsunoshin / NEONA",
+      "url": "https://music.163.com/#/song?id=1844464120",
+      "matchType": "title-and-duration"
+    },
+    "apple-1562628183": {
+      "id": 1836809943,
+      "title": "Nation",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1836809943",
+      "matchType": "title-and-duration"
+    },
+    "apple-1556991250": {
+      "id": 1825214306,
+      "title": "Otona !",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1825214306",
+      "matchType": "title-and-duration"
+    },
+    "apple-1555841654": {
+      "id": 1824960860,
+      "title": "Meltdown",
+      "artist": "PIKASONIC / 4*",
+      "url": "https://music.163.com/#/song?id=1824960860",
+      "matchType": "title-and-duration"
+    },
+    "apple-1551264762": {
+      "id": 1818945980,
+      "title": "Dreaming",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1818945980",
+      "matchType": "title-and-duration"
+    },
+    "apple-1548420428": {
+      "id": 1824958055,
+      "title": "Friendship !",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1824958055",
+      "matchType": "title-and-duration"
+    },
+    "apple-1544953477": {
+      "id": 1819136351,
+      "title": "Where Are You Gone",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1819136351",
+      "matchType": "title-and-duration"
+    },
+    "apple-1545842002": {
+      "id": 1824961485,
+      "title": "Pets !",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1824961485",
+      "matchType": "title-and-duration"
+    },
+    "apple-1544042302": {
+      "id": 1824974089,
+      "title": "Klee!",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1824974089",
+      "matchType": "title-and-duration"
+    },
+    "apple-1540539423": {
+      "id": 1824700358,
+      "title": "Orbits",
+      "artist": "PIKASONIC / 4*",
+      "url": "https://music.163.com/#/song?id=1824700358",
+      "matchType": "title-and-duration"
+    },
+    "apple-1535374491": {
+      "id": 1486323430,
+      "title": "Emptiness",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1486323430",
+      "matchType": "title-and-duration"
+    },
+    "apple-1531547101": {
+      "id": 1478565043,
+      "title": "Inside",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1478565043",
+      "matchType": "title-and-duration"
+    },
+    "apple-1523122257": {
+      "id": 1461827404,
+      "title": "Field",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1461827404",
+      "matchType": "title-and-duration"
+    },
+    "apple-1520289110": {
+      "id": 1457925241,
+      "title": "Wildflowers",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1457925241",
+      "matchType": "title-and-duration"
+    },
+    "apple-1520143971": {
+      "id": 1462341831,
+      "title": "Forever (Epic Edition)",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1462341831",
+      "matchType": "title-and-duration"
+    },
+    "apple-1517296877": {
+      "id": 1824958764,
+      "title": "Imagine",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1824958764",
+      "matchType": "title-and-duration"
+    },
+    "apple-1513285342": {
+      "id": 2012146583,
+      "title": "Summer Rain (PIKASONIC Remix)",
+      "artist": "PIKASONIC / 4*",
+      "url": "https://music.163.com/#/song?id=2012146583",
+      "matchType": "title-and-duration"
+    },
+    "apple-1512319118": {
+      "id": 1447402360,
+      "title": "Shine",
+      "artist": "Couple N / PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1447402360",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792219217": {
+      "id": 1441042229,
+      "title": "World",
+      "artist": "PIKASONIC / Dank",
+      "url": "https://music.163.com/#/song?id=1441042229",
+      "matchType": "title-and-duration"
+    },
+    "apple-1793109717": {
+      "id": 1434225631,
+      "title": "Sapphire",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1434225631",
+      "matchType": "title-and-duration"
+    },
+    "apple-1524077694": {
+      "id": 1425241910,
+      "title": "Horizon",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1425241910",
+      "matchType": "title-and-duration"
+    },
+    "apple-1793737019": {
+      "id": 1417968572,
+      "title": "Sky",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1417968572",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792830272": {
+      "id": 1418027861,
+      "title": "Kitten",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1418027861",
+      "matchType": "title-and-duration"
+    },
+    "apple-1790648548": {
+      "id": 1409523418,
+      "title": "Dreamland",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1409523418",
+      "matchType": "title-and-duration"
+    },
+    "apple-1790652894": {
+      "id": 1397254131,
+      "title": "Osaka Express",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1397254131",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792604402": {
+      "id": 1391621310,
+      "title": "Forest",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1391621310",
+      "matchType": "title-and-duration"
+    },
+    "apple-1476218123": {
+      "id": 1824704844,
+      "title": "花束 (feat. 萩山 百花)",
+      "artist": "PIKASONIC / 萩山 百花",
+      "url": "https://music.163.com/#/song?id=1824704844",
+      "matchType": "title-and-duration"
+    },
+    "apple-1790652653": {
+      "id": 1386604573,
+      "title": "Lost",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1386604573",
+      "matchType": "title-and-duration"
+    },
+    "apple-1790657667": {
+      "id": 1375625088,
+      "title": "Sunlight",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1375625088",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792410903": {
+      "id": 1396161493,
+      "title": "Forever",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1396161493",
+      "matchType": "title-and-duration"
+    },
+    "apple-1464131364": {
+      "id": 1824958874,
+      "title": "Starlight (feat. RaKey)",
+      "artist": "PIKASONIC / RaKey",
+      "url": "https://music.163.com/#/song?id=1824958874",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213260": {
+      "id": 1494168134,
+      "title": "Break It!",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168134",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792212848": {
+      "id": 1494168127,
+      "title": "Cosmos",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168127",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213378": {
+      "id": 1494168135,
+      "title": "Eternity",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168135",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792212721": {
+      "id": 1494166349,
+      "title": "Fine",
+      "artist": "PIKASONIC / PLEEG",
+      "url": "https://music.163.com/#/song?id=1494166349",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213146": {
+      "id": 1494168130,
+      "title": "Forget-Me-Not",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168130",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792212841": {
+      "id": 1494166350,
+      "title": "Installed",
+      "artist": "PIKASONIC / SaMZIng",
+      "url": "https://music.163.com/#/song?id=1494166350",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792212857": {
+      "id": 1494168128,
+      "title": "Miss You",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168128",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213249": {
+      "id": 1494168132,
+      "title": "Myself",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168132",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213087": {
+      "id": 1494166351,
+      "title": "New Start!",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494166351",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213384": {
+      "id": 3421979474,
+      "title": "No Limit",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=3421979474",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213073": {
+      "id": 1494168129,
+      "title": "No. 8",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168129",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213152": {
+      "id": 1494168131,
+      "title": "Over-Hit!",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168131",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213151": {
+      "id": 1494166352,
+      "title": "Rolling Cup",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494166352",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213153": {
+      "id": 1494166353,
+      "title": "Rose Garden",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494166353",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792212836": {
+      "id": 1494168126,
+      "title": "Swaying",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168126",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792213254": {
+      "id": 1494168133,
+      "title": "Travel",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168133",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792212728": {
+      "id": 1331288650,
+      "title": "Halcyon",
+      "artist": "IslandWind / PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1331288650",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792212732": {
+      "id": 1494168124,
+      "title": "Living",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168124",
+      "matchType": "title-and-duration"
+    },
+    "apple-1792212829": {
+      "id": 1494168125,
+      "title": "Hyper",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1494168125",
+      "matchType": "title-and-duration"
+    },
+    "apple-1775708610": {
+      "id": 1317507921,
+      "title": "Asuka",
+      "artist": "PIKASONIC",
+      "url": "https://music.163.com/#/song?id=1317507921",
+      "matchType": "title-and-duration"
+    }
+  }
+}
