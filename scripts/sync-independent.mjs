@@ -4,9 +4,33 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
+import { groupSupplementFromInventory } from './group-supplement.mjs'
+import { normalizeYoutubeTitle as normalizeTitle, videoTitleVariants } from './youtube-matching.mjs'
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const output = path.join(ROOT, 'public/data/supplemental.json')
 const fetchedAt = new Date().toISOString()
+if (process.argv.includes('--nanatsukaze-from-snapshot')) {
+  const saved = JSON.parse(await readFile(output, 'utf8'))
+  const group = await readGroupSupplement()
+  // Keep earlier public IDs even if a later inventory is temporarily shorter.
+  saved.tracks = [
+    ...new Map([...saved.tracks, ...group.tracks].map((track) => [track.id, track])).values(),
+  ]
+  saved.sources = [
+    ...saved.sources.filter((source) => source.name !== 'YouTube / ナナツカゼ'),
+    group.source,
+  ]
+  saved.updatedAt = fetchedAt
+  if (!saved.limitations.some((line) => line.includes('ナナツカゼ')))
+    saved.limitations.push(
+      'ナナツカゼ补遗来自已核验的官方视频清单；不同版本单列，无明确逐曲流派或发行日期时留空。公开视频清单不能证明历史上全部作品均可访问。',
+    )
+  await writeFile(output, `${JSON.stringify(saved, null, 2)}\n`)
+  console.log(
+    `Merged ${group.tracks.length} reviewed ナナツカゼ independent versions; YouTube map was not rewritten.`,
+  )
+  process.exit(0)
+}
 if (process.argv.includes('--youtube-from-snapshot')) {
   await writeYoutubeMap(JSON.parse(await readFile(output, 'utf8')))
   process.exit(0)
@@ -363,6 +387,19 @@ try {
   console.error('YouTube:', error.message)
 }
 
+try {
+  const group = await readGroupSupplement()
+  tracks.push(...group.tracks)
+  sources.push(group.source)
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error
+  problems.push({
+    source: 'YouTube / ナナツカゼ',
+    message:
+      'Reviewed official-videos.json is missing; retained catalogue IDs will not be deleted.',
+  })
+}
+
 const snapshot = {
   schemaVersion: 1,
   updatedAt: fetchedAt,
@@ -372,6 +409,7 @@ const snapshot = {
     '独立上传标题保留原始署名。上传 / 展示日期不一定是歌曲首次发行日期；封面为 SoundCloud 元数据提供的远程 URL。',
     'YouTube 核对官方频道首屏与 Uploads 列表公开的前 100 条视频，续页请求未获得更多视频。仅纳入明确署名的完整歌曲或不同版本；未把相对上传时间换算为虚构发行日期。',
     'SoundCloud 账号元数据声明 108 首上传，但当前公开访客曲目分页只返回 79 首，不能据此证明 108 首全部可访问。',
+    'ナナツカゼ补遗来自已核验的官方视频清单；不同版本单列，无明确逐曲流派或发行日期时留空。公开视频清单不能证明历史上全部作品均可访问。',
   ],
   problems,
   tracks,
@@ -389,25 +427,30 @@ await writeFile(output, `${JSON.stringify(snapshot, null, 2)}\n`)
 await writeYoutubeMap(snapshot)
 console.log(`Saved ${tracks.length} independent upload records.`)
 
+async function readGroupSupplement() {
+  const inventory = JSON.parse(
+    await readFile(path.join(ROOT, 'public/data/official-videos.json'), 'utf8'),
+  )
+  const catalog = JSON.parse(await readFile(path.join(ROOT, 'public/data/catalog.json'), 'utf8'))
+  return groupSupplementFromInventory(inventory, catalog)
+}
+
 async function writeYoutubeMap(independent) {
   const catalog = JSON.parse(await readFile(path.join(ROOT, 'public/data/catalog.json'), 'utf8'))
-  const source = independent.sources.find((entry) => entry.name === 'YouTube')
-  const videos = source?.videos || []
-  const normalizeTitle = (text, core = false) => {
-    let title = String(text || '')
-      .normalize('NFKC')
-      .toLowerCase()
-    const split = title.match(/^(.+?)\s+-\s+(.+)$/)
-    if (split && (/pikasonic/i.test(split[1]) || /pikasonic\s+remix/i.test(split[2])))
-      title = split[2]
-    title = title.replace(
-      /【[^】]*】|\[(?:[^\]]*release|music video|official video)\]|\((?:[^)]*release|official video|performance video)\)/gi,
-      '',
-    )
-    if (core) title = title.replace(/(?:\(|\[)?(?:feat\.?|ft\.?|w\/)\s*[^)\]]*(?:\)|\])?/gi, '')
-    title = title.replace(/\bft\.?/g, 'feat').replace(/\bver\.?\b/g, 'version')
-    return title.replace(/[^\p{L}\p{N}]/gu, '')
-  }
+  const sources = independent.sources.filter((entry) => entry.name === 'YouTube')
+  // Curated official channels/Topic uploads survive a refresh of PIKASONIC's
+  // independent uploads. This file contains public metadata, never media files.
+  const official = JSON.parse(
+    await readFile(path.join(ROOT, 'public/data/official-videos.json'), 'utf8'),
+  )
+  const videos = [
+    ...new Map(
+      [...sources.flatMap((source) => source.videos || []), ...official.videos].map((video) => [
+        video.id,
+        video,
+      ]),
+    ).values(),
+  ]
   const matches = {}
   const scores = {}
   const remember = (track, video, rank, difference) => {
@@ -421,6 +464,7 @@ async function writeYoutubeMap(independent) {
     scores[track.id] = score
   }
   for (const video of videos) {
+    if (video.isFullSong === false) continue
     if (/music mix|teaser|tutorial|minecraft|piano cover|making|wip|demo/i.test(video.title))
       continue
     const durationMs =
@@ -429,13 +473,18 @@ async function writeYoutubeMap(independent) {
         .map(Number)
         .reduce((seconds, value) => seconds * 60 + value, 0) * 1000
     if (!durationMs || durationMs > 900000) continue
-    const fullTitle = normalizeTitle(video.title)
-    const coreTitle = normalizeTitle(video.title, true)
+    const fullTitles = videoTitleVariants(video).map((title) => normalizeTitle(title))
+    const coreTitles = videoTitleVariants(video).map((title) => normalizeTitle(title, true))
     const eligible = catalog.tracks.filter(
-      (track) => track.durationMs && Math.abs(track.durationMs - durationMs) <= 8000,
+      (track) =>
+        track.durationMs &&
+        Math.abs(track.durationMs - durationMs) <= 8000 &&
+        (video.channelId !== 'UCE8B2xQ4Y3Mwl9NduvwyFkQ' || track.projects?.includes('ナナツカゼ')),
     )
     const fullMatches = eligible.filter((track) =>
-      [track.title, ...(track.aliases || [])].some((title) => normalizeTitle(title) === fullTitle),
+      [track.title, ...(track.aliases || [])].some((title) =>
+        fullTitles.includes(normalizeTitle(title)),
+      ),
     )
     // A full feature/version match takes precedence over a generic title. This
     // keeps the KAFU and nakotanmaru vocal versions from cross-matching.
@@ -444,8 +493,8 @@ async function writeYoutubeMap(independent) {
         remember(track, video, 2, Math.abs(track.durationMs - durationMs))
     } else {
       const coreMatches = eligible.filter((track) =>
-        [track.title, ...(track.aliases || [])].some(
-          (title) => normalizeTitle(title, true) === coreTitle,
+        [track.title, ...(track.aliases || [])].some((title) =>
+          coreTitles.includes(normalizeTitle(title, true)),
         ),
       )
       if (coreMatches.length === 1)
@@ -461,6 +510,7 @@ async function writeYoutubeMap(independent) {
   const youtube = {
     updatedAt: independent.updatedAt,
     channelUrl: 'https://www.youtube.com/channel/UC2ne9XqtBWKJKLfIAKtmjAg',
+    additionalSources: official.sources,
     coverage: {
       checkedVideos: videos.length,
       matchedTracks: Object.keys(matches).length,

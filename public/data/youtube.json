@@ -1,10 +1,32 @@
 {
-  "updatedAt": "2026-10-15T03:20:02.887Z",
+  "updatedAt": "2026-10-15T10:13:21.811Z",
   "channelUrl": "https://www.youtube.com/channel/UC2ne9XqtBWKJKLfIAKtmjAg",
+  "additionalSources": [
+    {
+      "name": "Nanatsukaze official YouTube channel",
+      "url": "https://www.youtube.com/channel/UCE8B2xQ4Y3Mwl9NduvwyFkQ/videos",
+      "handle": "https://www.youtube.com/@Nanatsukaze_",
+      "channelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
+      "identityVerification": "Official channel about metadata: Compose,Lyrics,Vocal:nakotanmaru; Compose,Arrange:PIKASONIC",
+      "identitySource": "https://www.youtube.com/channel/UCE8B2xQ4Y3Mwl9NduvwyFkQ/about"
+    },
+    {
+      "name": "Hatsuboshi Gakuen official Topic",
+      "url": "https://www.youtube.com/channel/UC2dXx-3RXeeP8hA5AGt8vuw",
+      "identityVerification": "Official Artist Channel, Provided to YouTube by NexTone Inc., Released on in description"
+    },
+    {
+      "name": "Nanatsukaze official Topic / maimai DX",
+      "url": "https://www.youtube.com/channel/UCaNwDhWOVG5CLatqMMurRDw",
+      "channelId": "UCaNwDhWOVG5CLatqMMurRDw",
+      "identityVerification": "真空都市 watch metadata: owner Nanatsukaze - Topic; Provided to YouTube by maimai DX; formal release date 2025-11-07.",
+      "identitySource": "https://www.youtube.com/watch?v=tAfdJokKOoU"
+    }
+  ],
   "coverage": {
-    "checkedVideos": 100,
-    "matchedTracks": 76,
-    "totalTracks": 139,
+    "checkedVideos": 136,
+    "matchedTracks": 110,
+    "totalTracks": 170,
     "durationToleranceSeconds": 8,
     "note": "仅匹配已核对的官方视频；保留混音、VIP、Mixed和游戏短版标记。未匹配曲目使用前端明确标注的搜索入口。"
   },
@@ -388,6 +410,176 @@
       "url": "https://www.youtube.com/watch?v=cT-ZrYuErTA",
       "title": "PIKASONIC - Over Hit !",
       "id": "cT-ZrYuErTA"
+    },
+    "apple-6795407457": {
+      "url": "https://www.youtube.com/watch?v=vJDxS_ovbpc",
+      "title": "Nanatsukaze - Soramimi",
+      "id": "vJDxS_ovbpc"
+    },
+    "apple-6790694376": {
+      "url": "https://www.youtube.com/watch?v=sX-7C9Xlw0Y",
+      "title": "Nanatsukaze - Messiah",
+      "id": "sX-7C9Xlw0Y"
+    },
+    "apple-6764007034": {
+      "url": "https://www.youtube.com/watch?v=xYXIh06fV_w",
+      "title": "Nanatsukaze - May Cat",
+      "id": "xYXIh06fV_w"
+    },
+    "apple-1887480436": {
+      "url": "https://www.youtube.com/watch?v=KOp36bZMp4Q",
+      "title": "Nanatsukaze - Youth is gone",
+      "id": "KOp36bZMp4Q"
+    },
+    "youtube-4zEyJ2CgIBY": {
+      "url": "https://www.youtube.com/watch?v=4zEyJ2CgIBY",
+      "title": "[Instrumental] Nanatsukaze - Remedy",
+      "id": "4zEyJ2CgIBY"
+    },
+    "apple-1870778908": {
+      "url": "https://www.youtube.com/watch?v=mNivUQRqx2c",
+      "title": "Nanatsukaze - Remedy",
+      "id": "mNivUQRqx2c"
+    },
+    "youtube-j_ohYSNBqZA": {
+      "url": "https://www.youtube.com/watch?v=j_ohYSNBqZA",
+      "title": "[Instrumental] Nanatsukaze - Connect the World",
+      "id": "j_ohYSNBqZA"
+    },
+    "apple-1860821681": {
+      "url": "https://www.youtube.com/watch?v=M-IayQIR0XA",
+      "title": "Nanatsukaze - Connect the World [Flipbook music video]",
+      "id": "M-IayQIR0XA"
+    },
+    "youtube-XB0d0BXqGp8": {
+      "url": "https://www.youtube.com/watch?v=XB0d0BXqGp8",
+      "title": "[Instrumental] Nanatsukaze - Dream Gravity",
+      "id": "XB0d0BXqGp8"
+    },
+    "youtube-2YrkJsR83S8": {
+      "url": "https://www.youtube.com/watch?v=2YrkJsR83S8",
+      "title": "[Instrumental] Nanatsukaze - Save Our Sound",
+      "id": "2YrkJsR83S8"
+    },
+    "apple-1832904320": {
+      "url": "https://www.youtube.com/watch?v=nLWXur60vC8",
+      "title": "Nanatsukaze - Save Our Sound",
+      "id": "nLWXur60vC8"
+    },
+    "youtube-tMUI0UcbSvg": {
+      "url": "https://www.youtube.com/watch?v=tMUI0UcbSvg",
+      "title": "[Instrumental] Nanatsukaze - Aria",
+      "id": "tMUI0UcbSvg"
+    },
+    "apple-1819934506": {
+      "url": "https://www.youtube.com/watch?v=P7ueDJG9IO4",
+      "title": "Nanatsukaze - Aria",
+      "id": "P7ueDJG9IO4"
+    },
+    "youtube-8xOtdRu2YsU": {
+      "url": "https://www.youtube.com/watch?v=8xOtdRu2YsU",
+      "title": "[Instrumental] Nanatsukaze - Hazy Moon Night",
+      "id": "8xOtdRu2YsU"
+    },
+    "youtube-6W-IBB3Gcm8": {
+      "url": "https://www.youtube.com/watch?v=6W-IBB3Gcm8",
+      "title": "[Instrumental] Nanatsukaze - Harumeku",
+      "id": "6W-IBB3Gcm8"
+    },
+    "youtube-MHZxhVJXhwo": {
+      "url": "https://www.youtube.com/watch?v=MHZxhVJXhwo",
+      "title": "[Instrumental] Nanatsukaze - Sakura rain",
+      "id": "MHZxhVJXhwo"
+    },
+    "apple-1803336625": {
+      "url": "https://www.youtube.com/watch?v=4sKjn3ryB14",
+      "title": "Nanatsukaze - Sakura rain",
+      "id": "4sKjn3ryB14"
+    },
+    "youtube-8KkObcvlolI": {
+      "url": "https://www.youtube.com/watch?v=8KkObcvlolI",
+      "title": "[Instrumental] Nanatsukaze - Replay",
+      "id": "8KkObcvlolI"
+    },
+    "apple-1791916590": {
+      "url": "https://www.youtube.com/watch?v=ertwyT4gnc0",
+      "title": "Nanatsukaze - Our identity",
+      "id": "ertwyT4gnc0"
+    },
+    "apple-1785164254": {
+      "url": "https://www.youtube.com/watch?v=-VITOjLP7Us",
+      "title": "Nanatsukaze - Reincarnation",
+      "id": "-VITOjLP7Us"
+    },
+    "apple-1774674078": {
+      "url": "https://www.youtube.com/watch?v=EQgHnfXAMBY",
+      "title": "Nanatsukaze - Flying Cat",
+      "id": "EQgHnfXAMBY"
+    },
+    "apple-1768495251": {
+      "url": "https://www.youtube.com/watch?v=r_cvq-ACaZ0",
+      "title": "Nanatsukaze - Android",
+      "id": "r_cvq-ACaZ0"
+    },
+    "apple-1761025462": {
+      "url": "https://www.youtube.com/watch?v=gsqRwAOfOnw",
+      "title": "Nanatsukaze - End of the Summer",
+      "id": "gsqRwAOfOnw"
+    },
+    "apple-1754755251": {
+      "url": "https://www.youtube.com/watch?v=7AfVSx3Hov0",
+      "title": "Nanatsukaze - Needle of Words",
+      "id": "7AfVSx3Hov0"
+    },
+    "apple-1746004147": {
+      "url": "https://www.youtube.com/watch?v=1TaEXrdCp6A",
+      "title": "Nanatsukaze - Dream Gravity",
+      "id": "1TaEXrdCp6A"
+    },
+    "apple-1734972655": {
+      "url": "https://www.youtube.com/watch?v=wPOEcVWN5Ko",
+      "title": "Nanatsukaze - Replay",
+      "id": "wPOEcVWN5Ko"
+    },
+    "apple-1726739248": {
+      "url": "https://www.youtube.com/watch?v=dXAZsNzKr7o",
+      "title": "Nanatsukaze - Sentimental Life",
+      "id": "dXAZsNzKr7o"
+    },
+    "apple-1718004168": {
+      "url": "https://www.youtube.com/watch?v=adKTYj5No_M",
+      "title": "Nanatsukaze - What If (w/Dankidz)",
+      "id": "adKTYj5No_M"
+    },
+    "apple-1694886463": {
+      "url": "https://www.youtube.com/watch?v=svhAjo4X0yc",
+      "title": "Nanatsukaze - Hazy Moon Night",
+      "id": "svhAjo4X0yc"
+    },
+    "apple-1691532222": {
+      "url": "https://www.youtube.com/watch?v=I-ea4Opix3E",
+      "title": "Nanatsukaze - Goodbye Wonderland [Music Video]",
+      "id": "I-ea4Opix3E"
+    },
+    "apple-1685653199": {
+      "url": "https://www.youtube.com/watch?v=vCDCepKTQ-Q",
+      "title": "Nanatsukaze - Harumeku",
+      "id": "vCDCepKTQ-Q"
+    },
+    "apple-6812580063": {
+      "url": "https://www.youtube.com/watch?v=Mk1-WoEmhXs",
+      "title": "海奏ララバイ",
+      "id": "Mk1-WoEmhXs"
+    },
+    "apple-6812580064": {
+      "url": "https://www.youtube.com/watch?v=MVeWZ-2ciwI",
+      "title": "海奏ララバイ [Instrumental]",
+      "id": "MVeWZ-2ciwI"
+    },
+    "apple-1851187199": {
+      "url": "https://www.youtube.com/watch?v=tAfdJokKOoU",
+      "title": "真空都市",
+      "id": "tAfdJokKOoU"
     }
   }
 }

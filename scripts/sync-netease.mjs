@@ -3,6 +3,11 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { pathToFileURL } from 'node:url'
 const root = new URL('../', import.meta.url)
 const ARTIST_ID = 13499634
+const GROUP_ID = 56672609
+const verifiedArtists = [
+  { id: ARTIST_ID, name: 'PIKASONIC' },
+  { id: GROUP_ID, name: 'ナナツカゼ' },
+]
 const normalize = (value) =>
   value
     .normalize('NFKC')
@@ -59,7 +64,7 @@ export function findNeteaseMatch(track, songs, hotIds = new Set()) {
         (!track.durationMs || !song.duration || durationDifference <= 3500)
       return { song, match, exact, durationDifference, hot: hotIds.has(song.id) }
     })
-    .filter((candidate) => candidate.match)
+    .filter((candidate) => candidate.match && matchesArtist(track, candidate.song))
     .sort(
       (a, b) =>
         Number(b.hot) - Number(a.hot) ||
@@ -69,25 +74,53 @@ export function findNeteaseMatch(track, songs, hotIds = new Set()) {
   return candidates[0]
 }
 
+function matchesArtist(track, song) {
+  // Unit callers may omit artist metadata; fetched platform records never do.
+  if (!song.artists) return true
+  const groupRelease = /ナナツカゼ|nanatsukaze/i.test(track.artist || '')
+  return (
+    song.artists.some((artist) =>
+      groupRelease
+        ? artist.id === GROUP_ID || /^(?:ナナツカゼ|nanatsukaze)$/i.test(artist.name)
+        : artist.id === ARTIST_ID || normalize(artist.name) === 'pikasonic',
+    ) ||
+    (!groupRelease && /pikasonic\s+(?:remix|vip)/i.test(song.name))
+  )
+}
+
+const relevantSong = (song) =>
+  song.artists?.some((artist) => verifiedArtists.some((known) => artist.id === known.id)) ||
+  /pikasonic\s+(?:remix|vip)/i.test(song.name)
+
 async function sync() {
   const catalog = JSON.parse(await readFile(new URL('public/data/catalog.json', root), 'utf8'))
   const songs = new Map()
   const hotSourceUrl = `https://music.163.com/api/artist/${ARTIST_ID}`
-  const hotResponse = await fetch(hotSourceUrl, {
-    headers: { Referer: 'https://music.163.com/', 'User-Agent': 'Mozilla/5.0' },
-    signal: AbortSignal.timeout(25000),
-  })
-  if (!hotResponse.ok)
-    throw new Error(`NetEase artist HTTP ${hotResponse.status}; snapshot preserved`)
-  const artistBody = await hotResponse.json()
-  if (
-    artistBody.code !== 200 ||
-    artistBody.artist?.id !== ARTIST_ID ||
-    normalize(artistBody.artist?.name || '') !== 'pikasonic' ||
-    !Array.isArray(artistBody.hotSongs) ||
-    artistBody.hotSongs.length < 10
+  const artistBodies = await Promise.all(
+    verifiedArtists.map(async (artist) => {
+      const response = await fetch(`https://music.163.com/api/artist/${artist.id}`, {
+        headers: { Referer: 'https://music.163.com/', 'User-Agent': 'Mozilla/5.0' },
+        signal: AbortSignal.timeout(25000),
+      })
+      if (!response.ok)
+        throw new Error(`NetEase artist HTTP ${response.status}; snapshot preserved`)
+      const body = await response.json()
+      if (
+        body.code !== 200 ||
+        body.artist?.id !== artist.id ||
+        normalize(body.artist?.name || '') !== normalize(artist.name) ||
+        !Array.isArray(body.hotSongs) ||
+        body.hotSongs.length < 10 ||
+        body.hotSongs.some(
+          (song) => !Number.isSafeInteger(song.id) || !song.name || !song.artists?.length,
+        )
+      )
+        throw new Error('NetEase artist/hot list could not be verified; snapshot preserved')
+      for (const song of body.hotSongs) songs.set(song.id, song)
+      return body
+    }),
   )
-    throw new Error('NetEase artist/hot list could not be verified; snapshot preserved')
+  const artistBody = artistBodies[0]
   const hotUpdatedAt = new Date().toISOString()
   const hotSongs = artistBody.hotSongs.map((song, index) => ({
     rank: index + 1,
@@ -102,87 +135,82 @@ async function sync() {
   if (hotSongs.some((song) => !Number.isSafeInteger(song.id) || song.id <= 0 || !song.title))
     throw new Error('Invalid NetEase hot-list metadata; snapshot preserved')
   const hotIds = new Set(hotSongs.map((song) => song.id))
-  for (const song of artistBody.hotSongs) songs.set(song.id, song)
   const findMatch = (track) => findNeteaseMatch(track, songs, hotIds)
   console.log(
     `NetEase verified artist ${artistBody.artist.name}: ${hotSongs.length} hot songs in platform order`,
   )
-  let total = Infinity
-  for (let offset = 0; offset < Math.min(total, 1000); offset += 100) {
-    const url = new URL('https://music.163.com/api/search/get/web')
-    for (const [key, value] of Object.entries({
-      s: 'PIKASONIC',
-      type: 1,
-      offset,
-      total: true,
-      limit: 100,
-    }))
-      url.searchParams.set(key, String(value))
-    const response = await fetch(url, {
-      headers: { Referer: 'https://music.163.com/', 'User-Agent': 'Mozilla/5.0' },
-      signal: AbortSignal.timeout(25000),
-    })
-    if (!response.ok) throw new Error(`NetEase HTTP ${response.status}; snapshot preserved`)
-    const body = await response.json()
-    if (body.code !== 200 || !body.result?.songs)
-      throw new Error(
-        `NetEase search unavailable (code ${body.code}${body.message ? `: ${body.message}` : ''}); snapshot preserved`,
-      )
-    total = body.result.songCount || body.result.songs.length
-    for (const song of body.result.songs) {
-      if (
-        song.artists?.some(
-          (artist) => artist.id === ARTIST_ID || normalize(artist.name) === 'pikasonic',
-        ) ||
-        /pikasonic\s+(?:remix|vip)/i.test(song.name)
-      )
-        songs.set(song.id, song)
-    }
-    console.log(
-      `NetEase: ${offset + body.result.songs.length}/${total} search results; ${songs.size} relevant records`,
-    )
-    if (body.result.songs.length < 100) break
-    await new Promise((resolve) => setTimeout(resolve, 500))
-  }
-  // A broad artist search can omit older or collaborator-owned releases. Retry
-  // only missing titles, retaining the exact-title/version/duration checks.
-  for (const track of catalog.tracks.filter((track) => !findMatch(track))) {
-    const url = new URL('https://music.163.com/api/search/get/web')
-    const title =
-      (track.aliases || []).find((title) => !/[\u3040-\u30ff\u3400-\u9fff]/.test(title)) ||
-      track.title
-    for (const [key, value] of Object.entries({
-      s: `${title} PIKASONIC`,
-      type: 1,
-      offset: 0,
-      limit: 40,
-    }))
-      url.searchParams.set(key, String(value))
-    try {
-      const response = await fetch(url, {
-        headers: { Referer: 'https://music.163.com/', 'User-Agent': 'Mozilla/5.0' },
-        signal: AbortSignal.timeout(12000),
-      })
-      const body = await response.json()
-      if (!response.ok || body.code !== 200 || !body.result)
-        throw new Error(
-          `NetEase title metadata unavailable (HTTP ${response.status}, code ${body.code})`,
+  const artistsOnly = process.argv.includes('--artists-only')
+  const previous = artistsOnly
+    ? JSON.parse(await readFile(new URL('public/data/netease.json', root), 'utf8'))
+    : null
+  if (!artistsOnly) {
+    for (const artist of verifiedArtists) {
+      let total = Infinity
+      for (let offset = 0; offset < Math.min(total, 1000); offset += 100) {
+        const url = new URL('https://music.163.com/api/search/get/web')
+        for (const [key, value] of Object.entries({
+          s: artist.name,
+          type: 1,
+          offset,
+          total: true,
+          limit: 100,
+        }))
+          url.searchParams.set(key, String(value))
+        const response = await fetch(url, {
+          headers: { Referer: 'https://music.163.com/', 'User-Agent': 'Mozilla/5.0' },
+          signal: AbortSignal.timeout(25000),
+        })
+        if (!response.ok) throw new Error(`NetEase HTTP ${response.status}; snapshot preserved`)
+        const body = await response.json()
+        if (body.code !== 200 || !Array.isArray(body.result?.songs))
+          throw new Error(
+            `NetEase search unavailable (code ${body.code}${body.message ? `: ${body.message}` : ''}); snapshot preserved`,
+          )
+        total = body.result.songCount || body.result.songs.length
+        for (const song of body.result.songs) {
+          if (relevantSong(song)) songs.set(song.id, song)
+        }
+        console.log(
+          `NetEase: ${offset + body.result.songs.length}/${total} search results; ${songs.size} relevant records`,
         )
-      for (const song of body.result?.songs || []) {
-        if (
-          song.artists?.some(
-            (artist) => artist.id === ARTIST_ID || normalize(artist.name) === 'pikasonic',
-          ) ||
-          /pikasonic\s+(?:remix|vip)/i.test(song.name)
-        )
-          songs.set(song.id, song)
+        if (body.result.songs.length < 100) break
+        await new Promise((resolve) => setTimeout(resolve, 500))
       }
-    } catch (error) {
-      throw new Error(
-        `Title lookup unavailable for ${track.title}; snapshot preserved: ${error.message}`,
-      )
     }
-    await new Promise((resolve) => setTimeout(resolve, 350))
+    // A broad artist search can omit older or collaborator-owned releases. Retry
+    // only missing titles, retaining the exact-title/version/duration checks.
+    for (const track of catalog.tracks.filter((track) => !findMatch(track))) {
+      const url = new URL('https://music.163.com/api/search/get/web')
+      const title =
+        (track.aliases || []).find((title) => !/[\u3040-\u30ff\u3400-\u9fff]/.test(title)) ||
+        track.title
+      for (const [key, value] of Object.entries({
+        s: `${title} ${/ナナツカゼ|nanatsukaze/i.test(track.artist) ? 'ナナツカゼ' : 'PIKASONIC'}`,
+        type: 1,
+        offset: 0,
+        limit: 40,
+      }))
+        url.searchParams.set(key, String(value))
+      try {
+        const response = await fetch(url, {
+          headers: { Referer: 'https://music.163.com/', 'User-Agent': 'Mozilla/5.0' },
+          signal: AbortSignal.timeout(12000),
+        })
+        const body = await response.json()
+        if (!response.ok || body.code !== 200 || !Array.isArray(body.result?.songs))
+          throw new Error(
+            `NetEase title metadata unavailable (HTTP ${response.status}, code ${body.code})`,
+          )
+        for (const song of body.result?.songs || []) {
+          if (relevantSong(song)) songs.set(song.id, song)
+        }
+      } catch (error) {
+        throw new Error(
+          `Title lookup unavailable for ${track.title}; snapshot preserved: ${error.message}`,
+        )
+      }
+      await new Promise((resolve) => setTimeout(resolve, 350))
+    }
   }
 
   const matches = {}
@@ -199,16 +227,24 @@ async function sync() {
         url: `https://music.163.com/#/song?id=${song.id}`,
         matchType: exact ? 'title-and-duration' : 'featured-title-and-duration',
       }
-      const rank = rankBySongId.get(song.id)
-      if (rank !== undefined) hotRanks[track.id] = rank
+    } else if (previous?.matches[track.id]) {
+      matches[track.id] = previous.matches[track.id]
     }
+    const rank = rankBySongId.get(matches[track.id]?.id)
+    if (rank !== undefined) hotRanks[track.id] = rank
   }
   if (songs.size < 30) throw new Error('Unexpectedly small NetEase result; snapshot preserved')
   const output = {
     updatedAt: new Date().toISOString(),
     artistId: ARTIST_ID,
     artistUrl: `https://music.163.com/#/artist?id=${ARTIST_ID}`,
-    source: 'NetEase public song search metadata',
+    verifiedArtists: verifiedArtists.map((artist) => ({
+      ...artist,
+      url: `https://music.163.com/api/artist/${artist.id}`,
+    })),
+    source: artistsOnly
+      ? 'Verified public artist metadata + retained previously verified matches'
+      : 'NetEase public artist and song search metadata',
     hotUpdatedAt,
     hotSource: {
       name: 'NetEase public artist hotSongs order',
@@ -220,7 +256,7 @@ async function sync() {
     hotRanks,
     hotOrder: Object.keys(hotRanks).sort((a, b) => hotRanks[a] - hotRanks[b]),
     matching:
-      'Exact title or catalog aliases + duration within 3.5 seconds; compatible featured-vocal suffixes may be omitted. Remix/VIP/Mixed/instrumental/version markers remain intact. Verified hot-list IDs take priority over duplicate reissues. No fuzzy guesses.',
+      'Verified credited artist + exact title or catalog aliases + duration within 3.5 seconds; compatible featured-vocal suffixes may be omitted. Remix/VIP/Mixed/instrumental/version markers remain intact. PIKASONIC hot-list IDs take priority over duplicate reissues. Group hot-list positions are never mixed into PIKASONIC rankings. No fuzzy guesses.',
     matchedCount: Object.keys(matches).length,
     unmatchedCount: catalog.tracks.length - Object.keys(matches).length,
     matches,

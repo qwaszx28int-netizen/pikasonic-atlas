@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-15T03:20:02.887Z",
+  "updatedAt": "2026-10-15T10:13:21.811Z",
   "sources": [
     {
       "name": "SoundCloud",
@@ -717,13 +717,23 @@
         }
       ],
       "access": "官方频道首屏与 Uploads 列表的 100 条公开视频元数据，续页没有返回更多条目；视频未下载，未把预告、直播或短视频自动当成发行曲目。"
+    },
+    {
+      "name": "YouTube / ナナツカゼ",
+      "url": "https://www.youtube.com/channel/UCE8B2xQ4Y3Mwl9NduvwyFkQ/videos",
+      "collectedVideoCount": 33,
+      "reviewedFullInstrumentals": 9,
+      "standaloneVersions": 9,
+      "checkedAt": "2026-10-15T10:11:57.803Z",
+      "access": "读取已核验的官方公开视频清单；商业发行的同曲 MV 不重复计数，Apple 未收录的完整伴奏及不同版本独立保留。未下载视频、音频或图片。"
     }
   ],
   "limitations": [
     "SoundCloud 条目是艺人账号的公开上传，包含 remix、bootleg、游戏尺寸或预告版本；不等于授权的商业发行。",
     "独立上传标题保留原始署名。上传 / 展示日期不一定是歌曲首次发行日期；封面为 SoundCloud 元数据提供的远程 URL。",
     "YouTube 核对官方频道首屏与 Uploads 列表公开的前 100 条视频，续页请求未获得更多视频。仅纳入明确署名的完整歌曲或不同版本；未把相对上传时间换算为虚构发行日期。",
-    "SoundCloud 账号元数据声明 108 首上传，但当前公开访客曲目分页只返回 79 首，不能据此证明 108 首全部可访问。"
+    "SoundCloud 账号元数据声明 108 首上传，但当前公开访客曲目分页只返回 79 首，不能据此证明 108 首全部可访问。",
+    "ナナツカゼ补遗来自已核验的官方视频清单；不同版本单列，无明确逐曲流派或发行日期时留空。公开视频清单不能证明历史上全部作品均可访问。"
   ],
   "problems": [],
   "tracks": [
@@ -2572,6 +2582,303 @@
       ],
       "releases": [],
       "sourceTrackId": "lr5ItbokMfQ"
+    },
+    {
+      "id": "youtube-4zEyJ2CgIBY",
+      "title": "四面楚歌 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 224000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/4zEyJ2CgIBY/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGEkgQihyMA8=&rs=AOn4CLBXmlCRy3IrQ-BOEa1uYHE5Qebfeg",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=4zEyJ2CgIBY",
+      "aliases": [
+        "Remedy (Instrumental)",
+        "[Instrumental] Nanatsukaze - Remedy",
+        "四面楚歌 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "4zEyJ2CgIBY",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ"
+    },
+    {
+      "id": "youtube-j_ohYSNBqZA",
+      "title": "あのね (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 199000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/j_ohYSNBqZA/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgVSh_MA8=&rs=AOn4CLARrOiZmijAn8XHnEwgkqH7BJrqCA",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=j_ohYSNBqZA",
+      "aliases": [
+        "Connect the World (Instrumental)",
+        "[Instrumental] Nanatsukaze - Connect the World",
+        "あのね (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "j_ohYSNBqZA",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ"
+    },
+    {
+      "id": "youtube-XB0d0BXqGp8",
+      "title": "夢重力 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 180000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/XB0d0BXqGp8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBwgPCh_MA8=&rs=AOn4CLBk5DrRL4HaliiLvS2GAVA92NEXLw",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=XB0d0BXqGp8",
+      "aliases": [
+        "Dream Gravity (Instrumental)",
+        "[Instrumental] Nanatsukaze - Dream Gravity",
+        "夢重力 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "XB0d0BXqGp8",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ"
+    },
+    {
+      "id": "youtube-2YrkJsR83S8",
+      "title": "SOS (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 220000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/2YrkJsR83S8/hqdefault.jpg",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=2YrkJsR83S8",
+      "aliases": [
+        "Save Our Sound (Instrumental)",
+        "[Instrumental] Nanatsukaze - Save Our Sound",
+        "SOS (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "2YrkJsR83S8",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ"
+    },
+    {
+      "id": "youtube-tMUI0UcbSvg",
+      "title": "アリア (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 226000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/tMUI0UcbSvg/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDwgXChyMA8=&rs=AOn4CLD-sGZeiYJ-W3rQy_T-5G0fN_yHng",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=tMUI0UcbSvg",
+      "aliases": [
+        "Aria (Instrumental)",
+        "[Instrumental] Nanatsukaze - Aria",
+        "アリア (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "tMUI0UcbSvg",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ"
+    },
+    {
+      "id": "youtube-8xOtdRu2YsU",
+      "title": "朧月夜 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 191000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/8xOtdRu2YsU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBYgYyhlMA8=&rs=AOn4CLAW1FB82tJJ9954DdeDf8R073jLpA",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=8xOtdRu2YsU",
+      "aliases": [
+        "Hazy Moon Night (Instrumental)",
+        "[Instrumental] Nanatsukaze - Hazy Moon Night",
+        "朧月夜 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "8xOtdRu2YsU",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ"
+    },
+    {
+      "id": "youtube-6W-IBB3Gcm8",
+      "title": "春めく (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 186000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/6W-IBB3Gcm8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgWiheMA8=&rs=AOn4CLAwfH59HLz8WCJ9ELFX2ck6aQLw0A",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=6W-IBB3Gcm8",
+      "aliases": [
+        "Harumeku (Instrumental)",
+        "[Instrumental] Nanatsukaze - Harumeku",
+        "春めく (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "6W-IBB3Gcm8",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ"
+    },
+    {
+      "id": "youtube-MHZxhVJXhwo",
+      "title": "ららら (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 148000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/MHZxhVJXhwo/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDcgVyh_MA8=&rs=AOn4CLBskBR1_UWgiTuQn9cCFpz_TT9V3Q",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=MHZxhVJXhwo",
+      "aliases": [
+        "Sakura rain (Instrumental)",
+        "[Instrumental] Nanatsukaze - Sakura rain",
+        "ららら (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "MHZxhVJXhwo",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ"
+    },
+    {
+      "id": "youtube-8KkObcvlolI",
+      "title": "再生 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 161000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/8KkObcvlolI/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGB8gPCh_MA8=&rs=AOn4CLBY5BVK_zbfzbZ_dFd26-ydKFhE9A",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=8KkObcvlolI",
+      "aliases": [
+        "Replay (Instrumental)",
+        "[Instrumental] Nanatsukaze - Replay",
+        "再生 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "8KkObcvlolI",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ"
     }
   ]
 }

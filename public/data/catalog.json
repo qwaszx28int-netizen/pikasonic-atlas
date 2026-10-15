@@ -1,11 +1,18 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-15T03:20:44.200Z",
+  "updatedAt": "2026-10-15T10:13:21.939Z",
   "artist": {
     "name": "PIKASONIC",
     "appleArtistId": 1450218337,
     "appleArtistUrl": "https://music.apple.com/jp/artist/pikasonic/1450218337",
     "alternateAppleArtistId": 1738111555,
+    "relatedProjects": [
+      {
+        "name": "ナナツカゼ",
+        "appleArtistId": 1685618009,
+        "appleArtistUrl": "https://music.apple.com/jp/artist/%E3%83%8A%E3%83%8A%E3%83%84%E3%82%AB%E3%82%BC/1685618009"
+      }
+    ],
     "musicBrainzId": "81ce14d7-f806-4015-ab6c-84d081991c3f",
     "links": {
       "youtube": "https://www.youtube.com/channel/UC2ne9XqtBWKJKLfIAKtmjAg",
@@ -19,6 +26,21 @@
       "name": "Apple iTunes Search API / Apple Music",
       "url": "https://music.apple.com/jp/artist/pikasonic/1450218337",
       "description": "曲名、艺人、发行日期、时长、流派、封面 URL 与发行页链接。"
+    },
+    {
+      "name": "Apple Music / ナナツカゼ",
+      "url": "https://music.apple.com/jp/artist/%E3%83%8A%E3%83%8A%E3%83%84%E3%82%AB%E3%82%BC/1685618009",
+      "description": "组合独立艺人目录：美区、日区公开曲目和全部发现的发行，保持组合署名，不冒充个人发行。"
+    },
+    {
+      "name": "PIKASONIC official / ナナツカゼ identity",
+      "url": "https://www.youtube.com/watch?v=3uXtK0e8hlw",
+      "description": "PIKASONIC 官方《春めく》预告说明ナナツカゼ由 PIKASONIC × nakotanmaru 组成；该预告仅用于核对组合身份，不计作歌曲版本。"
+    },
+    {
+      "name": "学園アイドルマスター Gakuen Label / 官方制作署名",
+      "url": "https://gakuen-label.idolmaster-official.jp/discography/iik-p-jujn_u",
+      "description": "海奏ララバイ：官方发行页明确作詞 nakotanmaru、作曲・編曲 PIKASONIC；发行页购买链接指向 Apple 同一发行。"
     },
     {
       "name": "iTunes Search API documentation",
@@ -39,6 +61,11 @@
       "name": "YouTube",
       "url": "https://www.youtube.com/channel/UC2ne9XqtBWKJKLfIAKtmjAg/videos",
       "description": "官方频道首屏与 Uploads 列表的 100 条公开视频元数据，续页没有返回更多条目；视频未下载，未把预告、直播或短视频自动当成发行曲目。"
+    },
+    {
+      "name": "YouTube / ナナツカゼ",
+      "url": "https://www.youtube.com/channel/UCE8B2xQ4Y3Mwl9NduvwyFkQ/videos",
+      "description": "读取已核验的官方公开视频清单；商业发行的同曲 MV 不重复计数，Apple 未收录的完整伴奏及不同版本独立保留。未下载视频、音频或图片。"
     }
   ],
   "coverage": {
@@ -47,25 +74,35 @@
       "jp"
     ],
     "approach": "合并 Apple 美区、日区艺人曲目与发行目录，检索合作曲和署名混音，再展开全部发现的发行曲目。相同发行 ID 的多语言曲名作为搜索别名；同名、同署名且时长相近的重复发行合并。",
-    "scope": "Apple 公开署名发行、合作曲和混音版本，并补充官方 SoundCloud 与 YouTube 可核对的独立作品及不同版本。",
+    "scope": "PIKASONIC 个人署名发行、合作曲和混音，ナナツカゼ组合的公开发行目录，以及有公开制作署名可核对的作品；补充官方 SoundCloud 与 YouTube 的独立作品及不同版本。",
     "limitations": [
       "这是持续维护的公开发行目录，不能证明已包含艺人的每一首作品。仅在 YouTube、SoundCloud、Bandcamp、游戏内发布、已下架或未被 Apple 收录的作品可能缺失。",
       "Apple 各地区可用性、曲名语言、发行日期与署名可能不同；日期为平台元数据，重发行日期不一定等于作品最初公开日期。",
       "同名艺人页 1738111555 的“今天不是明天 (feat. 兰音Reine)”独立标记 alternateArtistPage，保留平台来源供核验。",
-      "不自动把未明确署名 PIKASONIC 的团体曲目归为个人作品；例如仅署名“ナナツカゼ”的作品需另行核对制作人名单。",
+      "ナナツカゼ作为独立组合目录收录，保留平台上的组合署名；不把团体发行改写成 PIKASONIC 个人发行。",
+      "海奏ララバイ按 Apple 的初星学園、秦谷美鈴署名展示，PIKASONIC 与 nakotanmaru 的制作参与另以官方发行说明留证；伴奏与主唱版本分开。",
       "目录和外部封面链接不代表取得音乐或美术版权；非营利声明本身不构成授权。"
     ],
     "failedRequests": [],
-    "independentUpdatedAt": "2026-10-15T03:20:02.887Z",
-    "independentProblems": []
+    "independentUpdatedAt": "2026-10-15T10:13:21.811Z",
+    "independentProblems": [],
+    "relatedProjects": [
+      {
+        "name": "ナナツカゼ",
+        "appleArtistId": 1685618009,
+        "artistLookupTracks": 27
+      }
+    ],
+    "retainedTrackIds": []
   },
   "stats": {
-    "trackCount": 139,
-    "releaseCount": 103,
-    "appleTrackCount": 136,
-    "independentAdded": 7,
+    "trackCount": 170,
+    "releaseCount": 120,
+    "appleTrackCount": 158,
+    "nanatsukazeTrackCount": 36,
+    "independentAdded": 16,
     "independentMatched": 76,
-    "requestCount": 33,
+    "requestCount": 46,
     "earliestRelease": "2017-04-04",
     "latestRelease": "2026-10-07"
   },
@@ -87,12 +124,32 @@
       "resultCount": 2
     },
     {
+      "url": "https://itunes.apple.com/lookup?id=1685618009&entity=song&limit=200&country=us",
+      "resultCount": 28
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=1685618009&entity=album&limit=200&country=us",
+      "resultCount": 24
+    },
+    {
       "url": "https://itunes.apple.com/search?term=PIKASONIC&entity=song&limit=200&country=us",
       "resultCount": 134
     },
     {
       "url": "https://itunes.apple.com/search?term=PIKASONIC+Remix&entity=song&limit=200&country=us",
       "resultCount": 26
+    },
+    {
+      "url": "https://itunes.apple.com/search?term=%E3%83%8A%E3%83%8A%E3%83%84%E3%82%AB%E3%82%BC&entity=song&limit=200&country=us",
+      "resultCount": 200
+    },
+    {
+      "url": "https://itunes.apple.com/search?term=Nanatsukaze&entity=song&limit=200&country=us",
+      "resultCount": 28
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=6812580063%2C6812580064&entity=song&country=us",
+      "resultCount": 2
     },
     {
       "url": "https://itunes.apple.com/lookup?id=1450218337&entity=song&limit=200&country=jp",
@@ -111,12 +168,32 @@
       "resultCount": 2
     },
     {
+      "url": "https://itunes.apple.com/lookup?id=1685618009&entity=song&limit=200&country=jp",
+      "resultCount": 28
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=1685618009&entity=album&limit=200&country=jp",
+      "resultCount": 24
+    },
+    {
       "url": "https://itunes.apple.com/search?term=PIKASONIC&entity=song&limit=200&country=jp",
       "resultCount": 200
     },
     {
       "url": "https://itunes.apple.com/search?term=PIKASONIC+Remix&entity=song&limit=200&country=jp",
       "resultCount": 13
+    },
+    {
+      "url": "https://itunes.apple.com/search?term=%E3%83%8A%E3%83%8A%E3%83%84%E3%82%AB%E3%82%BC&entity=song&limit=200&country=jp",
+      "resultCount": 200
+    },
+    {
+      "url": "https://itunes.apple.com/search?term=Nanatsukaze&entity=song&limit=200&country=jp",
+      "resultCount": 28
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=6812580063%2C6812580064&entity=song&country=jp",
+      "resultCount": 2
     },
     {
       "url": "https://itunes.apple.com/lookup?id=1567383510%2C1512319117%2C1734972649%2C1629020280%2C1597879222&entity=song&limit=200&country=jp",
@@ -195,12 +272,24 @@
       "resultCount": 10
     },
     {
-      "url": "https://itunes.apple.com/lookup?id=1840352926%2C1837791565%2C1629254394%2C1777933281%2C1727505268&entity=song&limit=200&country=jp",
-      "resultCount": 64
+      "url": "https://itunes.apple.com/lookup?id=1819934498%2C1860821673%2C1761025461%2C1832904319%2C1791916361&entity=song&limit=200&country=jp",
+      "resultCount": 10
     },
     {
-      "url": "https://itunes.apple.com/lookup?id=1895712351%2C6815643623%2C1513285177&entity=song&limit=200&country=jp",
-      "resultCount": 112
+      "url": "https://itunes.apple.com/lookup?id=1768495029%2C1754755155%2C1895595847%2C1774674075%2C6790694375&entity=song&limit=200&country=jp",
+      "resultCount": 12
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=1803336372%2C1851186947%2C1785163968%2C6795407456%2C1870778907&entity=song&limit=200&country=jp",
+      "resultCount": 11
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=1887480435%2C1840352926%2C1837791565%2C1629254394%2C1777933281&entity=song&limit=200&country=jp",
+      "resultCount": 59
+    },
+    {
+      "url": "https://itunes.apple.com/lookup?id=1727505268%2C1895712351%2C6812579822%2C6815643623%2C1513285177&entity=song&limit=200&country=jp",
+      "resultCount": 123
     }
   ],
   "tracks": [
@@ -251,6 +340,254 @@
           "genre": "サウンドトラック",
           "sourceName": "Apple Music",
           "sourceUrl": "https://music.apple.com/jp/album/after-rain/6815643623?i=6815643782&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 6812580063,
+      "title": "海奏ララバイ",
+      "artist": "初星学園 & 秦谷美鈴",
+      "album": "海奏ララバイ - Single",
+      "releaseDate": "2026-09-23",
+      "durationMs": 195700,
+      "genre": "Anime",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/eb/7b/88/eb7b88e0-6c70-b53b-e691-31c9d1dc36a9/PA00227834_0_254786_jacket.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E6%B5%B7%E5%A5%8F%E3%83%A9%E3%83%A9%E3%83%90%E3%82%A4/6812579822?i=6812580063&uo=4",
+      "appleCollectionId": 6812579822,
+      "aliases": [
+        "Ocean Lullaby",
+        "海奏ララバイ"
+      ],
+      "artistAliases": [
+        "Hatsuboshi Gakuen & Misuzu Hataya",
+        "初星学園 & 秦谷美鈴",
+        "PIKASONIC",
+        "なこたんまる",
+        "nakotanmaru"
+      ],
+      "albumAliases": [
+        "Ocean Lullaby - Single",
+        "海奏ララバイ - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "creditSources": [
+        {
+          "name": "学園アイドルマスター Gakuen Label / 官方制作署名",
+          "url": "https://gakuen-label.idolmaster-official.jp/discography/iik-p-jujn_u",
+          "description": "海奏ララバイ：官方发行页明确作詞 nakotanmaru、作曲・編曲 PIKASONIC；发行页购买链接指向 Apple 同一发行。"
+        }
+      ],
+      "releases": [
+        {
+          "appleTrackId": 6812580063,
+          "appleCollectionId": 6812579822,
+          "title": "海奏ララバイ - Single",
+          "releaseDate": "2026-09-23",
+          "sourceUrl": "https://music.apple.com/jp/album/%E6%B5%B7%E5%A5%8F%E3%83%A9%E3%83%A9%E3%83%90%E3%82%A4/6812579822?i=6812580063&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/eb/7b/88/eb7b88e0-6c70-b53b-e691-31c9d1dc36a9/PA00227834_0_254786_jacket.jpg/600x600bb.jpg",
+          "copyright": "℗ BANDAI NAMCO Entertainment Inc."
+        }
+      ],
+      "id": "apple-6812580063",
+      "kind": "original",
+      "tags": [
+        "Anime",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "Anime",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E6%B5%B7%E5%A5%8F%E3%83%A9%E3%83%A9%E3%83%90%E3%82%A4/6812579822?i=6812580063&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 6812580064,
+      "title": "海奏ララバイ [Instrumental]",
+      "artist": "初星学園 & 秦谷美鈴",
+      "album": "海奏ララバイ - Single",
+      "releaseDate": "2026-09-23",
+      "durationMs": 195700,
+      "genre": "Anime",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/eb/7b/88/eb7b88e0-6c70-b53b-e691-31c9d1dc36a9/PA00227834_0_254786_jacket.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E6%B5%B7%E5%A5%8F%E3%83%A9%E3%83%A9%E3%83%90%E3%82%A4-instrumental/6812579822?i=6812580064&uo=4",
+      "appleCollectionId": 6812579822,
+      "aliases": [
+        "Ocean Lullaby (Instrumental)",
+        "海奏ララバイ [Instrumental]"
+      ],
+      "artistAliases": [
+        "Hatsuboshi Gakuen & Misuzu Hataya",
+        "初星学園 & 秦谷美鈴",
+        "PIKASONIC",
+        "なこたんまる",
+        "nakotanmaru"
+      ],
+      "albumAliases": [
+        "Ocean Lullaby - Single",
+        "海奏ララバイ - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "creditSources": [
+        {
+          "name": "学園アイドルマスター Gakuen Label / 官方制作署名",
+          "url": "https://gakuen-label.idolmaster-official.jp/discography/iik-p-jujn_u",
+          "description": "海奏ララバイ：官方发行页明确作詞 nakotanmaru、作曲・編曲 PIKASONIC；发行页购买链接指向 Apple 同一发行。"
+        }
+      ],
+      "releases": [
+        {
+          "appleTrackId": 6812580064,
+          "appleCollectionId": 6812579822,
+          "title": "海奏ララバイ - Single",
+          "releaseDate": "2026-09-23",
+          "sourceUrl": "https://music.apple.com/jp/album/%E6%B5%B7%E5%A5%8F%E3%83%A9%E3%83%A9%E3%83%90%E3%82%A4-instrumental/6812579822?i=6812580064&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/eb/7b/88/eb7b88e0-6c70-b53b-e691-31c9d1dc36a9/PA00227834_0_254786_jacket.jpg/600x600bb.jpg",
+          "copyright": "℗ BANDAI NAMCO Entertainment Inc."
+        }
+      ],
+      "id": "apple-6812580064",
+      "kind": "instrumental",
+      "tags": [
+        "Anime",
+        "instrumental",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "Anime",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E6%B5%B7%E5%A5%8F%E3%83%A9%E3%83%A9%E3%83%90%E3%82%A4-instrumental/6812579822?i=6812580064&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 6795407457,
+      "title": "空耳",
+      "artist": "ナナツカゼ",
+      "album": "空耳 - Single",
+      "releaseDate": "2026-08-22",
+      "durationMs": 160138,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ab/d5/1e/abd51e20-10b4-f796-b524-fd795e91b90a/ANTCD-A0000020687.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E7%A9%BA%E8%80%B3/6795407456?i=6795407457&uo=4",
+      "appleCollectionId": 6795407456,
+      "aliases": [
+        "Soramimi",
+        "空耳"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Soramimi - Single",
+        "空耳 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 6795407457,
+          "appleCollectionId": 6795407456,
+          "title": "空耳 - Single",
+          "releaseDate": "2026-08-22",
+          "sourceUrl": "https://music.apple.com/jp/album/%E7%A9%BA%E8%80%B3/6795407456?i=6795407457&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ab/d5/1e/abd51e20-10b4-f796-b524-fd795e91b90a/ANTCD-A0000020687.jpg/600x600bb.jpg",
+          "copyright": "℗ 2026 Nanatsukaze / cutting edge"
+        }
+      ],
+      "id": "apple-6795407457",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E7%A9%BA%E8%80%B3/6795407456?i=6795407457&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 6795407461,
+      "title": "空耳 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "空耳 - Single",
+      "releaseDate": "2026-08-22",
+      "durationMs": 160138,
+      "genre": "Instrumental",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ab/d5/1e/abd51e20-10b4-f796-b524-fd795e91b90a/ANTCD-A0000020687.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E7%A9%BA%E8%80%B3-instrumental/6795407456?i=6795407461&uo=4",
+      "appleCollectionId": 6795407456,
+      "aliases": [
+        "Soramimi (Instrumental)",
+        "空耳 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Soramimi - Single",
+        "空耳 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 6795407461,
+          "appleCollectionId": 6795407456,
+          "title": "空耳 - Single",
+          "releaseDate": "2026-08-22",
+          "sourceUrl": "https://music.apple.com/jp/album/%E7%A9%BA%E8%80%B3-instrumental/6795407456?i=6795407461&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ab/d5/1e/abd51e20-10b4-f796-b524-fd795e91b90a/ANTCD-A0000020687.jpg/600x600bb.jpg",
+          "copyright": "℗ 2026 Nanatsukaze / cutting edge"
+        }
+      ],
+      "id": "apple-6795407461",
+      "kind": "instrumental",
+      "tags": [
+        "Instrumental",
+        "instrumental",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "Instrumental",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E7%A9%BA%E8%80%B3-instrumental/6795407456?i=6795407461&uo=4"
         }
       ]
     },
@@ -346,6 +683,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -354,7 +692,6 @@
           "uploadDate": "2017-10-05"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -409,6 +746,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -417,7 +755,6 @@
           "uploadDate": "2017-07-21"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -625,6 +962,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -633,7 +971,6 @@
           "uploadDate": "2017-10-25"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -954,6 +1291,240 @@
       ]
     },
     {
+      "appleTrackId": 6790694376,
+      "title": "メシア",
+      "artist": "ナナツカゼ",
+      "album": "メシア - Single",
+      "releaseDate": "2026-07-29",
+      "durationMs": 195667,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/79/4e/ce/794eceec-cda4-2f3d-1a08-77b19cd74c74/ANTCD-A0000020596.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E3%83%A1%E3%82%B7%E3%82%A2/6790694375?i=6790694376&uo=4",
+      "appleCollectionId": 6790694375,
+      "aliases": [
+        "Messiah",
+        "メシア"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Messiah - Single",
+        "メシア - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 6790694376,
+          "appleCollectionId": 6790694375,
+          "title": "メシア - Single",
+          "releaseDate": "2026-07-29",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%83%A1%E3%82%B7%E3%82%A2/6790694375?i=6790694376&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/79/4e/ce/794eceec-cda4-2f3d-1a08-77b19cd74c74/ANTCD-A0000020596.jpg/600x600bb.jpg",
+          "copyright": "℗ 2026 Nanatsukaze / cutting edge"
+        }
+      ],
+      "id": "apple-6790694376",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%83%A1%E3%82%B7%E3%82%A2/6790694375?i=6790694376&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 6790694377,
+      "title": "メシア (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "メシア - Single",
+      "releaseDate": "2026-07-29",
+      "durationMs": 195667,
+      "genre": "Instrumental",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/79/4e/ce/794eceec-cda4-2f3d-1a08-77b19cd74c74/ANTCD-A0000020596.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E3%83%A1%E3%82%B7%E3%82%A2-instrumental/6790694375?i=6790694377&uo=4",
+      "appleCollectionId": 6790694375,
+      "aliases": [
+        "Messiah (Instrumental)",
+        "メシア (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Messiah - Single",
+        "メシア - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 6790694377,
+          "appleCollectionId": 6790694375,
+          "title": "メシア - Single",
+          "releaseDate": "2026-07-29",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%83%A1%E3%82%B7%E3%82%A2-instrumental/6790694375?i=6790694377&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/79/4e/ce/794eceec-cda4-2f3d-1a08-77b19cd74c74/ANTCD-A0000020596.jpg/600x600bb.jpg",
+          "copyright": "℗ 2026 Nanatsukaze / cutting edge"
+        }
+      ],
+      "id": "apple-6790694377",
+      "kind": "instrumental",
+      "tags": [
+        "Instrumental",
+        "instrumental",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "Instrumental",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%83%A1%E3%82%B7%E3%82%A2-instrumental/6790694375?i=6790694377&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 6764007034,
+      "title": "五月猫",
+      "artist": "ナナツカゼ",
+      "album": "五月猫 - Single",
+      "releaseDate": "2026-05-27",
+      "durationMs": 207158,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/2d/be/5b/2dbe5b9d-ad88-931b-ba9d-c4fe353b2d9a/ANTCD-A0000019953.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E4%BA%94%E6%9C%88%E7%8C%AB/1895595847?i=6764007034&uo=4",
+      "appleCollectionId": 1895595847,
+      "aliases": [
+        "May Cat",
+        "五月猫"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "May Cat - Single",
+        "五月猫 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 6764007034,
+          "appleCollectionId": 1895595847,
+          "title": "五月猫 - Single",
+          "releaseDate": "2026-05-27",
+          "sourceUrl": "https://music.apple.com/jp/album/%E4%BA%94%E6%9C%88%E7%8C%AB/1895595847?i=6764007034&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/2d/be/5b/2dbe5b9d-ad88-931b-ba9d-c4fe353b2d9a/ANTCD-A0000019953.jpg/600x600bb.jpg",
+          "copyright": "℗ 2026 Nanatsukaze / cutting edge"
+        }
+      ],
+      "id": "apple-6764007034",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E4%BA%94%E6%9C%88%E7%8C%AB/1895595847?i=6764007034&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 6764007035,
+      "title": "五月猫 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "五月猫 - Single",
+      "releaseDate": "2026-05-27",
+      "durationMs": 207158,
+      "genre": "Instrumental",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/2d/be/5b/2dbe5b9d-ad88-931b-ba9d-c4fe353b2d9a/ANTCD-A0000019953.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E4%BA%94%E6%9C%88%E7%8C%AB-instrumental/1895595847?i=6764007035&uo=4",
+      "appleCollectionId": 1895595847,
+      "aliases": [
+        "May Cat (Instrumental)",
+        "五月猫 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "May Cat - Single",
+        "五月猫 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 6764007035,
+          "appleCollectionId": 1895595847,
+          "title": "五月猫 - Single",
+          "releaseDate": "2026-05-27",
+          "sourceUrl": "https://music.apple.com/jp/album/%E4%BA%94%E6%9C%88%E7%8C%AB-instrumental/1895595847?i=6764007035&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/2d/be/5b/2dbe5b9d-ad88-931b-ba9d-c4fe353b2d9a/ANTCD-A0000019953.jpg/600x600bb.jpg",
+          "copyright": "℗ 2026 Nanatsukaze / cutting edge"
+        }
+      ],
+      "id": "apple-6764007035",
+      "kind": "instrumental",
+      "tags": [
+        "Instrumental",
+        "instrumental",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "Instrumental",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E4%BA%94%E6%9C%88%E7%8C%AB-instrumental/1895595847?i=6764007035&uo=4"
+        }
+      ]
+    },
+    {
       "appleTrackId": 6764274676,
       "title": "Are You Still There (PIKASONIC Remix)",
       "artist": "Hoang",
@@ -996,6 +1567,7 @@
         "Electronic",
         "remix"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -1004,7 +1576,6 @@
           "uploadDate": "2026-05-08"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -1015,6 +1586,123 @@
           "genre": "Drum & Bass",
           "sourceName": "SoundCloud",
           "sourceUrl": "https://soundcloud.com/pika5onic/hoang-are-you-still-there"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1887480436,
+      "title": "青さは止んだ",
+      "artist": "ナナツカゼ",
+      "album": "青さは止んだ - Single",
+      "releaseDate": "2026-04-01",
+      "durationMs": 198000,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/89/b0/94/89b09494-1415-fa93-4eec-7d095df6b204/ANTCD-A0000019653.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E9%9D%92%E3%81%95%E3%81%AF%E6%AD%A2%E3%82%93%E3%81%A0/1887480435?i=1887480436&uo=4",
+      "appleCollectionId": 1887480435,
+      "aliases": [
+        "Youth is gone",
+        "青さは止んだ"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Youth is gone - Single",
+        "青さは止んだ - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1887480436,
+          "appleCollectionId": 1887480435,
+          "title": "青さは止んだ - Single",
+          "releaseDate": "2026-04-01",
+          "sourceUrl": "https://music.apple.com/jp/album/%E9%9D%92%E3%81%95%E3%81%AF%E6%AD%A2%E3%82%93%E3%81%A0/1887480435?i=1887480436&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/89/b0/94/89b09494-1415-fa93-4eec-7d095df6b204/ANTCD-A0000019653.jpg/600x600bb.jpg",
+          "copyright": "℗ 2026 Nanatsukaze / cutting edge"
+        }
+      ],
+      "id": "apple-1887480436",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E9%9D%92%E3%81%95%E3%81%AF%E6%AD%A2%E3%82%93%E3%81%A0/1887480435?i=1887480436&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1887480437,
+      "title": "青さは止んだ (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "青さは止んだ - Single",
+      "releaseDate": "2026-04-01",
+      "durationMs": 198000,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/89/b0/94/89b09494-1415-fa93-4eec-7d095df6b204/ANTCD-A0000019653.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E9%9D%92%E3%81%95%E3%81%AF%E6%AD%A2%E3%82%93%E3%81%A0-instrumental/1887480435?i=1887480437&uo=4",
+      "appleCollectionId": 1887480435,
+      "aliases": [
+        "Youth is gone (Instrumental)",
+        "青さは止んだ (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Youth is gone - Single",
+        "青さは止んだ - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1887480437,
+          "appleCollectionId": 1887480435,
+          "title": "青さは止んだ - Single",
+          "releaseDate": "2026-04-01",
+          "sourceUrl": "https://music.apple.com/jp/album/%E9%9D%92%E3%81%95%E3%81%AF%E6%AD%A2%E3%82%93%E3%81%A0-instrumental/1887480435?i=1887480437&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/89/b0/94/89b09494-1415-fa93-4eec-7d095df6b204/ANTCD-A0000019653.jpg/600x600bb.jpg",
+          "copyright": "℗ 2026 Nanatsukaze / cutting edge"
+        }
+      ],
+      "id": "apple-1887480437",
+      "kind": "instrumental",
+      "tags": [
+        "J-Pop",
+        "instrumental",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E9%9D%92%E3%81%95%E3%81%AF%E6%AD%A2%E3%82%93%E3%81%A0-instrumental/1887480435?i=1887480437&uo=4"
         }
       ]
     },
@@ -1067,6 +1755,296 @@
           "genre": "Electronic",
           "sourceName": "Apple Music",
           "sourceUrl": "https://music.apple.com/jp/album/reflect/1885348149?i=1885348150&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1870778908,
+      "title": "四面楚歌",
+      "artist": "ナナツカゼ",
+      "album": "四面楚歌 - Single",
+      "releaseDate": "2026-02-02",
+      "durationMs": 223521,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bf/8e/a3/bf8ea36f-c654-fa73-2179-3f480742c6a4/ANTCD-A0000019193.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E5%9B%9B%E9%9D%A2%E6%A5%9A%E6%AD%8C/1870778907?i=1870778908&uo=4",
+      "appleCollectionId": 1870778907,
+      "aliases": [
+        "Remedy",
+        "四面楚歌"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Remedy - Single",
+        "四面楚歌 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1870778908,
+          "appleCollectionId": 1870778907,
+          "title": "四面楚歌 - Single",
+          "releaseDate": "2026-02-02",
+          "sourceUrl": "https://music.apple.com/jp/album/%E5%9B%9B%E9%9D%A2%E6%A5%9A%E6%AD%8C/1870778907?i=1870778908&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/bf/8e/a3/bf8ea36f-c654-fa73-2179-3f480742c6a4/ANTCD-A0000019193.jpg/600x600bb.jpg",
+          "copyright": "℗ 2026 Nanatsukaze / cutting edge"
+        }
+      ],
+      "id": "apple-1870778908",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E5%9B%9B%E9%9D%A2%E6%A5%9A%E6%AD%8C/1870778907?i=1870778908&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1860821681,
+      "title": "あのね",
+      "artist": "ナナツカゼ",
+      "album": "あのね - Single",
+      "releaseDate": "2025-12-31",
+      "durationMs": 199024,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b9/2d/69/b92d696c-13aa-8032-9a23-a8b89f068d5d/4550714635280_cover.png/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E3%81%82%E3%81%AE%E3%81%AD/1860821673?i=1860821681&uo=4",
+      "appleCollectionId": 1860821673,
+      "aliases": [
+        "Connect the World",
+        "あのね"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Connect the World - Single",
+        "あのね - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1860821681,
+          "appleCollectionId": 1860821673,
+          "title": "あのね - Single",
+          "releaseDate": "2025-12-31",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%81%82%E3%81%AE%E3%81%AD/1860821673?i=1860821681&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b9/2d/69/b92d696c-13aa-8032-9a23-a8b89f068d5d/4550714635280_cover.png/600x600bb.jpg",
+          "copyright": "℗ 2025 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1860821681",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%81%82%E3%81%AE%E3%81%AD/1860821673?i=1860821681&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1851187199,
+      "title": "真空都市",
+      "artist": "ナナツカゼ",
+      "album": "真空都市 - Single",
+      "releaseDate": "2025-11-07",
+      "durationMs": 149514,
+      "genre": "Electronic",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/8a/06/92/8a0692c8-fa60-b1b5-ab8b-c9cfe9da5c5e/4550713479717_cover.png/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E7%9C%9F%E7%A9%BA%E9%83%BD%E5%B8%82/1851186947?i=1851187199&uo=4",
+      "appleCollectionId": 1851186947,
+      "aliases": [
+        "Vacuum City",
+        "真空都市"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Vacuum City - Single",
+        "真空都市 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1851187199,
+          "appleCollectionId": 1851186947,
+          "title": "真空都市 - Single",
+          "releaseDate": "2025-11-07",
+          "sourceUrl": "https://music.apple.com/jp/album/%E7%9C%9F%E7%A9%BA%E9%83%BD%E5%B8%82/1851186947?i=1851187199&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/8a/06/92/8a0692c8-fa60-b1b5-ab8b-c9cfe9da5c5e/4550713479717_cover.png/600x600bb.jpg",
+          "copyright": "℗ 2025 maimai DX"
+        }
+      ],
+      "id": "apple-1851187199",
+      "kind": "original",
+      "tags": [
+        "Electronic",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "Electronic",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E7%9C%9F%E7%A9%BA%E9%83%BD%E5%B8%82/1851186947?i=1851187199&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1832904320,
+      "title": "SOS",
+      "artist": "ナナツカゼ",
+      "album": "SOS - Single",
+      "releaseDate": "2025-08-31",
+      "durationMs": 220541,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b1/37/10/b137100c-79e7-c639-c274-7484746c7b34/4550711578900_cover.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/sos/1832904319?i=1832904320&uo=4",
+      "appleCollectionId": 1832904319,
+      "aliases": [
+        "Save Our Sound",
+        "SOS"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Save Our Sound - Single",
+        "SOS - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1832904320,
+          "appleCollectionId": 1832904319,
+          "title": "SOS - Single",
+          "releaseDate": "2025-08-31",
+          "sourceUrl": "https://music.apple.com/jp/album/sos/1832904319?i=1832904320&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/b1/37/10/b137100c-79e7-c639-c274-7484746c7b34/4550711578900_cover.jpg/600x600bb.jpg",
+          "copyright": "℗ 2025 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1832904320",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/sos/1832904319?i=1832904320&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1819934506,
+      "title": "アリア",
+      "artist": "ナナツカゼ",
+      "album": "アリア - Single",
+      "releaseDate": "2025-06-20",
+      "durationMs": 226000,
+      "genre": "Electronic",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/cd/ff/07/cdff0767-ec45-628e-ef3a-3352dfe6f08a/4550709817844_cover.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E3%82%A2%E3%83%AA%E3%82%A2/1819934498?i=1819934506&uo=4",
+      "appleCollectionId": 1819934498,
+      "aliases": [
+        "Aria",
+        "アリア"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Aria - Single",
+        "アリア - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1819934506,
+          "appleCollectionId": 1819934498,
+          "title": "アリア - Single",
+          "releaseDate": "2025-06-20",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%82%A2%E3%83%AA%E3%82%A2/1819934498?i=1819934506&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/cd/ff/07/cdff0767-ec45-628e-ef3a-3352dfe6f08a/4550709817844_cover.jpg/600x600bb.jpg",
+          "copyright": "℗ 2025 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1819934506",
+      "kind": "original",
+      "tags": [
+        "Electronic",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "Electronic",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%82%A2%E3%83%AA%E3%82%A2/1819934498?i=1819934506&uo=4"
         }
       ]
     },
@@ -1176,6 +2154,7 @@
       "tags": [
         "Hardcore"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -1184,7 +2163,6 @@
           "uploadDate": "2025-05-26"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Hardcore",
@@ -1195,6 +2173,64 @@
           "genre": "Dance & EDM",
           "sourceName": "SoundCloud",
           "sourceUrl": "https://soundcloud.com/pika5onic/pikasonic-mind-enhancement"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1803336625,
+      "title": "ららら",
+      "artist": "ナナツカゼ",
+      "album": "ららら - Single",
+      "releaseDate": "2025-04-01",
+      "durationMs": 147500,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e9/cf/58/e9cf58de-4ba4-337e-8430-b6177474daa1/4550706792502_cover.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E3%82%89%E3%82%89%E3%82%89/1803336372?i=1803336625&uo=4",
+      "appleCollectionId": 1803336372,
+      "aliases": [
+        "Sakura Rain",
+        "ららら"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Sakura Rain - Single",
+        "ららら - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1803336625,
+          "appleCollectionId": 1803336372,
+          "title": "ららら - Single",
+          "releaseDate": "2025-04-01",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%82%89%E3%82%89%E3%82%89/1803336372?i=1803336625&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/e9/cf/58/e9cf58de-4ba4-337e-8430-b6177474daa1/4550706792502_cover.jpg/600x600bb.jpg",
+          "copyright": "℗ 2025 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1803336625",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E3%82%89%E3%82%89%E3%82%89/1803336372?i=1803336625&uo=4"
         }
       ]
     },
@@ -1359,6 +2395,64 @@
       ]
     },
     {
+      "appleTrackId": 1791916590,
+      "title": "僕らのアイデンティティ",
+      "artist": "ナナツカゼ",
+      "album": "僕らのアイデンティティ - Single",
+      "releaseDate": "2025-02-02",
+      "durationMs": 222273,
+      "genre": "Electronic",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/35/63/113563a5-587f-9b92-b70a-df73b1665106/4571640799730_cover.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E5%83%95%E3%82%89%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3/1791916361?i=1791916590&uo=4",
+      "appleCollectionId": 1791916361,
+      "aliases": [
+        "Our Identity",
+        "僕らのアイデンティティ"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Our Identity - Single",
+        "僕らのアイデンティティ - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1791916590,
+          "appleCollectionId": 1791916361,
+          "title": "僕らのアイデンティティ - Single",
+          "releaseDate": "2025-02-02",
+          "sourceUrl": "https://music.apple.com/jp/album/%E5%83%95%E3%82%89%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3/1791916361?i=1791916590&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/11/35/63/113563a5-587f-9b92-b70a-df73b1665106/4571640799730_cover.jpg/600x600bb.jpg",
+          "copyright": "℗ 2025 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1791916590",
+      "kind": "original",
+      "tags": [
+        "Electronic",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "Electronic",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E5%83%95%E3%82%89%E3%81%AE%E3%82%A2%E3%82%A4%E3%83%87%E3%83%B3%E3%83%86%E3%82%A3%E3%83%86%E3%82%A3/1791916361?i=1791916590&uo=4"
+        }
+      ]
+    },
+    {
       "appleTrackId": 1791261842,
       "title": "サンダーソニア",
       "artist": "PIKASONIC, iMeiden & 小花依ある",
@@ -1410,6 +2504,64 @@
           "genre": "Electronic",
           "sourceName": "Apple Music",
           "sourceUrl": "https://music.apple.com/jp/album/%E3%82%B5%E3%83%B3%E3%83%80%E3%83%BC%E3%82%BD%E3%83%8B%E3%82%A2/1791261839?i=1791261842&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1785164254,
+      "title": "七ツ風",
+      "artist": "ナナツカゼ",
+      "album": "七ツ風 - Single",
+      "releaseDate": "2024-12-31",
+      "durationMs": 254333,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/92/a9/34/92a9341f-f3fe-775a-ed0a-1dbf402d8a30/4571640591761_cover.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E4%B8%83%E3%83%84%E9%A2%A8/1785163968?i=1785164254&uo=4",
+      "appleCollectionId": 1785163968,
+      "aliases": [
+        "Reincarnation",
+        "七ツ風"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Reincarnation - Single",
+        "七ツ風 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1785164254,
+          "appleCollectionId": 1785163968,
+          "title": "七ツ風 - Single",
+          "releaseDate": "2024-12-31",
+          "sourceUrl": "https://music.apple.com/jp/album/%E4%B8%83%E3%83%84%E9%A2%A8/1785163968?i=1785164254&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/92/a9/34/92a9341f-f3fe-775a-ed0a-1dbf402d8a30/4571640591761_cover.jpg/600x600bb.jpg",
+          "copyright": "℗ 2024 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1785164254",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E4%B8%83%E3%83%84%E9%A2%A8/1785163968?i=1785164254&uo=4"
         }
       ]
     },
@@ -1572,6 +2724,7 @@
       "tags": [
         "House"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -1580,7 +2733,6 @@
           "uploadDate": "2024-11-29"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "House",
@@ -1591,6 +2743,180 @@
           "genre": "Dance & EDM",
           "sourceName": "SoundCloud",
           "sourceUrl": "https://soundcloud.com/pika5onic/blossom"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1774674078,
+      "title": "空飛ぶ猫",
+      "artist": "ナナツカゼ",
+      "album": "空飛ぶ猫 - Single",
+      "releaseDate": "2024-10-31",
+      "durationMs": 194400,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/75/53/fd/7553fdad-549c-4cbc-f88f-e8cfb9656a5c/4571640265211_cover.png/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E7%A9%BA%E9%A3%9B%E3%81%B6%E7%8C%AB/1774674075?i=1774674078&uo=4",
+      "appleCollectionId": 1774674075,
+      "aliases": [
+        "Flying Cat",
+        "空飛ぶ猫"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Flying Cat - Single",
+        "空飛ぶ猫 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1774674078,
+          "appleCollectionId": 1774674075,
+          "title": "空飛ぶ猫 - Single",
+          "releaseDate": "2024-10-31",
+          "sourceUrl": "https://music.apple.com/jp/album/%E7%A9%BA%E9%A3%9B%E3%81%B6%E7%8C%AB/1774674075?i=1774674078&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/75/53/fd/7553fdad-549c-4cbc-f88f-e8cfb9656a5c/4571640265211_cover.png/600x600bb.jpg",
+          "copyright": "℗ 2024 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1774674078",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E7%A9%BA%E9%A3%9B%E3%81%B6%E7%8C%AB/1774674075?i=1774674078&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1768495251,
+      "title": "機械生命体",
+      "artist": "ナナツカゼ",
+      "album": "機械生命体 - Single",
+      "releaseDate": "2024-09-27",
+      "durationMs": 218000,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/00/c9/a9/00c9a9eb-ded4-ebfb-5ce2-614bec2c2775/0198448985529_cover.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E6%A9%9F%E6%A2%B0%E7%94%9F%E5%91%BD%E4%BD%93/1768495029?i=1768495251&uo=4",
+      "appleCollectionId": 1768495029,
+      "aliases": [
+        "Android",
+        "機械生命体"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Android - Single",
+        "機械生命体 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1768495251,
+          "appleCollectionId": 1768495029,
+          "title": "機械生命体 - Single",
+          "releaseDate": "2024-09-27",
+          "sourceUrl": "https://music.apple.com/jp/album/%E6%A9%9F%E6%A2%B0%E7%94%9F%E5%91%BD%E4%BD%93/1768495029?i=1768495251&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/00/c9/a9/00c9a9eb-ded4-ebfb-5ce2-614bec2c2775/0198448985529_cover.jpg/600x600bb.jpg",
+          "copyright": "℗ 2024 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1768495251",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E6%A9%9F%E6%A2%B0%E7%94%9F%E5%91%BD%E4%BD%93/1768495029?i=1768495251&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1761025462,
+      "title": "夏が終わる",
+      "artist": "ナナツカゼ",
+      "album": "夏が終わる - Single",
+      "releaseDate": "2024-08-24",
+      "durationMs": 200308,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/5d/f6/39/5df63978-d419-50b9-6661-c8356a598f9d/0198448787468_cover.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E5%A4%8F%E3%81%8C%E7%B5%82%E3%82%8F%E3%82%8B/1761025461?i=1761025462&uo=4",
+      "appleCollectionId": 1761025461,
+      "aliases": [
+        "End of the Summer",
+        "夏が終わる"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "End of the Summer - Single",
+        "夏が終わる - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1761025462,
+          "appleCollectionId": 1761025461,
+          "title": "夏が終わる - Single",
+          "releaseDate": "2024-08-24",
+          "sourceUrl": "https://music.apple.com/jp/album/%E5%A4%8F%E3%81%8C%E7%B5%82%E3%82%8F%E3%82%8B/1761025461?i=1761025462&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/5d/f6/39/5df63978-d419-50b9-6661-c8356a598f9d/0198448787468_cover.jpg/600x600bb.jpg",
+          "copyright": "℗ 2024 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1761025462",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E5%A4%8F%E3%81%8C%E7%B5%82%E3%82%8F%E3%82%8B/1761025461?i=1761025462&uo=4"
         }
       ]
     },
@@ -1636,6 +2962,7 @@
       "tags": [
         "House"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -1644,12 +2971,69 @@
           "uploadDate": "2024-07-29"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "House",
           "sourceName": "Apple Music",
           "sourceUrl": "https://music.apple.com/jp/album/factory/1757492942?i=1757492944&uo=4"
+        }
+      ]
+    },
+    {
+      "appleTrackId": 1754755251,
+      "title": "言の針",
+      "artist": "ナナツカゼ",
+      "album": "言の針 - Single",
+      "releaseDate": "2024-07-07",
+      "durationMs": 172125,
+      "genre": "J-Pop",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a8/f1/b8/a8f1b880-985f-9ed6-b3d0-fef98036b420/0198448595285_cover.jpg/600x600bb.jpg",
+      "sourceUrl": "https://music.apple.com/jp/album/%E8%A8%80%E3%81%AE%E9%87%9D/1754755155?i=1754755251&uo=4",
+      "appleCollectionId": 1754755155,
+      "aliases": [
+        "Needle of Words",
+        "言の針"
+      ],
+      "artistAliases": [
+        "Nanatsukaze",
+        "ナナツカゼ"
+      ],
+      "albumAliases": [
+        "Needle of Words - Single",
+        "言の針 - Single"
+      ],
+      "stores": [
+        "us",
+        "jp"
+      ],
+      "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [
+        {
+          "appleTrackId": 1754755251,
+          "appleCollectionId": 1754755155,
+          "title": "言の針 - Single",
+          "releaseDate": "2024-07-07",
+          "sourceUrl": "https://music.apple.com/jp/album/%E8%A8%80%E3%81%AE%E9%87%9D/1754755155?i=1754755251&uo=4",
+          "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/a8/f1/b8/a8f1b880-985f-9ed6-b3d0-fef98036b420/0198448595285_cover.jpg/600x600bb.jpg",
+          "copyright": "℗ 2024 Nanatsukaze"
+        }
+      ],
+      "id": "apple-1754755251",
+      "kind": "original",
+      "tags": [
+        "J-Pop",
+        "collaboration"
+      ],
+      "sourceName": "Apple Music",
+      "externalSources": [],
+      "genreDetails": [
+        {
+          "genre": "J-Pop",
+          "sourceName": "Apple Music",
+          "sourceUrl": "https://music.apple.com/jp/album/%E8%A8%80%E3%81%AE%E9%87%9D/1754755155?i=1754755251&uo=4"
         }
       ]
     },
@@ -1681,6 +3065,9 @@
         "jp"
       ],
       "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
       "releases": [
         {
           "appleTrackId": 1746004147,
@@ -1755,6 +3142,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -1763,7 +3151,6 @@
           "uploadDate": "2024-05-14"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -1800,6 +3187,9 @@
         "jp"
       ],
       "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
       "releases": [
         {
           "appleTrackId": 1734972655,
@@ -1916,6 +3306,9 @@
         "jp"
       ],
       "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
       "releases": [
         {
           "appleTrackId": 1726739248,
@@ -2074,6 +3467,9 @@
         "jp"
       ],
       "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
       "releases": [
         {
           "appleTrackId": 1718004168,
@@ -2143,6 +3539,7 @@
       "tags": [
         "House"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -2151,7 +3548,6 @@
           "uploadDate": "2024-05-14"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "House",
@@ -2259,6 +3655,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -2267,7 +3664,6 @@
           "uploadDate": "2023-09-15"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -2318,6 +3714,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -2326,7 +3723,6 @@
           "uploadDate": "2023-08-11"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -2368,6 +3764,9 @@
         "jp"
       ],
       "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
       "releases": [
         {
           "appleTrackId": 1694886463,
@@ -2423,6 +3822,9 @@
         "jp"
       ],
       "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
       "releases": [
         {
           "appleTrackId": 1691532222,
@@ -2478,6 +3880,9 @@
         "jp"
       ],
       "alternateArtistPage": false,
+      "projects": [
+        "ナナツカゼ"
+      ],
       "releases": [
         {
           "appleTrackId": 1685653199,
@@ -2547,6 +3952,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -2555,7 +3961,6 @@
           "uploadDate": "2023-04-19"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -2658,6 +4063,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -2666,7 +4072,6 @@
           "uploadDate": "2023-03-10"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -2716,6 +4121,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -2724,7 +4130,6 @@
           "uploadDate": "2023-03-10"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -2779,6 +4184,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -2787,7 +4193,6 @@
           "uploadDate": "2022-12-31"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -2899,6 +4304,7 @@
         "remix",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -2907,7 +4313,6 @@
           "uploadDate": "2022-11-28"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Dance",
@@ -3187,6 +4592,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -3195,7 +4601,6 @@
           "uploadDate": "2022-09-23"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -3303,6 +4708,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -3311,7 +4717,6 @@
           "uploadDate": "2022-08-24"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -3361,6 +4766,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -3369,7 +4775,6 @@
           "uploadDate": "2022-08-19"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -3421,6 +4826,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -3429,7 +4835,6 @@
           "uploadDate": "2022-07-16"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -3485,6 +4890,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -3493,7 +4899,6 @@
           "uploadDate": "2022-06-17"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -3603,6 +5008,7 @@
         "remix",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -3611,7 +5017,6 @@
           "uploadDate": "2022-05-27"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -3770,6 +5175,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -3778,7 +5184,6 @@
           "uploadDate": "2022-04-29"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -3832,6 +5237,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -3840,7 +5246,6 @@
           "uploadDate": "2022-04-01"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -3947,6 +5352,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -3955,7 +5361,6 @@
           "uploadDate": "2022-03-01"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4061,6 +5466,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4069,7 +5475,6 @@
           "uploadDate": "2022-01-20"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4121,6 +5526,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4129,7 +5535,6 @@
           "uploadDate": "2021-12-31"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4179,6 +5584,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4187,7 +5593,6 @@
           "uploadDate": "2021-12-04"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4247,6 +5652,7 @@
         "J-Pop",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4255,7 +5661,6 @@
           "uploadDate": "2021-11-17"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "J-Pop",
@@ -4310,6 +5715,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4318,7 +5724,6 @@
           "uploadDate": "2021-10-31"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4372,6 +5777,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4380,7 +5786,6 @@
           "uploadDate": "2021-10-01"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4440,6 +5845,7 @@
         "J-Pop",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4448,7 +5854,6 @@
           "uploadDate": "2021-08-28"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "J-Pop",
@@ -4609,6 +6014,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4617,7 +6023,6 @@
           "uploadDate": "2021-07-29"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4672,6 +6077,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4680,7 +6086,6 @@
           "uploadDate": "2021-06-28"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4786,6 +6191,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4794,7 +6200,6 @@
           "uploadDate": "2021-05-25"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4849,6 +6254,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4857,7 +6263,6 @@
           "uploadDate": "2021-04-20"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -4965,6 +6370,7 @@
         "Electronic",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -4973,7 +6379,6 @@
           "uploadDate": "2021-03-07"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -5028,6 +6433,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -5036,7 +6442,6 @@
           "uploadDate": "2021-02-05"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -5142,6 +6547,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -5150,7 +6556,6 @@
           "uploadDate": "2020-12-28"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -5359,6 +6764,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -5367,7 +6773,6 @@
           "uploadDate": "2020-10-17"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -5473,6 +6878,7 @@
       "tags": [
         "House"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -5481,7 +6887,6 @@
           "uploadDate": "2020-08-08"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "House",
@@ -5588,6 +6993,7 @@
         "Instrumental",
         "alternate"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -5596,7 +7002,6 @@
           "uploadDate": "2020-06-22"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Instrumental",
@@ -5651,6 +7056,7 @@
       "tags": [
         "Electronic"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -5659,7 +7065,6 @@
           "uploadDate": "2020-06-20"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronic",
@@ -5715,6 +7120,7 @@
         "ダンス",
         "remix"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -5723,7 +7129,6 @@
           "uploadDate": "2020-06-01"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "ダンス",
@@ -5876,6 +7281,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -5884,7 +7290,6 @@
           "uploadDate": "2020-04-02"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6041,6 +7446,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6049,7 +7455,6 @@
           "uploadDate": "2020-01-20"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6156,6 +7561,7 @@
       "tags": [
         "Dance"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6164,7 +7570,6 @@
           "uploadDate": "2019-12-21"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Dance",
@@ -6219,6 +7624,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6227,7 +7633,6 @@
           "uploadDate": "2019-10-12"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6282,6 +7687,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6290,7 +7696,6 @@
           "uploadDate": "2019-09-15"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6350,6 +7755,7 @@
         "J-Pop",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6358,7 +7764,6 @@
           "uploadDate": "2019-08-17"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "J-Pop",
@@ -6413,6 +7818,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6421,7 +7827,6 @@
           "uploadDate": "2019-06-19"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6476,6 +7881,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6484,7 +7890,6 @@
           "uploadDate": "2019-03-01"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6539,6 +7944,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6547,7 +7953,6 @@
           "uploadDate": "2019-04-09"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6604,6 +8009,7 @@
         "House",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6612,7 +8018,6 @@
           "uploadDate": "2019-05-18"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "House",
@@ -6667,6 +8072,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6675,7 +8081,6 @@
           "uploadDate": "2017-12-12"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6730,6 +8135,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6738,7 +8144,6 @@
           "uploadDate": "2018-07-09"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6793,6 +8198,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6801,7 +8207,6 @@
           "uploadDate": "2017-11-19"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6858,6 +8263,7 @@
         "Electronica",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6866,7 +8272,6 @@
           "uploadDate": "2019-01-30"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6921,6 +8326,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6929,7 +8335,6 @@
           "uploadDate": "2018-03-08"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -6986,6 +8391,7 @@
         "Electronica",
         "collaboration"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -6994,7 +8400,6 @@
           "uploadDate": "2018-08-08"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7049,6 +8454,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7057,7 +8463,6 @@
           "uploadDate": "2018-05-07"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7112,6 +8517,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7120,7 +8526,6 @@
           "uploadDate": "2018-01-03"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7175,6 +8580,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7183,7 +8589,6 @@
           "uploadDate": "2018-03-31"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7248,6 +8653,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7256,7 +8662,6 @@
           "uploadDate": "2017-11-01"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7311,6 +8716,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7319,7 +8725,6 @@
           "uploadDate": "2018-04-16"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7374,6 +8779,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7382,7 +8788,6 @@
           "uploadDate": "2018-02-06"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7437,6 +8842,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7445,7 +8851,6 @@
           "uploadDate": "2018-03-02"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7500,6 +8905,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7508,7 +8914,6 @@
           "uploadDate": "2018-01-14"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7563,6 +8968,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7571,7 +8977,6 @@
           "uploadDate": "2018-09-08"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7626,6 +9031,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7634,7 +9040,6 @@
           "uploadDate": "2017-12-12"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7690,6 +9095,7 @@
       "tags": [
         "J-Pop"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7698,7 +9104,6 @@
           "uploadDate": "2019-01-22"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "J-Pop",
@@ -7753,6 +9158,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7761,7 +9167,6 @@
           "uploadDate": "2018-12-02"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7816,6 +9221,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7824,7 +9230,6 @@
           "uploadDate": "2018-10-31"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -7879,6 +9284,7 @@
       "tags": [
         "Electronica"
       ],
+      "sourceName": "Apple Music",
       "externalSources": [
         {
           "name": "SoundCloud",
@@ -7887,7 +9293,6 @@
           "uploadDate": "2018-10-12"
         }
       ],
-      "sourceName": "Apple Music",
       "genreDetails": [
         {
           "genre": "Electronica",
@@ -8124,6 +9529,40 @@
       "genreDetails": []
     },
     {
+      "id": "youtube-2YrkJsR83S8",
+      "title": "SOS (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 220000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/2YrkJsR83S8/hqdefault.jpg",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=2YrkJsR83S8",
+      "aliases": [
+        "Save Our Sound (Instrumental)",
+        "[Instrumental] Nanatsukaze - Save Our Sound",
+        "SOS (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "2YrkJsR83S8",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
+      "genreDetails": []
+    },
+    {
       "id": "youtube-0F-3yIq0sfM",
       "title": "Space Walk (PIKASONIC Remix)",
       "artist": "Honkai: Star Rail",
@@ -8146,6 +9585,278 @@
       ],
       "releases": [],
       "sourceTrackId": "0F-3yIq0sfM",
+      "genreDetails": []
+    },
+    {
+      "id": "youtube-j_ohYSNBqZA",
+      "title": "あのね (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 199000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/j_ohYSNBqZA/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgVSh_MA8=&rs=AOn4CLARrOiZmijAn8XHnEwgkqH7BJrqCA",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=j_ohYSNBqZA",
+      "aliases": [
+        "Connect the World (Instrumental)",
+        "[Instrumental] Nanatsukaze - Connect the World",
+        "あのね (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "j_ohYSNBqZA",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
+      "genreDetails": []
+    },
+    {
+      "id": "youtube-tMUI0UcbSvg",
+      "title": "アリア (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 226000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/tMUI0UcbSvg/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDwgXChyMA8=&rs=AOn4CLD-sGZeiYJ-W3rQy_T-5G0fN_yHng",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=tMUI0UcbSvg",
+      "aliases": [
+        "Aria (Instrumental)",
+        "[Instrumental] Nanatsukaze - Aria",
+        "アリア (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "tMUI0UcbSvg",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
+      "genreDetails": []
+    },
+    {
+      "id": "youtube-MHZxhVJXhwo",
+      "title": "ららら (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 148000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/MHZxhVJXhwo/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDcgVyh_MA8=&rs=AOn4CLBskBR1_UWgiTuQn9cCFpz_TT9V3Q",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=MHZxhVJXhwo",
+      "aliases": [
+        "Sakura rain (Instrumental)",
+        "[Instrumental] Nanatsukaze - Sakura rain",
+        "ららら (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "MHZxhVJXhwo",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
+      "genreDetails": []
+    },
+    {
+      "id": "youtube-8KkObcvlolI",
+      "title": "再生 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 161000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/8KkObcvlolI/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGB8gPCh_MA8=&rs=AOn4CLBY5BVK_zbfzbZ_dFd26-ydKFhE9A",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=8KkObcvlolI",
+      "aliases": [
+        "Replay (Instrumental)",
+        "[Instrumental] Nanatsukaze - Replay",
+        "再生 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "8KkObcvlolI",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
+      "genreDetails": []
+    },
+    {
+      "id": "youtube-4zEyJ2CgIBY",
+      "title": "四面楚歌 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 224000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/4zEyJ2CgIBY/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGEkgQihyMA8=&rs=AOn4CLBXmlCRy3IrQ-BOEa1uYHE5Qebfeg",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=4zEyJ2CgIBY",
+      "aliases": [
+        "Remedy (Instrumental)",
+        "[Instrumental] Nanatsukaze - Remedy",
+        "四面楚歌 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "4zEyJ2CgIBY",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
+      "genreDetails": []
+    },
+    {
+      "id": "youtube-6W-IBB3Gcm8",
+      "title": "春めく (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 186000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/6W-IBB3Gcm8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgWiheMA8=&rs=AOn4CLAwfH59HLz8WCJ9ELFX2ck6aQLw0A",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=6W-IBB3Gcm8",
+      "aliases": [
+        "Harumeku (Instrumental)",
+        "[Instrumental] Nanatsukaze - Harumeku",
+        "春めく (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "6W-IBB3Gcm8",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
+      "genreDetails": []
+    },
+    {
+      "id": "youtube-XB0d0BXqGp8",
+      "title": "夢重力 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 180000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/XB0d0BXqGp8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBwgPCh_MA8=&rs=AOn4CLBk5DrRL4HaliiLvS2GAVA92NEXLw",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=XB0d0BXqGp8",
+      "aliases": [
+        "Dream Gravity (Instrumental)",
+        "[Instrumental] Nanatsukaze - Dream Gravity",
+        "夢重力 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "XB0d0BXqGp8",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
+      "genreDetails": []
+    },
+    {
+      "id": "youtube-8xOtdRu2YsU",
+      "title": "朧月夜 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "album": "官方独立伴奏",
+      "releaseDate": "",
+      "durationMs": 191000,
+      "genre": "",
+      "artworkUrl": "https://i.ytimg.com/vi/8xOtdRu2YsU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBYgYyhlMA8=&rs=AOn4CLAW1FB82tJJ9954DdeDf8R073jLpA",
+      "sourceName": "YouTube",
+      "sourceUrl": "https://www.youtube.com/watch?v=8xOtdRu2YsU",
+      "aliases": [
+        "Hazy Moon Night (Instrumental)",
+        "[Instrumental] Nanatsukaze - Hazy Moon Night",
+        "朧月夜 (Instrumental)"
+      ],
+      "artistAliases": [
+        "Nanatsukaze"
+      ],
+      "albumAliases": [],
+      "stores": [],
+      "kind": "instrumental",
+      "tags": [
+        "collaboration",
+        "instrumental"
+      ],
+      "projects": [
+        "ナナツカゼ"
+      ],
+      "releases": [],
+      "sourceTrackId": "8xOtdRu2YsU",
+      "officialChannelId": "UCE8B2xQ4Y3Mwl9NduvwyFkQ",
       "genreDetails": []
     }
   ]

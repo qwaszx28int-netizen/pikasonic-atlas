@@ -1,6 +1,6 @@
 # PIKASONIC 曲目档案
 
-一个非官方、非营利的 PIKASONIC 中文歌曲资料与导听网站。目前目录整理了 **139 首作品**，合并 Apple Music 公开发行资料，并补充官方 SoundCloud、YouTube 可核对的独立作品与不同版本。这个数字是当前快照，不是“全球全部歌曲”的证明。
+一个非官方、非营利的 PIKASONIC 中文歌曲资料与导听网站。目前目录整理了 **170 首作品及不同版本**，包括ナナツカゼ（Nanatsukaze）组合的 **36 首 / 版本**与《海奏ララバイ》的主唱、伴奏版。资料合并 Apple Music 公开发行目录及官方 SoundCloud、YouTube 可核对的独立作品；数量是当前快照，不是“全球全部歌曲”的证明。
 
 [主站 / 完整版](https://pikasonic-atlas.pikasonic-atlas.workers.dev) · [静态预览](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) · [版本下载](https://github.com/qwaszx28int-netizen/pikasonic-atlas/releases/latest) · [源码仓库](https://github.com/qwaszx28int-netizen/pikasonic-atlas) · [问题与建议](https://github.com/qwaszx28int-netizen/pikasonic-atlas/issues)
 
@@ -60,7 +60,7 @@ Cloudflare [完整版主站](https://pikasonic-atlas.pikasonic-atlas.workers.dev
 
 ## 目录覆盖与更新
 
-本项目以可公开查询的音乐目录为基础，尽可能收录 PIKASONIC 的作品。目录可能受到平台地区、艺人归属、版本差异、下架情况和接口限制影响；不能据此承诺覆盖世界范围的全部作品。合作曲、别名发行、重混、不同地区发行和未在数据来源上线的作品，尤其需要人工核查。
+本项目以可公开查询的音乐目录为基础，整理 PIKASONIC 的个人、合作与制作作品，并纳入经官方身份核实的ナナツカゼ（Nanatsukaze）组合公开发行目录。组合歌曲保留平台原署名，原唱与伴奏版分别收录。目录可能受到平台地区、版本差异、下架情况和接口限制影响；不能据此承诺覆盖世界范围的全部作品。
 
 补充独立上传元数据，并与现有 Apple 目录合并：
 
@@ -70,6 +70,10 @@ npm run sync:catalog -- --merge-independent
 node scripts/sync-independent.mjs --youtube-from-snapshot
 npm run sync:netease
 ```
+
+组合官方视频清单已保存于仓库；只重建组合补遗时，可先运行 `npm run sync:independent -- --nanatsukaze-from-snapshot`，再依次执行目录合并、YouTube 映射刷新和网易云核对命令。
+
+只需补充两个已核实艺人页的网易云直达链接时，可运行 `npm run sync:netease -- --artists-only`。此命令保留已有精确匹配，按曲名、署名和时长补充新记录；热门排序始终使用 PIKASONIC 艺人页，未把组合的排名混入同一榜单。额外核实的组合频道与官方 Topic 视频存于 `public/data/official-videos.json`，重新生成 YouTube 映射时会一并读取。
 
 如需完整刷新 Apple 目录，先执行 `npm run sync:catalog`，再执行上述补充与合并步骤。`sync:independent` 同时整理官方 YouTube 信息与链接映射；`sync:netease` 更新网易云精确匹配与艺人热歌列表快照，未匹配项继续使用明确标注的搜索链接。热歌排序是该次平台列表的顺序，不是实时播放量或本站票数。
 

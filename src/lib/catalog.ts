@@ -7,6 +7,7 @@ export interface Track {
   durationMs: number
   genre: string
   genreDetails?: { genre: string; sourceName: string; sourceUrl: string }[]
+  creditSources?: { name: string; url: string; description: string }[]
   artworkUrl: string
   sourceUrl: string
   sourceName?: string
@@ -29,7 +30,7 @@ export interface Catalog {
   tracks: Track[]
 }
 
-export type Category = 'all' | 'solo' | 'collab' | 'remix'
+export type Category = 'all' | 'solo' | 'collab' | 'remix' | 'nanatsukaze'
 export type SortOrder = 'netease' | 'featured' | 'newest' | 'oldest' | 'title'
 
 export function normalize(value: string): string {
@@ -47,6 +48,10 @@ export function isCollaboration(track: Track): boolean {
     /\b(?:feat|ft)\.?\s/i.test(track.title) ||
     track.tags?.includes('collaboration') === true
   )
+}
+
+export function isNanatsukaze(track: Track): boolean {
+  return /ナナツカゼ|\bnanatsukaze\b/i.test(track.artist)
 }
 
 export function isRemix(track: Track): boolean {
@@ -111,6 +116,7 @@ export function filterTracks(
         (!options.favorites || options.favorites.has(String(track.id))) &&
         (options.category !== 'solo' || !isCollaboration(track)) &&
         (options.category !== 'collab' || isCollaboration(track)) &&
+        (options.category !== 'nanatsukaze' || isNanatsukaze(track)) &&
         (options.category !== 'remix' || isRemix(track))
       )
     })

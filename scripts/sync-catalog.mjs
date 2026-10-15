@@ -7,9 +7,19 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
+import { preserveTrackIdentities } from './catalog-identity.mjs'
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url))
 const OUTPUT = path.join(ROOT, 'public', 'data', 'catalog.json')
+const GROUP_ARTIST_ID = 1685618009
+const SCOPE =
+  'PIKASONIC 个人署名发行、合作曲和混音，ナナツカゼ组合的公开发行目录，以及有公开制作署名可核对的作品；补充官方 SoundCloud 与 YouTube 的独立作品及不同版本。'
+let previousCatalog = null
+try {
+  previousCatalog = JSON.parse(await readFile(OUTPUT, 'utf8'))
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error
+}
 if (process.argv.includes('--merge-independent')) {
   const catalog = JSON.parse(await readFile(OUTPUT, 'utf8'))
   const supplemental = JSON.parse(
@@ -19,21 +29,26 @@ if (process.argv.includes('--merge-independent')) {
     catalog.tracks.filter((track) => track.appleTrackId),
     supplemental,
   )
-  catalog.tracks = merged.tracks
+  const reconciled = preserveTrackIdentities(merged.tracks, catalog.tracks)
+  catalog.tracks = reconciled.tracks
   catalog.updatedAt = new Date().toISOString()
   Object.assign(catalog.stats, {
-    trackCount: merged.tracks.length,
+    trackCount: catalog.tracks.length,
+    nanatsukazeTrackCount: catalog.tracks.filter((track) => track.projects?.includes('ナナツカゼ'))
+      .length,
     independentAdded: merged.added,
     independentMatched: merged.matched,
-    earliestRelease: merged.tracks.filter((track) => track.releaseDate).at(-1)?.releaseDate,
-    latestRelease: merged.tracks[0]?.releaseDate,
+    earliestRelease: catalog.tracks.filter((track) => track.releaseDate).at(-1)?.releaseDate,
+    latestRelease: catalog.tracks[0]?.releaseDate,
   })
   catalog.coverage.independentUpdatedAt = supplemental.updatedAt
   catalog.coverage.independentProblems = supplemental.problems
-  catalog.coverage.scope =
-    'Apple 公开署名发行、合作曲和混音版本，并补充官方 SoundCloud 与 YouTube 可核对的独立作品及不同版本。'
+  catalog.coverage.scope = SCOPE
+  catalog.coverage.retainedTrackIds = reconciled.retainedTrackIds
   catalog.sources = [
-    ...catalog.sources.filter((source) => !['SoundCloud', 'YouTube'].includes(source.name)),
+    ...catalog.sources.filter(
+      (source) => source.name !== 'SoundCloud' && !source.name.startsWith('YouTube'),
+    ),
     ...supplemental.sources.map((source) => ({
       name: source.name,
       url: source.url,
@@ -50,6 +65,20 @@ const ARTIST_ID = 1450218337
 // Apple lists the Chinese-language collaboration on a separate namesake artist
 // page. Keep that identity explicit rather than silently treating it as the main ID.
 const ALTERNATE_ARTIST_ID = 1738111555
+// The official release is credited to the game characters on Apple. The
+// copyright holder's official release page credits PIKASONIC as composer /
+// arranger and nakotanmaru as lyricist. Keep the release artist intact.
+const CREDITED_TRACKS = new Map(
+  [6812580063, 6812580064].map((id) => [
+    id,
+    {
+      name: '学園アイドルマスター Gakuen Label / 官方制作署名',
+      url: 'https://gakuen-label.idolmaster-official.jp/discography/iik-p-jujn_u',
+      description:
+        '海奏ララバイ：官方发行页明确作詞 nakotanmaru、作曲・編曲 PIKASONIC；发行页购买链接指向 Apple 同一发行。',
+    },
+  ]),
+)
 const STORES = ['us', 'jp']
 const REQUEST_GAP_MS = Number(process.env.CATALOG_REQUEST_GAP_MS || 3100)
 const requests = []
@@ -93,8 +122,9 @@ async function query(params) {
 const observations = new Map()
 const collections = new Map()
 const artistLookupTrackIds = new Set()
+const groupTrackIds = new Set()
 
-function addResults(results, store, fromArtistLookup = false) {
+function addResults(results, store, fromArtistLookup = false, lookupArtistId) {
   for (const row of results) {
     if (row.wrapperType === 'collection') {
       const key = `${store}:${row.collectionId}`
@@ -102,24 +132,32 @@ function addResults(results, store, fromArtistLookup = false) {
     }
     if (row.wrapperType === 'track' && row.kind === 'song' && row.trackId) {
       if (fromArtistLookup) artistLookupTrackIds.add(row.trackId)
+      if (lookupArtistId === GROUP_ARTIST_ID) groupTrackIds.add(row.trackId)
       observations.set(`${store}:${row.trackId}`, { ...row, store })
     }
   }
 }
 
 for (const store of STORES) {
-  for (const id of [ARTIST_ID, ALTERNATE_ARTIST_ID]) {
-    addResults(await query({ id, entity: 'song', limit: 200, country: store }), store, true)
+  for (const id of [ARTIST_ID, ALTERNATE_ARTIST_ID, GROUP_ARTIST_ID]) {
+    addResults(await query({ id, entity: 'song', limit: 200, country: store }), store, true, id)
     addResults(await query({ id, entity: 'album', limit: 200, country: store }), store)
   }
   // Search discovers compilation appearances and remixes credited under another artist.
-  for (const term of ['PIKASONIC', 'PIKASONIC Remix']) {
+  for (const term of ['PIKASONIC', 'PIKASONIC Remix', 'ナナツカゼ', 'Nanatsukaze']) {
     addResults(await query({ term, entity: 'song', limit: 200, country: store }), store)
   }
+  addResults(
+    await query({ id: [...CREDITED_TRACKS.keys()].join(','), entity: 'song', country: store }),
+    store,
+  )
 }
 
 function isRelevant(row) {
   if (artistLookupTrackIds.has(row.trackId)) return true
+  if (CREDITED_TRACKS.has(row.trackId)) return true
+  if (row.artistId === GROUP_ARTIST_ID || /ナナツカゼ|\bnanatsukaze\b/i.test(row.artistName || ''))
+    return true
   if (/\bpikasonic\b/i.test(row.artistName || '')) return true
   // Do not accept an unrelated song merely because its title contains "PikaSonic".
   return /(?:feat\.?[^)]*\bpikasonic\b|\bpikasonic\s+(?:remix|vip))/i.test(row.trackName || '')
@@ -201,7 +239,7 @@ for (const [appleTrackId, rows] of byAppleId) {
     album: preferred.collectionName,
     releaseDate: preferred.releaseDate?.slice(0, 10) || null,
     durationMs: preferred.trackTimeMillis || 0,
-    genre: english.primaryGenreName || preferred.primaryGenreName || 'Electronic',
+    genre: english.primaryGenreName || preferred.primaryGenreName || '',
     artworkUrl: release.artworkUrl,
     sourceUrl: release.sourceUrl,
     appleCollectionId: preferred.collectionId,
@@ -210,6 +248,17 @@ for (const [appleTrackId, rows] of byAppleId) {
     albumAliases: [...new Set(rows.map((row) => row.collectionName))],
     stores: [...new Set(rows.map((row) => row.store))],
     alternateArtistPage: rows.some((row) => row.artistId === ALTERNATE_ARTIST_ID),
+    ...(groupTrackIds.has(appleTrackId) ||
+    rows.some(
+      (row) =>
+        row.artistId === GROUP_ARTIST_ID ||
+        /ナナツカゼ|\bnanatsukaze\b/i.test(row.artistName || ''),
+    )
+      ? { projects: ['ナナツカゼ'] }
+      : {}),
+    ...(CREDITED_TRACKS.has(appleTrackId)
+      ? { creditSources: [CREDITED_TRACKS.get(appleTrackId)] }
+      : {}),
     releases: [release],
     comparisonTitle: normalize(english.trackName),
     comparisonArtist: artistKey(english.artistName),
@@ -233,8 +282,9 @@ for (const record of records) {
   )
   if (duplicate) {
     duplicate.releases.push(...record.releases)
-    for (const key of ['aliases', 'artistAliases', 'albumAliases', 'stores'])
-      duplicate[key] = [...new Set([...duplicate[key], ...record[key]])]
+    for (const key of ['aliases', 'artistAliases', 'albumAliases', 'stores', 'projects'])
+      if (duplicate[key] || record[key])
+        duplicate[key] = [...new Set([...(duplicate[key] || []), ...(record[key] || [])])]
   } else tracks.push(record)
 }
 
@@ -250,7 +300,16 @@ for (const track of tracks) {
         : 'original'
   track.tags = [track.genre]
   if (track.kind !== 'original') track.tags.push(track.kind)
-  if (/&|、|,/.test(track.artist) || /feat\./i.test(track.title)) track.tags.push('collaboration')
+  if (
+    /&|、|,/.test(track.artist) ||
+    /feat\./i.test(track.title) ||
+    track.projects?.includes('ナナツカゼ')
+  )
+    track.tags.push('collaboration')
+  if (track.creditSources)
+    track.artistAliases = [
+      ...new Set([...track.artistAliases, 'PIKASONIC', 'なこたんまる', 'nakotanmaru']),
+    ]
   delete track.comparisonTitle
   delete track.comparisonArtist
 }
@@ -362,7 +421,8 @@ function mergeIndependent(baseTracks, snapshot) {
   return { tracks: result, added, matched }
 }
 const independentMerge = mergeIndependent(tracks, independentSnapshot)
-tracks.splice(0, tracks.length, ...independentMerge.tracks)
+const reconciled = preserveTrackIdentities(independentMerge.tracks, previousCatalog?.tracks)
+tracks.splice(0, tracks.length, ...reconciled.tracks)
 const independentAdded = independentMerge.added
 const independentMatched = independentMerge.matched
 
@@ -381,6 +441,13 @@ const catalog = {
     appleArtistId: ARTIST_ID,
     appleArtistUrl: `https://music.apple.com/jp/artist/pikasonic/${ARTIST_ID}`,
     alternateAppleArtistId: ALTERNATE_ARTIST_ID,
+    relatedProjects: [
+      {
+        name: 'ナナツカゼ',
+        appleArtistId: GROUP_ARTIST_ID,
+        appleArtistUrl: `https://music.apple.com/jp/artist/${encodeURIComponent('ナナツカゼ')}/${GROUP_ARTIST_ID}`,
+      },
+    ],
     musicBrainzId: '81ce14d7-f806-4015-ab6c-84d081991c3f',
     links: {
       youtube: 'https://www.youtube.com/channel/UC2ne9XqtBWKJKLfIAKtmjAg',
@@ -394,6 +461,21 @@ const catalog = {
       name: 'Apple iTunes Search API / Apple Music',
       url: `https://music.apple.com/jp/artist/pikasonic/${ARTIST_ID}`,
       description: '曲名、艺人、发行日期、时长、流派、封面 URL 与发行页链接。',
+    },
+    {
+      name: 'Apple Music / ナナツカゼ',
+      url: `https://music.apple.com/jp/artist/${encodeURIComponent('ナナツカゼ')}/${GROUP_ARTIST_ID}`,
+      description:
+        '组合独立艺人目录：美区、日区公开曲目和全部发现的发行，保持组合署名，不冒充个人发行。',
+    },
+    {
+      name: 'PIKASONIC official / ナナツカゼ identity',
+      url: 'https://www.youtube.com/watch?v=3uXtK0e8hlw',
+      description:
+        'PIKASONIC 官方《春めく》预告说明ナナツカゼ由 PIKASONIC × nakotanmaru 组成；该预告仅用于核对组合身份，不计作歌曲版本。',
+    },
+    {
+      ...CREDITED_TRACKS.values().next().value,
     },
     {
       name: 'iTunes Search API documentation',
@@ -415,25 +497,38 @@ const catalog = {
     regions: STORES,
     approach:
       '合并 Apple 美区、日区艺人曲目与发行目录，检索合作曲和署名混音，再展开全部发现的发行曲目。相同发行 ID 的多语言曲名作为搜索别名；同名、同署名且时长相近的重复发行合并。',
-    scope:
-      'Apple 公开署名发行、合作曲和混音版本，并补充官方 SoundCloud 与 YouTube 可核对的独立作品及不同版本。',
+    scope: SCOPE,
     limitations: [
       '这是持续维护的公开发行目录，不能证明已包含艺人的每一首作品。仅在 YouTube、SoundCloud、Bandcamp、游戏内发布、已下架或未被 Apple 收录的作品可能缺失。',
       'Apple 各地区可用性、曲名语言、发行日期与署名可能不同；日期为平台元数据，重发行日期不一定等于作品最初公开日期。',
       '同名艺人页 1738111555 的“今天不是明天 (feat. 兰音Reine)”独立标记 alternateArtistPage，保留平台来源供核验。',
-      '不自动把未明确署名 PIKASONIC 的团体曲目归为个人作品；例如仅署名“ナナツカゼ”的作品需另行核对制作人名单。',
+      'ナナツカゼ作为独立组合目录收录，保留平台上的组合署名；不把团体发行改写成 PIKASONIC 个人发行。',
+      '海奏ララバイ按 Apple 的初星学園、秦谷美鈴署名展示，PIKASONIC 与 nakotanmaru 的制作参与另以官方发行说明留证；伴奏与主唱版本分开。',
       '目录和外部封面链接不代表取得音乐或美术版权；非营利声明本身不构成授权。',
     ],
     failedRequests: failures,
     independentUpdatedAt: independentSnapshot?.updatedAt || null,
     independentProblems: independentSnapshot?.problems || [],
+    relatedProjects: [
+      {
+        name: 'ナナツカゼ',
+        appleArtistId: GROUP_ARTIST_ID,
+        artistLookupTracks: groupTrackIds.size,
+      },
+    ],
+    retainedTrackIds: reconciled.retainedTrackIds,
   },
   stats: {
     trackCount: tracks.length,
     releaseCount: new Set(
       tracks.flatMap((track) => track.releases.map((release) => release.appleCollectionId)),
     ).size,
-    appleTrackCount: byAppleId.size,
+    appleTrackCount: new Set(
+      tracks
+        .flatMap((track) => (track.releases || []).map((release) => release.appleTrackId))
+        .filter(Boolean),
+    ).size,
+    nanatsukazeTrackCount: tracks.filter((track) => track.projects?.includes('ナナツカゼ')).length,
     independentAdded,
     independentMatched,
     requestCount: requests.length,

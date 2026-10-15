@@ -65,6 +65,17 @@ test('catalogue aliases and compatible feature suffixes still match exact record
   )
 })
 
+test('same-title group songs cannot cross-match unrelated artist recordings', () => {
+  const group = { ...track, artist: 'ナナツカゼ' }
+  const unrelated = { ...song(1, 'Infinity'), artists: [{ id: 999, name: 'Another Artist' }] }
+  const verified = { ...song(2, 'Infinity'), artists: [{ id: 56672609, name: 'ナナツカゼ' }] }
+  const pika = { ...song(3, 'Infinity'), artists: [{ id: 13499634, name: 'PIKASONIC' }] }
+  assert.equal(findNeteaseMatch(group, pool(unrelated)), undefined)
+  assert.equal(findNeteaseMatch(group, pool(pika)), undefined)
+  assert.equal(findNeteaseMatch(group, pool(unrelated, verified, pika)).song.id, 2)
+  assert.equal(findNeteaseMatch({ ...track, artist: 'PIKASONIC' }, pool(verified)), undefined)
+})
+
 test('rank lookup handles older snapshots and uses one-based platform positions', () => {
   assert.deepEqual(neteaseRanks(), {})
   assert.deepEqual(neteaseRanks({ matches: {} }), {})

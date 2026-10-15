@@ -53,6 +53,24 @@ test('unmatched songs use explicitly different search destinations without inven
   )
 })
 
+test('group-only releases search under the credited group on both platforms', () => {
+  const track = { id: 'group-song', title: '空耳', artist: 'ナナツカゼ', sourceUrl: '' }
+  assert.ok(decodeURIComponent(neteaseLink(track).url).includes('空耳 ナナツカゼ'))
+  assert.equal(new URL(youtubeLink(track).url).searchParams.get('search_query'), 'ナナツカゼ 空耳')
+})
+
+test('reported missing releases link to the verified recordings on each platform', () => {
+  const sea = catalog.tracks.find((track) => track.appleTrackId === 6812580063)
+  const seaInstrumental = catalog.tracks.find((track) => track.appleTrackId === 6812580064)
+  const soramimi = catalog.tracks.find((track) => track.appleTrackId === 6795407457)
+  assert.ok(sea && seaInstrumental && soramimi)
+  assert.equal(neteaseLink(sea, netease).url, 'https://music.163.com/#/song?id=3436810769')
+  assert.equal(neteaseLink(soramimi, netease).url, 'https://music.163.com/#/song?id=3421267112')
+  assert.equal(youtubeLink(sea, youtube).url, 'https://www.youtube.com/watch?v=Mk1-WoEmhXs')
+  assert.notEqual(youtubeLink(seaInstrumental, youtube).url, youtubeLink(sea, youtube).url)
+  assert.notEqual(neteaseLink(seaInstrumental, netease).url, neteaseLink(sea, netease).url)
+})
+
 test('granular artist-supplied style keeps attribution and unknown genres stay explicit', () => {
   const basic = { genre: 'Electronic', sourceUrl: 'https://music.apple.com/test' }
   const detailed = {

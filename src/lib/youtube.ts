@@ -1,4 +1,5 @@
 import type { Track } from './catalog'
+import { channelArtist } from './channel-artist.ts'
 export interface YoutubeMatch {
   id: string
   title: string
@@ -23,7 +24,7 @@ export function youtubeLink(
   if (match && /^https:\/\/(?:www\.)?youtube\.com\/watch\?v=[\w-]+$/.test(match.url))
     return { url: match.url, direct: true }
   return {
-    url: `https://www.youtube.com/results?search_query=${encodeURIComponent(`PIKASONIC ${track.title}`)}`,
+    url: `https://www.youtube.com/results?search_query=${encodeURIComponent(`${channelArtist(track)} ${track.title}`)}`,
     direct: false,
   }
 }

@@ -1,4 +1,5 @@
 import type { Track } from './catalog'
+import { channelArtist } from './channel-artist.ts'
 export interface NeteaseMatch {
   id: number
   title: string
@@ -53,7 +54,7 @@ export function neteaseLink(
   if (match && /^https:\/\/music\.163\.com\/#\/song\?id=\d+$/.test(match.url))
     return { url: match.url, direct: true }
   return {
-    url: `https://music.163.com/#/search/m/?s=${encodeURIComponent(`${track.title} PIKASONIC`)}&type=1`,
+    url: `https://music.163.com/#/search/m/?s=${encodeURIComponent(`${track.title} ${channelArtist(track)}`)}&type=1`,
     direct: false,
   }
 }

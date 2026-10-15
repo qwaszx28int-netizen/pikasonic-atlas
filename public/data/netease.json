@@ -1,9 +1,21 @@
 {
-  "updatedAt": "2026-10-15T03:53:09.931Z",
+  "updatedAt": "2026-10-15T10:13:33.413Z",
   "artistId": 13499634,
   "artistUrl": "https://music.163.com/#/artist?id=13499634",
-  "source": "NetEase public song search metadata",
-  "hotUpdatedAt": "2026-10-15T03:53:00.654Z",
+  "verifiedArtists": [
+    {
+      "id": 13499634,
+      "name": "PIKASONIC",
+      "url": "https://music.163.com/api/artist/13499634"
+    },
+    {
+      "id": 56672609,
+      "name": "ナナツカゼ",
+      "url": "https://music.163.com/api/artist/56672609"
+    }
+  ],
+  "source": "Verified public artist metadata + retained previously verified matches",
+  "hotUpdatedAt": "2026-10-15T10:13:33.314Z",
   "hotSource": {
     "name": "NetEase public artist hotSongs order",
     "url": "https://music.163.com/api/artist/13499634",
@@ -512,6 +524,7 @@
     }
   ],
   "hotRanks": {
+    "apple-6812580063": 6,
     "apple-1885348150": 27,
     "apple-1815653333": 43,
     "apple-1813974742": 15,
@@ -568,6 +581,7 @@
     "apple-1734972655",
     "apple-1685653199",
     "apple-1657832642",
+    "apple-6812580063",
     "apple-1643679008",
     "apple-1597879226",
     "apple-1792410903",
@@ -613,10 +627,31 @@
     "apple-1524077694",
     "apple-1642913606"
   ],
-  "matching": "Exact title or catalog aliases + duration within 3.5 seconds; compatible featured-vocal suffixes may be omitted. Remix/VIP/Mixed/instrumental/version markers remain intact. Verified hot-list IDs take priority over duplicate reissues. No fuzzy guesses.",
-  "matchedCount": 125,
-  "unmatchedCount": 14,
+  "matching": "Verified credited artist + exact title or catalog aliases + duration within 3.5 seconds; compatible featured-vocal suffixes may be omitted. Remix/VIP/Mixed/instrumental/version markers remain intact. PIKASONIC hot-list IDs take priority over duplicate reissues. Group hot-list positions are never mixed into PIKASONIC rankings. No fuzzy guesses.",
+  "matchedCount": 146,
+  "unmatchedCount": 24,
   "matches": {
+    "apple-6812580063": {
+      "id": 3436810769,
+      "title": "海奏ララバイ",
+      "artist": "初星学園 / PIKASONIC / 秦谷美鈴",
+      "url": "https://music.163.com/#/song?id=3436810769",
+      "matchType": "title-and-duration"
+    },
+    "apple-6795407457": {
+      "id": 3421267112,
+      "title": "空耳",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3421267112",
+      "matchType": "title-and-duration"
+    },
+    "apple-6795407461": {
+      "id": 3421267113,
+      "title": "空耳 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3421267113",
+      "matchType": "title-and-duration"
+    },
     "apple-6801878754": {
       "id": 3421979478,
       "title": "Alone",
@@ -708,6 +743,34 @@
       "url": "https://music.163.com/#/song?id=3421979476",
       "matchType": "title-and-duration"
     },
+    "apple-6790694376": {
+      "id": 3409596145,
+      "title": "メシア",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3409596145",
+      "matchType": "title-and-duration"
+    },
+    "apple-6790694377": {
+      "id": 3409597125,
+      "title": "メシア (Instrumental)",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3409597125",
+      "matchType": "title-and-duration"
+    },
+    "apple-6764007034": {
+      "id": 3383668637,
+      "title": "五月猫",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3383668637",
+      "matchType": "title-and-duration"
+    },
+    "apple-6764007035": {
+      "id": 3383668892,
+      "title": "五月猫 (Instrumental)",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3383668892",
+      "matchType": "title-and-duration"
+    },
     "apple-6764274676": {
       "id": 3375737638,
       "title": "Are You Still There (PIKASONIC Remix)",
@@ -715,11 +778,60 @@
       "url": "https://music.163.com/#/song?id=3375737638",
       "matchType": "title-and-duration"
     },
+    "apple-1887480436": {
+      "id": 3363002263,
+      "title": "青さは止んだ",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3363002263",
+      "matchType": "title-and-duration"
+    },
+    "apple-1887480437": {
+      "id": 3363001374,
+      "title": "青さは止んだ (Instrumental)",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3363001374",
+      "matchType": "title-and-duration"
+    },
     "apple-1885348150": {
       "id": 3359491990,
       "title": "Reflect",
       "artist": "PIKASONIC / RoaNn",
       "url": "https://music.163.com/#/song?id=3359491990",
+      "matchType": "title-and-duration"
+    },
+    "apple-1870778908": {
+      "id": 3343242821,
+      "title": "四面楚歌",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3343242821",
+      "matchType": "title-and-duration"
+    },
+    "apple-1860821681": {
+      "id": 3327968863,
+      "title": "あのね",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3327968863",
+      "matchType": "title-and-duration"
+    },
+    "apple-1851187199": {
+      "id": 3315282629,
+      "title": "真空都市",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=3315282629",
+      "matchType": "title-and-duration"
+    },
+    "apple-1832904320": {
+      "id": 2735845323,
+      "title": "SOS",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=2735845323",
+      "matchType": "title-and-duration"
+    },
+    "apple-1819934506": {
+      "id": 2714498721,
+      "title": "アリア",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=2714498721",
       "matchType": "title-and-duration"
     },
     "apple-1815653333": {
@@ -736,6 +848,13 @@
       "url": "https://music.163.com/#/song?id=2703979502",
       "matchType": "title-and-duration"
     },
+    "apple-1803336625": {
+      "id": 2686605364,
+      "title": "ららら",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=2686605364",
+      "matchType": "title-and-duration"
+    },
     "apple-1799885372": {
       "id": 2681311115,
       "title": "My Place",
@@ -743,11 +862,25 @@
       "url": "https://music.163.com/#/song?id=2681311115",
       "matchType": "title-and-duration"
     },
+    "apple-1791916590": {
+      "id": 2668305074,
+      "title": "僕らのアイデンティティ",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=2668305074",
+      "matchType": "title-and-duration"
+    },
     "apple-1791261842": {
       "id": 2667221984,
       "title": "サンダーソニア",
       "artist": "PIKASONIC / iMeiden / 小花依ある",
       "url": "https://music.163.com/#/song?id=2667221984",
+      "matchType": "title-and-duration"
+    },
+    "apple-1785164254": {
+      "id": 2656233149,
+      "title": "七ツ風",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=2656233149",
       "matchType": "title-and-duration"
     },
     "apple-1782803179": {
@@ -771,11 +904,39 @@
       "url": "https://music.163.com/#/song?id=2644999127",
       "matchType": "title-and-duration"
     },
+    "apple-1774674078": {
+      "id": 2637737556,
+      "title": "空飛ぶ猫",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=2637737556",
+      "matchType": "title-and-duration"
+    },
+    "apple-1768495251": {
+      "id": 2627128854,
+      "title": "機械生命体",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=2627128854",
+      "matchType": "title-and-duration"
+    },
+    "apple-1761025462": {
+      "id": 2614276904,
+      "title": "夏が終わる",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=2614276904",
+      "matchType": "title-and-duration"
+    },
     "apple-1757492944": {
       "id": 2607970502,
       "title": "Factory",
       "artist": "PIKASONIC",
       "url": "https://music.163.com/#/song?id=2607970502",
+      "matchType": "title-and-duration"
+    },
+    "apple-1754755251": {
+      "id": 2603517794,
+      "title": "言の針",
+      "artist": "ナナツカゼ",
+      "url": "https://music.163.com/#/song?id=2603517794",
       "matchType": "title-and-duration"
     },
     "apple-1746004147": {

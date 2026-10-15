@@ -70,6 +70,19 @@ test('empty queries preserve the available catalogue', () => {
   assert.deepEqual(filterTracks([], { query: 'PIKASONIC' }), [])
 })
 
+test('group filter includes credited group releases without including its separate production work', () => {
+  const songs = [
+    track({ id: 'group', artist: 'ナナツカゼ' }),
+    track({ id: 'collaboration', artist: 'Nanatsukaze, PIKASONIC & nakotanmaru' }),
+    track({ id: 'production', artist: '初星学園 & 秦谷美鈴', artistAliases: ['PIKASONIC'] }),
+    track({ id: 'solo' }),
+  ]
+  assert.deepEqual(
+    new Set(ids(filterTracks(songs, { category: 'nanatsukaze' }))),
+    new Set(['group', 'collaboration']),
+  )
+})
+
 test('collaboration classification recognizes platform separators and featured credits', () => {
   for (const artist of [
     'PIKASONIC & RoaNn',

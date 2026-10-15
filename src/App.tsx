@@ -790,6 +790,7 @@ export default function App() {
                     {(
                       [
                         { id: 'all', label: '全部作品' },
+                        { id: 'nanatsukaze', label: 'ナナツカゼ' },
                         { id: 'solo', label: '个人作品' },
                         { id: 'collab', label: '合作作品' },
                         { id: 'remix', label: 'Remix' },
@@ -1262,6 +1263,14 @@ function TrackDetail({
           <div>
             <h3>认识这首作品</h3>
             <p>{guide.intro}</p>
+            {track.creditSources?.map((source) => (
+              <p key={source.url}>
+                {source.description}{' '}
+                <External href={source.url}>
+                  查看官方制作署名 <ArrowUpRight size={12} />
+                </External>
+              </p>
+            ))}
             <div className="genre-explainer">
               <span>{genreLabel(track)}</span>
               <p>{genreDescription(track)}</p>
@@ -1302,7 +1311,7 @@ function TrackDetail({
         <div className="editorial-notice">
           <BookOpen size={16} />
           <p>
-            发行信息来自公开目录；导听为本站编辑提供的开放式阅读建议，不代表艺人的创作自述。暂无经核实的逐曲制作背景或乐理分析。
+            发行信息来自公开目录；导听为本站编辑提供的开放式阅读建议，不代表艺人的创作自述。制作信息以逐曲标注的来源为准。
           </p>
         </div>
         <div className="detail-vote-box">
@@ -1459,7 +1468,8 @@ function AboutContent({
         </h2>
         <p>
           目前整理了 <strong>{catalog?.tracks.length ?? '—'} 首作品</strong>
-          ，覆盖公开目录可查询到的个人发行与合作作品。每首歌曲均提供发行资料、资料解读与开放式聆听问题。
+          ，包括 PIKASONIC
+          个人与合作发行、ナナツカゼ组合的公开发行目录，以及有来源可核对的制作作品。组合歌曲保留原署名；每首提供发行资料、资料解读与开放式聆听问题。
         </p>
         <p>
           本目录来自公开音乐平台，可能受地区上架、下架、署名方式与平台收录范围影响。暂不声称已覆盖全球全部作品；未上架的早期作品、部分重混和其他平台独占作品可能缺失。
