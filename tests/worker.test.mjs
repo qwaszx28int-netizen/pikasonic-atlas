@@ -88,6 +88,9 @@ test(
           persistence,
           '--port',
           String(port),
+          // Let the OS isolate DevTools listeners across concurrent runtimes.
+          '--inspector-port',
+          '0',
           '--ip',
           '127.0.0.1',
           '--show-interactive-dev-session=false',
