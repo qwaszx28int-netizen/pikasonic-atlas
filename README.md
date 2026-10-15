@@ -2,7 +2,7 @@
 
 一个非官方、非营利的 PIKASONIC 中文歌曲资料与导听网站。目前目录整理了 **139 首作品**，合并 Apple Music 公开发行资料，并补充官方 SoundCloud、YouTube 可核对的独立作品与不同版本。这个数字是当前快照，不是“全球全部歌曲”的证明。
 
-[在线预览](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) · [版本下载](https://github.com/qwaszx28int-netizen/pikasonic-atlas/releases/latest) · [源码仓库](https://github.com/qwaszx28int-netizen/pikasonic-atlas) · [问题与建议](https://github.com/qwaszx28int-netizen/pikasonic-atlas/issues)
+[主站 / 完整版](https://pikasonic-atlas.pikasonic-atlas.workers.dev) · [静态预览](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) · [版本下载](https://github.com/qwaszx28int-netizen/pikasonic-atlas/releases/latest) · [源码仓库](https://github.com/qwaszx28int-netizen/pikasonic-atlas) · [问题与建议](https://github.com/qwaszx28int-netizen/pikasonic-atlas/issues)
 
 > 本项目与 PIKASONIC、唱片公司及音乐平台不存在官方关联。“非营利”声明不构成版权许可，也不能保证免除版权责任。代码采用 MIT 许可；歌曲、封面、艺术家名称及相关商标等权利仍归各自权利人所有。
 
@@ -18,10 +18,10 @@
 - 每首提供网易云音乐与 YouTube 入口：已核对的记录直接跳转，未核对的明确标为平台内搜索。
 - 按需展示来自外部来源的封面，并提供纯文字浏览选项。
 - 在当前浏览器收藏曲目，收藏信息保存于 `localStorage`。
-- 通过真实 SQLite 后端共享投票，可投票、撤票并查看 Top 10。
+- 通过真实持久化后端共享投票，可投票、撤票并查看 Top 10，支持 Cloudflare Workers + D1 或 Node.js / Docker + SQLite。
 - 支持公开目录同步、人工校正与 GitHub Actions 静态部署。
 
-热门排序、音乐历程、随机发现与分享链接的使用及数据边界见 [发现作品与音乐历程](docs/discovery-and-history.md)。网易云热歌排序来自外部目录快照，与本站 SQLite 共享投票的 Top 10 分开计算。
+热门排序、音乐历程、随机发现与分享链接的使用及数据边界见 [发现作品与音乐历程](docs/discovery-and-history.md)。网易云热歌排序来自外部目录快照，与本站共享投票的 Top 10 分开计算。
 
 ## 本地运行
 
@@ -50,9 +50,13 @@ npm start
 
 每个浏览器身份对每首歌最多一票，可以撤回；相同 API 的用户看到同一份票数，Top 10 只列有票作品。身份通过带签名的 HttpOnly Cookie 中的随机 ID 识别，**不是按真实人物去重**。清除 Cookie、更换浏览器、设备或隐私模式可能获得新身份。
 
-投票身份不收集姓名、邮箱等直接身份资料；服务会处理请求 IP 进行限频。票数、随机身份记录及签名密钥保存在 SQLite，数据库不得上传到 GitHub。完整功能需要运行 Node.js 的主机或 Docker，并为数据库配置可写持久目录；更新程序时保留数据库。
+投票身份不收集姓名、邮箱等直接身份资料；服务会处理请求 IP 进行限频。票数、随机身份记录及签名密钥保存在所选部署的持久数据库中，数据库不得上传到 GitHub。
 
-GitHub Pages 只支持静态目录与导听，不能运行 SQLite 后端或提供共享投票。没有 API 时，页面会提示投票服务不可用。完整的 Node、Docker、HTTPS、持久卷与备份配置见 [共享投票与部署](notes/voting-deployment.md)。
+Cloudflare [完整版主站](https://pikasonic-atlas.pikasonic-atlas.workers.dev) 已完成 Workers 部署和远端 D1 迁移，同源提供网站与 API。签名密钥默认自动生成并保存在 D1 的 `meta` 表中，也可设置 `VISITOR_SECRET`。自行部署时，用户注册 Cloudflare 并通过 Wrangler 授权，无需向聊天提供密码或令牌。免费套餐有请求、数据库读写与存储额度，超额可能失败；完整命令及配额见 [Cloudflare 部署指南](docs/cloudflare-deployment.md)。
+
+原有 Node.js / Docker 部署仍支持：为 SQLite 配置可写持久目录，更新程序时保留数据库。两种部署使用各自的数据库，票数不会自动跨部署同步。
+
+现有 GitHub Pages 链接仍只支持静态目录与导听，不能运行投票后端或提供共享投票。没有 API 时，页面会提示投票服务不可用。Node、Docker、HTTPS、持久卷与备份配置见 [共享投票与部署](notes/voting-deployment.md)。
 
 ## 目录覆盖与更新
 
@@ -81,6 +85,8 @@ npm run sync:netease
 
 本仓库的 [GitHub Pages 静态预览](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) 已上线，提供目录与导听浏览。分叉仓库仍需自行启用部署：在自己的仓库 **Settings → Pages → Build and deployment** 中将 **Source** 设为 **GitHub Actions**，再运行提供的 Pages 工作流。成功后可在该设置页查看静态站点地址。Vite 基础路径为 `./`，适配项目仓库路径。
 
+原站 GitHub Pages 地址会自动显示跳转到上述完整版的入口。分叉仓库的静态预览可在构建时设置 `VITE_FULL_SITE_URL`，指向自己部署的完整版地址。这只是跳转入口，投票仍在完整版的同源 API 中进行；Worker 或 Node.js 同源完整版构建时将该变量留空。
+
 若默认分支不同，请调整工作流监听分支。所附 Actions 工作流会自动将当前 GitHub 仓库地址传入 `VITE_REPOSITORY_URL`；其他构建方式需自行配置并验证。上述步骤完成后，以实际仓库与部署状态为准。需要共享投票时，改用前述完整部署。
 
 ## 内容与版权
@@ -95,6 +101,6 @@ npm run sync:netease
 
 ## 参考与许可
 
-使用 React、Vite、TypeScript、Node.js 与 SQLite。参考 [SPlayer](https://github.com/SPlayer-Dev/SPlayer)、[Navidrome](https://github.com/navidrome/navidrome)、[MetingJS](https://github.com/metowolf/MetingJS) 的公开文档，借鉴信息组织与配置思路，未复制其代码、截图或资产。调研依据与许可差异见 [GitHub 同类项目调研](notes/github-references.md)。
+使用 React、Vite、TypeScript，支持 Cloudflare Workers / D1 与 Node.js / SQLite 两种后端部署。参考 [SPlayer](https://github.com/SPlayer-Dev/SPlayer)、[Navidrome](https://github.com/navidrome/navidrome)、[MetingJS](https://github.com/metowolf/MetingJS) 的公开文档，借鉴信息组织与配置思路，未复制其代码、截图或资产。调研依据与许可差异见 [GitHub 同类项目调研](notes/github-references.md)。
 
 项目代码采用 [MIT License](LICENSE)，许可范围见 [NOTICE.md](NOTICE.md)。该许可不授予歌曲、封面、歌词、音乐录音、名称或商标的使用权，也不覆盖第三方平台的数据条款。重新部署或分发本项目时，请自行核查所使用内容的许可与来源要求。

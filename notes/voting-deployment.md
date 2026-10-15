@@ -1,6 +1,10 @@
 # 共享投票与部署
 
-投票通过 Node.js 后端共享，保存在 SQLite 中。网站卡片从真实接口读取票数，排行榜展示得票最高的前 10 首作品；没有投票的作品不会占用排行榜位置。后端需要支持内置 `node:sqlite` 的 Node.js 22.18+ 或 Node.js 24，推荐 Node.js 24。
+共享投票支持 Cloudflare Workers + D1，以及 Node.js / Docker + SQLite 两种部署。网站卡片从真实接口读取票数，排行榜展示得票最高的前 10 首作品；没有投票的作品不会占用排行榜位置。
+
+Cloudflare [完整版主站](https://pikasonic-atlas.pikasonic-atlas.workers.dev) 已完成部署和远端 D1 迁移，同源提供页面和 API，票数持久保存在远端 D1。签名密钥默认自动生成并保存在 D1 `meta` 表中，可选 `VISITOR_SECRET`。自行部署时，用户注册并通过 Wrangler 授权，不需向聊天提供账号凭证。完整步骤、迁移命令与免费额度见 [Cloudflare 部署指南](../docs/cloudflare-deployment.md)。
+
+以下主要介绍原有 **Node.js / Docker + SQLite** 方案。它需要支持内置 `node:sqlite` 的 Node.js 22.18+ 或 Node.js 24，推荐 Node.js 24。两种部署不会自动同步数据库；从本地 SQLite 切换到 D1 时，历史票数需另行迁移。
 
 ## 本地开发
 
@@ -68,4 +72,6 @@ SQLite 适合这个项目的单实例部署。若扩展为多台主机或多实�
 
 GitHub Pages 只能提供静态文件，无法运行 Node.js 服务或持久化共享 SQLite 投票库。直接把 `dist` 发布到 Pages 可以展示歌曲目录与导听内容，**不能由 Pages 提供共享投票和排行榜**。没有可用 API 时，前端应明确显示投票服务不可用，不使用浏览器本地数据伪装共享票数。
 
-若需要完整投票功能，请使用可运行 Node.js 且有持久磁盘的主机、容器平台或 VPS，按上述方式部署页面与 API。若另用静态托管，需要在同一站点源下通过网关或反向代理接入后端；仅创建 GitHub Pages 仓库不会自动完成这项配置。
+现有 [Pages 地址](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) 是静态预览，并会自动显示上述 Cloudflare 主站的跳转入口。分叉仓库的静态构建可设置 `VITE_FULL_SITE_URL`，指向自己部署的完整版地址。该变量不提供跨域 API 连接；Node.js 或 Worker 同源完整版构建时将它留空。
+
+若需要完整投票功能，可选择 [Cloudflare Workers + D1](../docs/cloudflare-deployment.md)，或使用可运行 Node.js 且有持久磁盘的主机、容器平台或 VPS，按上述方式同源部署页面与 API。若另用静态托管，需要在同一站点源下通过网关或反向代理接入后端；仅创建 GitHub Pages 仓库不会自动完成这项配置。

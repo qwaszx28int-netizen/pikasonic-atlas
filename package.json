@@ -1,7 +1,7 @@
 {
   "name": "pikasonic-atlas",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An independent, non-commercial PIKASONIC discography and listening guide.",
   "type": "module",
   "scripts": {
@@ -12,10 +12,17 @@
     "format:check": "prettier --check .",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
+    "cf:login": "wrangler login",
+    "cf:dev": "npm run build && wrangler dev --local",
+    "cf:db:create": "wrangler d1 create pikasonic-atlas-votes",
+    "cf:db:migrate": "wrangler d1 migrations apply pikasonic-atlas-votes --remote",
+    "cf:db:migrate:local": "wrangler d1 migrations apply pikasonic-atlas-votes --local",
+    "cf:deploy": "npm run build && wrangler deploy",
     "sync:catalog": "node scripts/sync-catalog.mjs",
     "sync:independent": "node scripts/sync-independent.mjs",
     "sync:netease": "node scripts/sync-netease.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "test:worker": "node --test tests/worker.test.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
@@ -29,6 +36,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "prettier": "^3.9.10",
     "typescript": "~5.7.2",
-    "vite": "^6.0.5"
+    "vite": "^6.0.5",
+    "wrangler": "^4.151.0"
   }
 }

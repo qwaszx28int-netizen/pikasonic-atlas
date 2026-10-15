@@ -40,13 +40,15 @@
 
 ## 收藏、投票与访客数据
 
-收藏和界面偏好保存在当前浏览器的 `localStorage`。共享投票使用带签名的 HttpOnly Cookie 中的随机浏览器标识；不要求姓名、邮箱、手机号或账户。SQLite 保存随机标识、曲目投票、时间及签名密钥，不应上传到公开仓库。
+收藏和界面偏好保存在当前浏览器的 `localStorage`。共享投票使用带签名的 HttpOnly Cookie 中的随机浏览器标识；不要求姓名、邮箱、手机号或账户。随机标识、曲目投票、时间及签名密钥保存在所选部署的持久数据库中：Node.js / Docker 使用 SQLite，Cloudflare Workers 使用远端 D1。Cloudflare 方案的数据由 Cloudflare 托管，默认签名密钥在 D1 的 `meta` 表中生成并保存，也可由维护者配置 `VISITOR_SECRET`；生产数据库及密钥不应上传到公开仓库。
 
 同一浏览器身份对每首作品最多一票，可撤回。清除 Cookie、更换浏览器、设备或隐私模式可能获得新身份；该机制不是真人身份去重，排行榜和浏览器身份数不能解释为真实人数统计。
 
 API 会处理请求的网络 IP 用于限频，不把姓名等直接身份资料写入投票记录；部署者还应了解其托管服务和反向代理的访问日志设置。删除 Cookie 不会自动删除服务器上的既有投票，且可能使原身份无法撤票。迁移或重置数据库前应检查数据保留与备份安排。
 
-投票完整功能要求 Node.js / Docker 和持久数据库。GitHub Pages 只有静态浏览能力，不能独立提供共享投票；部署和数据库管理见 [共享投票与部署](notes/voting-deployment.md)。
+投票完整功能可使用同源 Cloudflare Workers + D1，或 Node.js / Docker + 持久 SQLite。Cloudflare 账号由部署者自行注册并在官方页面授权，无需向聊天提供密码、验证码或令牌。免费计划存在请求、读写及存储限制，超额可能令相关操作失败，不能承诺不限量服务。GitHub Pages 旧链接仍只有静态浏览能力，不能独立提供共享投票；完整 Cloudflare 站点地址以实际部署输出为准。
+
+部署和数据管理见 [Cloudflare 部署指南](docs/cloudflare-deployment.md) 与 [Node.js / Docker 部署说明](notes/voting-deployment.md)。不同数据库、域名和浏览器中的投票身份与收藏不会自动互相迁移。
 
 ## 投稿要求
 

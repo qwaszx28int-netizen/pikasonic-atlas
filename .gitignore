@@ -10,5 +10,8 @@ dist/
 artifacts/
 .env
 .env.*
+.wrangler/
+.dev.vars
+.dev.vars.*
 
 !.env.example

@@ -7,3 +7,14 @@ export const REPOSITORY_URL =
   configured && /^https:\/\/github\.com\/[^/]+\/[^/?#]+\/?$/.test(configured)
     ? configured.replace(/\/$/, '')
     : ''
+
+const originalPreview =
+  typeof window !== 'undefined' &&
+  window.location.origin === 'https://qwaszx28int-netizen.github.io' &&
+  /^\/pikasonic-atlas(?:\/|$)/.test(window.location.pathname)
+
+export const FULL_SITE_URL =
+  safeExternalUrl(
+    import.meta.env.VITE_FULL_SITE_URL ||
+      (originalPreview ? 'https://pikasonic-atlas.pikasonic-atlas.workers.dev' : ''),
+  ) || ''

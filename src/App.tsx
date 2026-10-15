@@ -43,7 +43,7 @@ import {
 } from './lib/catalog'
 import type { Catalog, Category, SortOrder, Track } from './lib/catalog'
 import { getGuide } from './lib/guides'
-import { REPOSITORY_URL } from './lib/site'
+import { FULL_SITE_URL, REPOSITORY_URL } from './lib/site'
 import { genreLabel, genreDescription, genreInfo } from './lib/genres'
 import { neteaseLink, neteaseRanks } from './lib/netease'
 import type { NeteaseCatalog } from './lib/netease'
@@ -515,6 +515,16 @@ export default function App() {
         </header>
 
         <main id="main" className="main-content">
+          {FULL_SITE_URL && (
+            <a className="full-site-notice" href={FULL_SITE_URL}>
+              <Trophy size={20} />
+              <span>
+                <strong>云端完整版已上线</strong>
+                <span>前往新版，与大家一起投票 · 手机、平板和电脑共享排行榜</span>
+              </span>
+              <ArrowUpRight size={20} />
+            </a>
+          )}
           {page === 'about' ? (
             <AboutContent
               catalog={catalog}
