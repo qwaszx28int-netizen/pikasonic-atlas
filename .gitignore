@@ -11,7 +11,11 @@ artifacts/
 .env
 .env.*
 .wrangler/
+.netlify/
 .dev.vars
 .dev.vars.*
+/deploy/server.env
+/backups/
+*.sql.backup
 
 !.env.example

@@ -1,0 +1,60 @@
+name: pikasonic-atlas
+
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: '3001'
+      HOST: 0.0.0.0
+      SITE_ORIGIN: https://${SITE_DOMAIN:?Set SITE_DOMAIN in deploy/server.env}
+      DATABASE_PATH: /app/data/votes.sqlite
+      TRUST_PROXY: '1'
+    volumes:
+      - votes:/app/data
+    networks:
+      - backend
+    # The application port is private. Caddy overwrites X-Real-IP before forwarding.
+    expose:
+      - '3001'
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3001/api/leaderboard').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN:?Set SITE_DOMAIN in deploy/server.env}
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - edge
+      - backend
+    depends_on:
+      app:
+        condition: service_healthy
+
+networks:
+  edge:
+  backend:
+    internal: true
+
+volumes:
+  votes:
+  caddy_data:
+  caddy_config:

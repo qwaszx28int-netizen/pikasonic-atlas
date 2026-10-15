@@ -2,7 +2,7 @@
 
 这套方案在同一个 Cloudflare Workers 站点下提供前端静态文件与 `/api`，通过远端 D1 数据库持久保存共享投票。它包含投票、撤票和 Top 10，区别于只提供静态浏览的 GitHub Pages。原有 Node.js / Docker + SQLite 方案仍可使用，见 [共享投票与部署](../notes/voting-deployment.md)。
 
-[完整版主站](https://pikasonic-atlas.pikasonic-atlas.workers.dev) 已完成 Workers 部署与远端 D1 迁移；[GitHub Pages 地址](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) 保留为静态预览。下面的步骤供自行部署使用，成功后以 Wrangler 返回的自己站点地址访问完整功能。
+[Cloudflare 备用入口](https://pikasonic-atlas.pikasonic-atlas.workers.dev) 已完成 Workers 部署与远端 D1 迁移；[Netlify 主站](https://pikasonic-atlas.netlify.app/) 通过同源函数使用这个投票后端，浏览器无需直接访问 `workers.dev`。免费入口的网络及额度限制见 [Netlify 部署](netlify-deployment.md)。[GitHub Pages 地址](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) 保留为静态预览。下面的步骤供自行部署使用，成功后以 Wrangler 返回的自己站点地址访问完整功能。
 
 ## 准备账号与项目
 

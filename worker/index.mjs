@@ -1,5 +1,6 @@
 import catalog from '../public/data/catalog.json' with { type: 'json' }
 import { createVoteStore, randomVisitorId } from './store.mjs'
+import { authenticatedProxyIp } from './proxy-ip.mjs'
 
 export { createVoteStore } from './store.mjs'
 
@@ -120,9 +121,11 @@ export function createWorker({
         if (url.pathname !== '/api' && !url.pathname.startsWith('/api/'))
           return await env.ASSETS.fetch(request)
 
-        // Cloudflare overwrites this header at the edge. Never trust X-Forwarded-For.
+        // Only the authenticated server proxy may supply its own visitor IP.
+        // Other traffic keeps Cloudflare's edge IP; never trust X-Forwarded-For.
         const edgeIp = request.headers.get('CF-Connecting-IP')
-        const ip = edgeIp && edgeIp.length <= 64 ? edgeIp : 'unknown'
+        const proxyIp = await authenticatedProxyIp(request, env.VOTING_PROXY_SECRET)
+        const ip = proxyIp || (edgeIp && edgeIp.length <= 64 ? edgeIp : 'unknown')
         if (await limited(env.READ_LIMITER, 'read', ip, rateLimit))
           return json(
             429,

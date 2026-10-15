@@ -12,6 +12,7 @@ ENV NODE_ENV=production PORT=3001 DATABASE_PATH=/app/data/votes.sqlite
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/public/data ./public/data
 COPY --from=build /app/server ./server
+COPY --from=build /app/scripts/import-d1-votes.mjs ./scripts/import-d1-votes.mjs
 RUN mkdir -p /app/data && chown -R node:node /app
 USER node
 VOLUME ["/app/data"]

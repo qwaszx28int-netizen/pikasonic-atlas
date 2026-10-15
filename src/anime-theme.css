@@ -230,7 +230,7 @@ select:focus-visible {
   right: auto;
 }
 .hero-japanese {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: inherit;
   font-size: 10px;
   color: #baa4cd;
   letter-spacing: 3px;

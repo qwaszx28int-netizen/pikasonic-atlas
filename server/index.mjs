@@ -1,5 +1,6 @@
 import { createServer } from 'node:http'
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto'
+import { isIP } from 'node:net'
 import { readFileSync, existsSync, realpathSync, statSync, createReadStream } from 'node:fs'
 import { resolve, relative, extname, sep, isAbsolute } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -49,6 +50,7 @@ export function createApp({
   distDir = resolve(root, 'dist'),
   siteOrigin = process.env.SITE_ORIGIN,
   production = process.env.NODE_ENV === 'production',
+  trustProxy = process.env.TRUST_PROXY === '1',
   rateLimit = 120,
   writeRateLimit = 40,
   rateWindowMs = 60_000,
@@ -114,7 +116,13 @@ export function createApp({
     try {
       const pathname = new URL(request.url, 'http://localhost').pathname
       if (pathname.startsWith('/api/')) {
-        const ip = request.socket.remoteAddress || 'unknown'
+        // Enable only behind a proxy that overwrites this header. The Docker
+        // deployment keeps this port private and Caddy supplies the peer IP.
+        const forwardedIp = request.headers['x-real-ip']
+        const ip =
+          trustProxy && typeof forwardedIp === 'string' && isIP(forwardedIp)
+            ? forwardedIp
+            : request.socket.remoteAddress || 'unknown'
         if (limited(`read:${ip}`, rateLimit))
           return json(
             response,

@@ -16,5 +16,5 @@ const originalPreview =
 export const FULL_SITE_URL =
   safeExternalUrl(
     import.meta.env.VITE_FULL_SITE_URL ||
-      (originalPreview ? 'https://pikasonic-atlas.pikasonic-atlas.workers.dev' : ''),
+      (originalPreview ? 'https://pikasonic-atlas.netlify.app' : ''),
   ) || ''

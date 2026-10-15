@@ -137,6 +137,52 @@ test('write throttling returns 429', async () => {
   }
 })
 
+test('reverse proxy limits distinguish validated peer IPs only when explicitly enabled', async () => {
+  const app = await start({ trustProxy: true, writeRateLimit: 1 })
+  try {
+    const visit = await client(app)
+    assert.equal(
+      (await visit('/api/votes/track-a', 'POST', { headers: { 'X-Real-IP': '192.0.2.1' } })).status,
+      200,
+    )
+    assert.equal(
+      (await visit('/api/votes/track-b', 'POST', { headers: { 'X-Real-IP': '192.0.2.1' } })).status,
+      429,
+    )
+    assert.equal(
+      (await visit('/api/votes/track-b', 'POST', { headers: { 'X-Real-IP': '2001:db8::2' } }))
+        .status,
+      200,
+    )
+    assert.equal(
+      (await visit('/api/votes/track-a', 'POST', { headers: { 'X-Real-IP': 'arbitrary-value' } }))
+        .status,
+      200,
+    )
+    assert.equal(
+      (
+        await visit('/api/votes/track-b', 'POST', {
+          headers: { 'X-Real-IP': '192.0.2.99, 192.0.2.100' },
+        })
+      ).status,
+      429,
+    )
+  } finally {
+    await app.close()
+  }
+  const direct = await start({ trustProxy: false, writeRateLimit: 1 })
+  try {
+    const visit = await client(direct)
+    await visit('/api/votes/track-a', 'POST', { headers: { 'X-Real-IP': '192.0.2.1' } })
+    assert.equal(
+      (await visit('/api/votes/track-b', 'POST', { headers: { 'X-Real-IP': '192.0.2.2' } })).status,
+      429,
+    )
+  } finally {
+    await direct.close()
+  }
+})
+
 test('SQLite and the cookie secret survive server restart', async () => {
   const directory = mkdtempSync(join(tmpdir(), 'pikasonic-votes-'))
   const databasePath = join(directory, 'votes.sqlite')

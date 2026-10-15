@@ -2,7 +2,9 @@
 
 共享投票支持 Cloudflare Workers + D1，以及 Node.js / Docker + SQLite 两种部署。网站卡片从真实接口读取票数，排行榜展示得票最高的前 10 首作品；没有投票的作品不会占用排行榜位置。
 
-Cloudflare [完整版主站](https://pikasonic-atlas.pikasonic-atlas.workers.dev) 已完成部署和远端 D1 迁移，同源提供页面和 API，票数持久保存在远端 D1。签名密钥默认自动生成并保存在 D1 `meta` 表中，可选 `VISITOR_SECRET`。自行部署时，用户注册并通过 Wrangler 授权，不需向聊天提供账号凭证。完整步骤、迁移命令与免费额度见 [Cloudflare 部署指南](../docs/cloudflare-deployment.md)。
+[Netlify 主站](https://pikasonic-atlas.netlify.app/) 提供免费页面与同源函数代理，浏览器不必直连 `workers.dev`；代理继续使用原 Cloudflare Worker 和 D1，共享历史票数。正式发布使用 Free 套餐，额度用尽会暂停服务，大陆连通性需按运营商实测。配置与限制见 [Netlify 免费部署](../docs/netlify-deployment.md)。
+
+Cloudflare [备用入口与数据后端](https://pikasonic-atlas.pikasonic-atlas.workers.dev) 同源提供页面和 API，票数持久保存在远端 D1。签名密钥默认自动生成并保存在 D1 `meta` 表中，可选 `VISITOR_SECRET`。自行部署时，用户注册并通过 Wrangler 授权，不需向聊天提供账号凭证。完整步骤、迁移命令与免费额度见 [Cloudflare 部署指南](../docs/cloudflare-deployment.md)。
 
 以下主要介绍原有 **Node.js / Docker + SQLite** 方案。它需要支持内置 `node:sqlite` 的 Node.js 22.18+ 或 Node.js 24，推荐 Node.js 24。两种部署不会自动同步数据库；从本地 SQLite 切换到 D1 时，历史票数需另行迁移。
 
@@ -32,6 +34,7 @@ npm run build
 | `DATABASE_PATH`  | `data/votes.sqlite`    | SQLite 文件路径；相对路径以进程工作目录为基准                      |
 | `SITE_ORIGIN`    | 未设置                 | 生产网站的完整源，例如 `https://music.example.com`，不包含路径     |
 | `VISITOR_SECRET` | 数据库中自动生成并保存 | 可选的签名密钥，至少 32 个字符；多实例需要使用相同密钥和同一数据库 |
+| `TRUST_PROXY`    | 未设置                 | 仅在入口反向代理覆盖 `X-Real-IP` 且应用端口不对外开放时设为 `1`    |
 
 生产环境建议使用 HTTPS 反向代理，将网站及 `/api` 一起代理到端口 3001，并把 `SITE_ORIGIN` 设置为用户实际访问的 HTTPS 域名。配置该变量后，写操作只接受这个源；HTTPS 配置会令访客 Cookie 带上 `Secure` 属性。不要把开发端口 5173 当作正式服务。
 
@@ -46,6 +49,8 @@ docker run -d --name pikasonic-atlas --restart unless-stopped -p 3001:3001 -e SI
 ```
 
 镜像使用 Node.js 24，构建前端后由 Node 提供页面和接口。`/app/data` 是数据库卷挂载点。反向代理需把 `https://music.example.com` 指向这台服务；域名应替换为实际部署地址。仅在本机通过 HTTP 检查时可暂不设置 `SITE_ORIGIN`，以同源方式访问 `http://localhost:3001`，避免 HTTPS `Secure` Cookie 与本地 HTTP 不匹配。
+
+仓库也提供 `compose.yaml` 与 `deploy/Caddyfile`。已有 Linux 服务器和域名时，复制 `deploy/server.env.example` 为 `deploy/server.env`，将 `SITE_DOMAIN` 改为已解析到服务器的域名，开放 80/443 后运行 `docker compose --env-file deploy/server.env up -d --build`。Caddy 自动配置 HTTPS，应用端口仅在私有容器网络可见，`votes` 卷持久保存投票。更新时保留卷，不要用 `down -v`。这套自托管配置需要自行准备主机，不是当前免费的 Netlify 路线。D1 到新 SQLite 的离线转换见 [投票迁移说明](../docs/vote-migration.md)。
 
 SQLite 适合这个项目的单实例部署。若扩展为多台主机或多实例，不应给各实例使用独立数据库后宣称票数共享；需要重新设计数据库部署与并发访问方案。
 
@@ -72,6 +77,6 @@ SQLite 适合这个项目的单实例部署。若扩展为多台主机或多实�
 
 GitHub Pages 只能提供静态文件，无法运行 Node.js 服务或持久化共享 SQLite 投票库。直接把 `dist` 发布到 Pages 可以展示歌曲目录与导听内容，**不能由 Pages 提供共享投票和排行榜**。没有可用 API 时，前端应明确显示投票服务不可用，不使用浏览器本地数据伪装共享票数。
 
-现有 [Pages 地址](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) 是静态预览，并会自动显示上述 Cloudflare 主站的跳转入口。分叉仓库的静态构建可设置 `VITE_FULL_SITE_URL`，指向自己部署的完整版地址。该变量不提供跨域 API 连接；Node.js 或 Worker 同源完整版构建时将它留空。
+现有 [Pages 地址](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) 是静态预览，并会自动显示上述 Netlify 主站的跳转入口。分叉仓库的静态构建可设置 `VITE_FULL_SITE_URL`，指向自己部署的完整版地址。该变量不提供跨域 API 连接；完整版构建时将它留空。
 
 若需要完整投票功能，可选择 [Cloudflare Workers + D1](../docs/cloudflare-deployment.md)，或使用可运行 Node.js 且有持久磁盘的主机、容器平台或 VPS，按上述方式同源部署页面与 API。若另用静态托管，需要在同一站点源下通过网关或反向代理接入后端；仅创建 GitHub Pages 仓库不会自动完成这项配置。

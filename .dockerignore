@@ -1,8 +1,15 @@
 node_modules
 dist
 .git
+.netlify
 /data/
 artifacts
 .env
 .env.*
 *.log
+backups
+deploy/server.env
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.sql.backup

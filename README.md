@@ -2,7 +2,9 @@
 
 一个非官方、非营利的 PIKASONIC 中文歌曲资料与导听网站。目前目录整理了 **170 首作品及不同版本**，包括ナナツカゼ（Nanatsukaze）组合的 **36 首 / 版本**与《海奏ララバイ》的主唱、伴奏版。资料合并 Apple Music 公开发行目录及官方 SoundCloud、YouTube 可核对的独立作品；数量是当前快照，不是“全球全部歌曲”的证明。
 
-[主站 / 完整版](https://pikasonic-atlas.pikasonic-atlas.workers.dev) · [静态预览](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) · [版本下载](https://github.com/qwaszx28int-netizen/pikasonic-atlas/releases/latest) · [源码仓库](https://github.com/qwaszx28int-netizen/pikasonic-atlas) · [问题与建议](https://github.com/qwaszx28int-netizen/pikasonic-atlas/issues)
+[主站 / 完整版](https://pikasonic-atlas.netlify.app/) · [Cloudflare 备用入口](https://pikasonic-atlas.pikasonic-atlas.workers.dev) · [静态预览](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) · [版本下载](https://github.com/qwaszx28int-netizen/pikasonic-atlas/releases/latest) · [源码仓库](https://github.com/qwaszx28int-netizen/pikasonic-atlas) · [问题与建议](https://github.com/qwaszx28int-netizen/pikasonic-atlas/issues)
+
+主站使用 Netlify Free 提供页面与同源投票代理，票数仍保存在原 Cloudflare D1，两入口共享排行榜。页面使用系统字体，浏览器不依赖 Google 字体服务。免费海外入口不保证中国大陆所有运营商稳定；配额、部署与访问验证说明见 [Netlify 免费部署](docs/netlify-deployment.md) 和 [大陆访问选择](docs/mainland-hosting-options.md)。
 
 > 本项目与 PIKASONIC、唱片公司及音乐平台不存在官方关联。“非营利”声明不构成版权许可，也不能保证免除版权责任。代码采用 MIT 许可；歌曲、封面、艺术家名称及相关商标等权利仍归各自权利人所有。
 
@@ -52,7 +54,9 @@ npm start
 
 投票身份不收集姓名、邮箱等直接身份资料；服务会处理请求 IP 进行限频。票数、随机身份记录及签名密钥保存在所选部署的持久数据库中，数据库不得上传到 GitHub。
 
-Cloudflare [完整版主站](https://pikasonic-atlas.pikasonic-atlas.workers.dev) 已完成 Workers 部署和远端 D1 迁移，同源提供网站与 API。签名密钥默认自动生成并保存在 D1 的 `meta` 表中，也可设置 `VISITOR_SECRET`。自行部署时，用户注册 Cloudflare 并通过 Wrangler 授权，无需向聊天提供密码或令牌。免费套餐有请求、数据库读写与存储额度，超额可能失败；完整命令及配额见 [Cloudflare 部署指南](docs/cloudflare-deployment.md)。
+Netlify [完整版主站](https://pikasonic-atlas.netlify.app/) 通过同源函数转发投票，浏览器无需直连 `workers.dev`。两端以服务端代理密钥认证访客 IP，维持按访客网络地址限流，全部 API 禁止缓存。免费额度用尽会暂停服务，后续发布需手动构建部署；完整步骤见 [Netlify 免费部署](docs/netlify-deployment.md)。
+
+Cloudflare [备用入口与数据后端](https://pikasonic-atlas.pikasonic-atlas.workers.dev) 保留原 Workers 与远端 D1。签名密钥默认自动生成并保存在 D1 的 `meta` 表中，也可设置 `VISITOR_SECRET`。自行部署时，用户注册 Cloudflare 并通过 Wrangler 授权，无需向聊天提供密码或令牌。免费套餐有请求、数据库读写与存储额度，超额可能失败；完整命令及配额见 [Cloudflare 部署指南](docs/cloudflare-deployment.md)。更换入口不会清空总票数，但个人 Cookie 和收藏不会自动跨域同步。
 
 原有 Node.js / Docker 部署仍支持：为 SQLite 配置可写持久目录，更新程序时保留数据库。两种部署使用各自的数据库，票数不会自动跨部署同步。
 
@@ -89,7 +93,7 @@ npm run sync:netease
 
 本仓库的 [GitHub Pages 静态预览](https://qwaszx28int-netizen.github.io/pikasonic-atlas/) 已上线，提供目录与导听浏览。分叉仓库仍需自行启用部署：在自己的仓库 **Settings → Pages → Build and deployment** 中将 **Source** 设为 **GitHub Actions**，再运行提供的 Pages 工作流。成功后可在该设置页查看静态站点地址。Vite 基础路径为 `./`，适配项目仓库路径。
 
-原站 GitHub Pages 地址会自动显示跳转到上述完整版的入口。分叉仓库的静态预览可在构建时设置 `VITE_FULL_SITE_URL`，指向自己部署的完整版地址。这只是跳转入口，投票仍在完整版的同源 API 中进行；Worker 或 Node.js 同源完整版构建时将该变量留空。
+原站 GitHub Pages 地址会自动显示跳转到 Netlify 完整版的入口。分叉仓库的静态预览可在构建时设置 `VITE_FULL_SITE_URL`，指向自己部署的完整版地址。这只是跳转入口，投票仍在完整版的同源 API 中进行；完整版构建时将该变量留空。
 
 若默认分支不同，请调整工作流监听分支。所附 Actions 工作流会自动将当前 GitHub 仓库地址传入 `VITE_REPOSITORY_URL`；其他构建方式需自行配置并验证。上述步骤完成后，以实际仓库与部署状态为准。需要共享投票时，改用前述完整部署。
 
